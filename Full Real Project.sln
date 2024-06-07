@@ -5,6 +5,10 @@ VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Full Real Project", "Full Real Project.csproj", "{9DC857DA-4EEC-4450-9EE3-69DCA1E604C3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactsBusinessLayer", "..\ContactsBusinessLayer\ContactsBusinessLayer.csproj", "{F4CACCC7-4CBF-4E9A-85F5-56011A90147A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactsDataAccessLayer", "..\ContactsDataAccessLayer\ContactsDataAccessLayer.csproj", "{D6A83D53-63F5-4BBD-BB3A-26ECA2CDE608}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{9DC857DA-4EEC-4450-9EE3-69DCA1E604C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9DC857DA-4EEC-4450-9EE3-69DCA1E604C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9DC857DA-4EEC-4450-9EE3-69DCA1E604C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4CACCC7-4CBF-4E9A-85F5-56011A90147A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4CACCC7-4CBF-4E9A-85F5-56011A90147A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4CACCC7-4CBF-4E9A-85F5-56011A90147A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4CACCC7-4CBF-4E9A-85F5-56011A90147A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6A83D53-63F5-4BBD-BB3A-26ECA2CDE608}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6A83D53-63F5-4BBD-BB3A-26ECA2CDE608}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6A83D53-63F5-4BBD-BB3A-26ECA2CDE608}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6A83D53-63F5-4BBD-BB3A-26ECA2CDE608}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -30,7 +30,7 @@
         {
             this.button1 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.simplCulc1 = new Full_Real_Project.SimplCulc();
+            this.simplCulc1 = new Full_Real_Project.ClintInfo();
             this.SuspendLayout();
             // 
             // button1
@@ -76,7 +76,7 @@
 
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textBox1;
-        private SimplCulc simplCulc1;
+        private ClintInfo simplCulc1;
     }
 }
 

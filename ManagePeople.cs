@@ -17,11 +17,7 @@ namespace Full_Real_Project
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            pictureBox1.Image = Image.FromFile(@"C:\Users\Abdelrahman\OneDrive\Pictures\DVDL Project\ManagePPLImage.png");
-
-
-            listView1.Items.Add(); 
-            
+         
         }
 
      
