@@ -19,24 +19,15 @@ namespace Full_Real_Project
             InitializeComponent();
         }
 
-        private void simplCulc1_Load(object sender, EventArgs e)
+      
+
+      
+
+      
+
+        private void Form1_Load(object sender, EventArgs e)
         {
 
         }
-
-        private void simplCulc1_Load_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void simplCulc1_OnCalculationComplete(int obj)
-        {
-
-            MessageBox.Show("the number that send is : " + obj);
-
-
-        }
-
-  
     }
 }

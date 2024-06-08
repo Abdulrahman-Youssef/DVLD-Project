@@ -4,7 +4,7 @@ using System.Windows.Forms.PropertyGridInternal;
 using System.Linq;
 using System.Text;
 using System.Drawing;
-using ContactsBusinessLayer;
+using Full_Real_Project_Buisness_layer_;
 // to use the Resources
 using Full_Real_Project.Properties;
 using System.Data;
