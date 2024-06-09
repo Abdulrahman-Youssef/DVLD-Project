@@ -8,6 +8,6 @@ namespace Full_Real_Project_DataAccess_layer_
 {
     internal class clsDataAccessLayerSettings
     {
-        public static string ConnectionString = "Server =.; Database = ContactsDB1;User Id =sa;Password=sa123456;";
+        public static string ConnectionString = "Server =.; Database = DVLD;User Id =sa;Password=sa123456;";
     }
 }

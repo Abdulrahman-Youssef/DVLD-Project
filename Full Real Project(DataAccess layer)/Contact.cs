@@ -209,7 +209,7 @@ namespace Full_Real_Project_DataAccess_layer_
 
             SqlConnection connection = new SqlConnection(clsDataAccessLayerSettings.ConnectionString);
 
-            string query = "SELECT * FROM Contacts";
+            string query = "SELECT * FROM People";
 
             SqlCommand command = new SqlCommand(query, connection);
             try
@@ -238,6 +238,7 @@ namespace Full_Real_Project_DataAccess_layer_
             return dt;
         }
 
+ 
         public static bool IsContactExist(int ID)
         {
             bool found = false;

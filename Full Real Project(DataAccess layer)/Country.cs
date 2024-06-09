@@ -210,7 +210,7 @@ namespace Full_Real_Project_DataAccess_layer_
             DataTable result = new DataTable();
             SqlConnection conn = new SqlConnection(clsDataAccessLayerSettings.ConnectionString);
 
-            string query = "SELECT * FROM Countries ORDER BY  CountryName";
+            string query = "SELECT * FROM Countries ORDER BY  CountryName";       
             SqlCommand command = new SqlCommand(query, conn);
 
 
