@@ -52,11 +52,11 @@
     <Compile Include="AddandEditeFrm.Designer.cs">
       <DependentUpon>AddandEditeFrm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="AddEdite.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="AddEdite.Designer.cs">
+      <DependentUpon>AddEdite.cs</DependentUpon>
     </Compile>
     <Compile Include="ManagePeople.cs">
       <SubType>Form</SubType>
@@ -69,8 +69,8 @@
     <EmbeddedResource Include="AddandEditeFrm.resx">
       <DependentUpon>AddandEditeFrm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="AddEdite.resx">
+      <DependentUpon>AddEdite.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ManagePeople.resx">
       <DependentUpon>ManagePeople.cs</DependentUpon>
@@ -115,6 +115,10 @@
       <Project>{e846e915-1bad-4872-96ab-7c07cda742b9}</Project>
       <Name>Full Real Project%28Buisness layer%29</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AddPerson.png" />
+    <Content Include="Resources\images.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

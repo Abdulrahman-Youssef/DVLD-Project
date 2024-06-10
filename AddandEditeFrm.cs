@@ -72,7 +72,7 @@ namespace ContactsDataAccessLayer
             // cuz as u expext the cb starts the count from 0 and the dt base starts form 1 so we have to make this step to 
             // ensure that the number in range and in his right selection
             // it give the name of the country to the fisrt cb and the cb return it right by name
-            cbCoutries.SelectedIndex =  cbCoutries.FindString(clsCountry.Find(_Contact.CountryId).CountryName); 
+            cbCoutries.SelectedIndex =  cbCoutries.FindString(clsCountry.Find(_Contact.NationalityCountryID).CountryName); 
             dtpDateOfBirth.Value = _Contact.DateOfBirth;
 
             if (_Contact.ImagePath != null && _Contact.ImagePath != "" )
@@ -119,8 +119,6 @@ namespace ContactsDataAccessLayer
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-
-
             if (moods == Moods.Edit)
             {
                 _Contact.FirstName = txtbFirstName.Text;
@@ -128,7 +126,7 @@ namespace ContactsDataAccessLayer
                 _Contact.Email = txtbEmail.Text;
                 _Contact.Phone = txtbPhone.Text;
                 _Contact.Address = txtbAddress.Text;
-                _Contact.CountryId = clsCountry.Find(cbCoutries.Text).ID;
+                _Contact.NationalityCountryID = clsCountry.Find(cbCoutries.Text).ID;
                 _Contact.DateOfBirth = dtpDateOfBirth.Value;
             }
             else
@@ -139,7 +137,7 @@ namespace ContactsDataAccessLayer
                 _Contact.Email = txtbEmail.Text;
                 _Contact.Phone = txtbPhone.Text;
                 _Contact.Address = txtbAddress.Text;
-                _Contact.CountryId = clsCountry.Find(cbCoutries.Text).ID;
+                _Contact.NationalityCountryID = clsCountry.Find(cbCoutries.Text).ID;
                 _Contact.DateOfBirth = dtpDateOfBirth.Value;
             }
             if (pictureBox1.ImageLocation != null )

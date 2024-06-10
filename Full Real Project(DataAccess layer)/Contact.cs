@@ -1,27 +1,25 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Full_Real_Project_DataAccess_layer_
 {
     public class clsContactsDataAccess
     {
-        public static bool GetContactByID(int ID, ref string FirstName, ref string LastName, ref string Email, ref string Phone
-        , ref string Address, ref DateTime DataOfBirth, ref int CountryId, ref string ImagePath)
+        public static bool GetContactByID(int ID,ref string NationalNo , ref string FirstName,ref string SecondName,ref string ThirdName , ref string LastName ,
+            ref string Email, ref string Phone, ref string Address,ref int Gendor ,  ref DateTime DataOfBirth, ref int NationalityCountryID,
+            ref string ImagePath)
         {
             bool Found = false;
 
             SqlConnection connection = new SqlConnection(clsDataAccessLayerSettings.ConnectionString);
 
-            string query = "SELECT * FROM Contacts WHERE ContactID = @ContactID";
+            string query = "SELECT * FROM People WHERE PersonID = @PersonID";
 
             SqlCommand command = new SqlCommand(query, connection);
 
-            command.Parameters.AddWithValue("@ContactID", ID);
+            command.Parameters.AddWithValue("@PersonID", ID);
 
             try
             {
@@ -31,13 +29,21 @@ namespace Full_Real_Project_DataAccess_layer_
                 if (reader.Read())
                 {
                     Found = true;
+                    NationalNo = (string)reader["NationalNo"];
                     FirstName = (string)reader["FirstName"];
                     LastName = (string)reader["LastName"];
+                    SecondName = (string)reader["SecondName"];
+                    ThirdName = (string)reader["ThirdName"];
                     Email = (string)reader["Email"];
                     Phone = (string)reader["Phone"];
                     Address = (string)reader["Address"];
+                    //error
+                    //Gendor = (int)reader["Gendor"]; 
+                    //no error ?????????????????? just how
+                    Gendor = Convert.ToInt32(reader["Gendor"]);
                     DataOfBirth = (DateTime)reader["DateOFBirth"];
-                    CountryId = (int)reader["CountryID"];
+
+                    NationalityCountryID = Convert.ToInt32(reader["NationalityCountryID"]);
                     if (reader["ImagePath"] != DBNull.Value)
                     {
                         ImagePath = (string)reader["ImagePath"];
@@ -70,27 +76,33 @@ namespace Full_Real_Project_DataAccess_layer_
 
 
 
-        public static int AddedNewContact(string FirstName, string LastName, string Email, string Phone,
-               string Address, DateTime DataOfBirth, int CountryId, string ImagePath)
+        public static int AddedNewContact(string NationalNo, string FirstName, string SecondName, string ThirdName, string LastName,
+            string Email, string Phone, string Address,  int Gendor, DateTime DataOfBirth, int NationalityCountryID,string ImagePath)
         {
 
 
             SqlConnection connection = new SqlConnection(clsDataAccessLayerSettings.ConnectionString);
 
 
-            string query = @"INSERT INTO Contacts (FirstName , LastName , Email, Phone,Address,DateOfBirth,CountryId , ImagePath)
-                               VALUES (@FirstName,@LastName,@Email,@Phone,@Address,@DateOfBirth,@CountryId,@ImagePath)
+            string query = @"INSERT INTO People (NationalNo ,FirstName ,SecondName,ThirdName, LastName , Email, Phone,Address,Gendor
+,DateOfBirth,NationalityCountryID , ImagePath)
+                               VALUES (@NationalNo,@FirstName,@SecondName,@ThirdName,@LastName,@Email,@Phone,@Address,@Gendor,
+@DateOfBirth,@NationalityCountryID,@ImagePath)
                                     SELECT SCOPE_IDENTITY()";
             SqlCommand command = new SqlCommand(query, connection);
 
+            command.Parameters.AddWithValue("@NationalNo", NationalNo);
             command.Parameters.AddWithValue("@FirstName", FirstName);
+            command.Parameters.AddWithValue("@SecondName" , SecondName);
+            command.Parameters.AddWithValue("@ThirdName",ThirdName);
             command.Parameters.AddWithValue("@LastName", LastName);
             command.Parameters.AddWithValue("@Email", Email);
             command.Parameters.AddWithValue("@Phone", Phone);
             command.Parameters.AddWithValue("@Address", Address);
+            command.Parameters.AddWithValue("@Gendor" , Gendor);
             command.Parameters.AddWithValue("@DateOfBirth", DataOfBirth);
-            command.Parameters.AddWithValue("@CountryId", CountryId);
-            if (ImagePath != null)
+            command.Parameters.AddWithValue("@NationalityCountryID", NationalityCountryID);
+            if (ImagePath != null || ImagePath != "")
                 command.Parameters.AddWithValue("@ImagePath", ImagePath);
             else
                 command.Parameters.AddWithValue("@ImagePath", System.DBNull.Value);
@@ -102,7 +114,7 @@ namespace Full_Real_Project_DataAccess_layer_
 
                 connection.Open();
                 object result = command.ExecuteScalar();
-                connection.Close();
+             
                 if (result != null && int.TryParse(result.ToString(), out int insertedID))
                 {
                     connection.Close();
@@ -124,35 +136,43 @@ namespace Full_Real_Project_DataAccess_layer_
         }
 
 
-        public static int UpdateContact(int ID, string FirstName, string LastName, string Email, string Phone,
-                   string Address, DateTime DataOfBirth, int CountryId, string ImagePath)
+        public static int UpdateContact(int ID,string NationalNo, string FirstName,string SecondName,string ThirdName, string LastName, string Email, string Phone,
+                   string Address,int Gendor, DateTime DataOfBirth, int NationalityCountryID, string ImagePath)
         {
             int Result = 0;
             SqlConnection connection = new SqlConnection(clsDataAccessLayerSettings.ConnectionString);
 
-            string query = @"UPDATE Contacts SET 
+            string query = @"UPDATE People SET 
+                                    NationalNo = @NationalNo,
                                     FirstName = @FirstName,
+                                    SecondName= @SecondName,
+                                    ThirdName = @ThirdName,
                                     LastName = @LastName,
                                     Phone = @Phone,
                                     Email = @Email,
                                     Address = @Address,
+                                    Gendor  = @Gendor,
                                     DateOfBirth = @DataOfBirth,
-                                    CountryId = @CountryId,
+                                    NationalityCountryID = @NationalityCountryID,
                                     ImagePath = @ImagePath
-                                    WHERE ContactID = @ContactID";
+                                    WHERE PersonID = @PersonID";
 
             SqlCommand command = new SqlCommand(query, connection);
 
-            command.Parameters.AddWithValue("@ContactID", ID);
+            command.Parameters.AddWithValue("@PersonID", ID);
+            command.Parameters.AddWithValue("@NationalNo", NationalNo);
             command.Parameters.AddWithValue("@FirstName", FirstName);
+            command.Parameters.AddWithValue("@SecondName", SecondName);
+            command.Parameters.AddWithValue("@ThirdName", ThirdName);
             command.Parameters.AddWithValue("@LastName", LastName);
             command.Parameters.AddWithValue("@Email", Email);
             command.Parameters.AddWithValue("@Phone", Phone);
             command.Parameters.AddWithValue("@Address", Address);
+            command.Parameters.AddWithValue("@Gendor",Gendor);
             command.Parameters.AddWithValue("@DataOfBirth", DataOfBirth);
-            command.Parameters.AddWithValue("@CountryId", CountryId);
+            command.Parameters.AddWithValue("@NationalityCountryID", NationalityCountryID);
 
-            if (ImagePath != null)
+            if (ImagePath != null && ImagePath != "")
                 command.Parameters.AddWithValue("@ImagePath", ImagePath);
             else
                 command.Parameters.AddWithValue("@ImagePath", System.DBNull.Value);
@@ -182,11 +202,11 @@ namespace Full_Real_Project_DataAccess_layer_
             int EffectRows = 0;
             SqlConnection connection = new SqlConnection(clsDataAccessLayerSettings.ConnectionString);
 
-            string query = "DELETE FROM Contacts WHERE ContactID = @contactID";
+            string query = "DELETE FROM People WHERE PersonID = @PersonID";
 
             SqlCommand command = new SqlCommand(query, connection);
 
-            command.Parameters.AddWithValue("@contactID", ID);
+            command.Parameters.AddWithValue("@PersonID", ID);
 
             try
             {
@@ -245,11 +265,11 @@ namespace Full_Real_Project_DataAccess_layer_
 
             SqlConnection connection = new SqlConnection(clsDataAccessLayerSettings.ConnectionString);
 
-            string query = "select FirstName FROM Contacts WHERE ContactID = @ContactID";
+            string query = "select FirstName FROM People WHERE PersonID = @PersonID";
 
             SqlCommand command = new SqlCommand(query, connection);
 
-            command.Parameters.AddWithValue("ContactID", ID);
+            command.Parameters.AddWithValue("PersonID", ID);
 
             try
             {

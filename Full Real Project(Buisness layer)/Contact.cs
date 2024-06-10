@@ -20,54 +20,65 @@ namespace Full_Real_Project_Buisness_layer_
         public enMode Mode = enMode.AddNew;
         private bool _AddedNewContact()
         {
-            this.Id = clsContactsDataAccess.AddedNewContact(this.FirstName, this.LastName, this.Email, this.Phone,
-                 this.Address, this.DateOfBirth, this.CountryId, this.ImagePath);
+            this.Id = clsContactsDataAccess.AddedNewContact(this.NationalNo ,this.FirstName,this.SecondName , this.ThirdName,  
+            this.LastName, this.Email, this.Phone,this.Address,this.Gendor, this.DateOfBirth, this.NationalityCountryID, this.ImagePath);
             return (this.Id > 0);
         }
 
 
         private bool _UpdateContact()
         {
-            int effectedRows = clsContactsDataAccess.UpdateContact(this.Id, this.FirstName, this.LastName, this.Email, this.Phone,
-                this.Address, this.DateOfBirth, this.CountryId, this.ImagePath);
+            int effectedRows = clsContactsDataAccess.UpdateContact(this.Id,this.NationalNo, this.FirstName,this.SecondName,this.ThirdName,
+                this.LastName, this.Email, this.Phone,this.Address,this.Gendor, this.DateOfBirth, this.NationalityCountryID, this.ImagePath);
             return effectedRows > 0;
         }
 
 
         public int Id { get; set; }
+        public string NationalNo { get; set; }
         public string FirstName { get; set; }
+        public string SecondName {  get; set; }
+        public string ThirdName { get; set; }       
         public string LastName { get; set; }
         public string Email { get; set; }
         public string Phone { get; set; }
         public string Address { get; set; }
+        public int Gendor {  get; set; }
         public DateTime DateOfBirth { get; set; }
-        public int CountryId { get; set; }
+        public int NationalityCountryID { get; set; }
         public string ImagePath { get; set; }
-
+        
         public clsContact()
         {
             Id = -1;
             FirstName = "";
+            SecondName = "";
+            ThirdName = "";
             LastName = "";
             Email = "";
             Phone = "";
             Address = "";
+            Gendor = 0; 
             DateOfBirth = DateTime.Now;
-            CountryId = 0;
+            NationalityCountryID = 0;
             ImagePath = "";
         }
 
-        private clsContact(int ID, string FirstName, string LastName, string Email, string Phone,
-                           string Address, DateTime DataOfBirth, int CountryId, string ImagePath)
+        private clsContact(int ID,string NationalNo, string FirstName,string SecondName , string ThirdName, string LastName, string Email,
+            string Phone,string Address,int Gendor, DateTime DataOfBirth, int NationalityCountryID, string ImagePath)
         {
             this.Id = ID;
+            this.NationalNo = NationalNo;
             this.FirstName = FirstName;
+            this.SecondName = SecondName;
+            this.ThirdName = ThirdName;
             this.LastName = LastName;
             this.Email = Email;
             this.Phone = Phone;
             this.Address = Address;
+            this.Gendor = Gendor;
             this.DateOfBirth = DataOfBirth;
-            this.CountryId = CountryId;
+            this.NationalityCountryID = NationalityCountryID;
             this.ImagePath = ImagePath;
 
             Mode = enMode.Update;
@@ -76,18 +87,20 @@ namespace Full_Real_Project_Buisness_layer_
 
         public static clsContact Find(int ID)
         {
-            string FirstName = "", LastName = "", Email = "", Phone = "", Address = "", ImagePath = "";
-            int CountryId = 0;
+            string NationalNo = "" , FirstName = "",SecondName="" , ThirdName="", LastName = "", Email = "", Phone = "", Address = ""
+                ,ImagePath = "";
+            int NationalityCountryID = 0 , Gendor = 0;
             DateTime DataOfBirth = DateTime.MinValue;
 
-            if (clsContactsDataAccess.GetContactByID(ID, ref FirstName, ref LastName, ref Email, ref Phone,
-                                                     ref Address, ref DataOfBirth, ref CountryId, ref ImagePath))
+            if (clsContactsDataAccess.GetContactByID(ID,ref NationalNo, ref FirstName,ref SecondName,ref ThirdName, ref LastName, ref Email, 
+                ref Phone,ref Address,ref Gendor, ref DataOfBirth, ref NationalityCountryID, ref ImagePath))
 
             {
-                return new clsContact(ID, FirstName, LastName, Email, Phone, Address, DataOfBirth, CountryId, ImagePath);
+                return new clsContact(ID, NationalNo, FirstName,SecondName, ThirdName, LastName, Email, Phone, Address,Gendor,
+                    DataOfBirth, NationalityCountryID, ImagePath);
             }
             else
-            {
+            {// ?? null or new clscontact 
                 return null;
             }
         }

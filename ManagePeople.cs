@@ -60,13 +60,19 @@ namespace Full_Real_Project
         {
             InitializeComponent();
         }
-        
+
+        private void Refreshdgv()
+        {
+            poepleDataSource = clsContact.FiltertedTable();
+            dgvPeople.DataSource = poepleDataSource;
+        }
         private void Form2_Load(object sender, EventArgs e)
         {
             //1
             dgvPeople.DataSource = poepleDataSource;
             comboBox1.DataSource = filterbylist;
-
+           // he only load when he show dialog but not loading if didnt get closed 
+            //Refreshdgv(); 
         }
 
 
@@ -81,15 +87,43 @@ namespace Full_Real_Project
             string filtertext = maskedTextBox1.Text;          
             poepleDataSource.DefaultView.RowFilter = string.Format("{1} like '%{0}%'" , filtertext , columnName );
         }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            AddEdite frm = new AddEdite(-1);
+            frm.ShowDialog();
+            Refreshdgv();
+        }
+
+
+
+        private void addedNewPersonToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddEdite frm = new AddEdite(-1);
+            frm.ShowDialog();
+            Refreshdgv();
+        }
+
+        private void editeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //Console.WriteLine((string)dgvPeople.CurrentRow.Cells[0].Value);
+            AddEdite frm= new AddEdite(Convert.ToInt32(dgvPeople.CurrentRow.Cells[0].Value));
+            frm.ShowDialog();
+            Refreshdgv();
+        }
+
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if(MessageBox.Show("delete","are u sure u want to Delete this contact",MessageBoxButtons.OKCancel) == DialogResult.OK)
+            {
+               clsContact.deletContact(Convert.ToInt32(dgvPeople.CurrentRow.Cells[0].Value));
+                Refreshdgv();
+            }
+        }
     }
 }
 
-// to full the toll boxw with the countries
-//foreach (DataRow row in clsCountry.GetAllContries().Rows)
-//{
 
-//    comboBox1.Items.Add(row["CountryName"].ToString());
-//}
 
 
 

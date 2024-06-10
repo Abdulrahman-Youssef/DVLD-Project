@@ -98,7 +98,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(12, 365);
+            this.label4.Location = new System.Drawing.Point(3, 409);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(91, 25);
             this.label4.TabIndex = 4;
@@ -144,7 +144,7 @@
             // 
             // txtbAddress
             // 
-            this.txtbAddress.Location = new System.Drawing.Point(-1, 393);
+            this.txtbAddress.Location = new System.Drawing.Point(2, 437);
             this.txtbAddress.Multiline = true;
             this.txtbAddress.Name = "txtbAddress";
             this.txtbAddress.Size = new System.Drawing.Size(514, 89);
