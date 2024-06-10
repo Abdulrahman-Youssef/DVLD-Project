@@ -91,7 +91,6 @@
             this.dgvPeople.Size = new System.Drawing.Size(1141, 318);
             this.dgvPeople.StandardTab = true;
             this.dgvPeople.TabIndex = 6;
-            this.dgvPeople.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // maskedTextBox1
             // 

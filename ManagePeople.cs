@@ -11,10 +11,12 @@ namespace Full_Real_Project
 {
 
     public partial class frmManagePeoPle : Form
-
     {
-        private string[] filterbylist = {"None" , "PersonID" , "Nationality No" , "First Name" , "SeocondName" , "ThirdName" ,
-        "LastName" , "Nationality" , "Gendor" , "Phone" , "Emial"};
+        DataTable poepleDataSource = clsContact.FiltertedTable(); 
+
+
+        private string[] filterbylist = {"None" , "PersonID" , "NationalNo" , "FirstName" , "SeocondName" , "ThirdName" ,
+        "LastName" , "NationalityCountryID" , "Gendor" , "Phone" , "Email"};
 
         // this function will be fiered OnChange for the ComboBox
         private void viladationTotxtBoxOnComboBoxChange() {
@@ -22,10 +24,14 @@ namespace Full_Real_Project
             switch(comboBox1.SelectedIndex)
             {
                 case 0:
+                    maskedTextBox1.Visible = false;
+                    break;
                 case 2:
+                    maskedTextBox1.Visible = true;
                     maskedTextBox1.Mask = null; 
                     break;
                 case 1:
+                    maskedTextBox1.Visible = true;
                     maskedTextBox1.Mask = "00000";
                     break;
                 case 3:
@@ -34,21 +40,21 @@ namespace Full_Real_Project
                 case 6:
                 case 7:
                 case 8:
-                    maskedTextBox1.Mask = "LLLLLLLLLLLLL"; 
+                    maskedTextBox1.Visible = true;
+                    maskedTextBox1.Mask = "LLLLLLL";
+                    
                     break ;
                 case 9:
-                    maskedTextBox1.Mask = "(999) 000-0000";
+                    maskedTextBox1.Visible = true;
+                    maskedTextBox1.Mask = "0000000";
                     break;
                 // not validation for email until found a good one 
                 case 10:
+                    maskedTextBox1.Visible = true;
                     maskedTextBox1.Mask = null;
                     break;
             }
             
-            
-
-
-
         }
         public frmManagePeoPle()
         {
@@ -58,15 +64,11 @@ namespace Full_Real_Project
         private void Form2_Load(object sender, EventArgs e)
         {
             //1
-            dgvPeople.DataSource = clsContact.FiltertedTable();
+            dgvPeople.DataSource = poepleDataSource;
             comboBox1.DataSource = filterbylist;
 
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -75,7 +77,9 @@ namespace Full_Real_Project
 
         private void maskedTextBox1_TextChanged(object sender, EventArgs e)
         {
-            //dgvPeople.d
+            string columnName = comboBox1.Text;
+            string filtertext = maskedTextBox1.Text;          
+            poepleDataSource.DefaultView.RowFilter = string.Format("{1} like '%{0}%'" , filtertext , columnName );
         }
     }
 }
