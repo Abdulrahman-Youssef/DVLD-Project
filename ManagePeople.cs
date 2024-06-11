@@ -120,6 +120,11 @@ namespace Full_Real_Project
                 Refreshdgv();
             }
         }
+
+        private void showDetailsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 

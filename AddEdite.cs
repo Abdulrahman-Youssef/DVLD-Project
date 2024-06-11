@@ -22,33 +22,36 @@ namespace Full_Real_Project
             {
                 person = new clsContact();
                 mode = enMode.AddedNew;
-                lblFormTitle.Text = "Added New"; 
+                //lblFormTitle.Text = "Added New";
+                FillForm();
             }
             else
             {
                 person= clsContact.Find( PersonID);
                 mode = enMode.Updated;
-                lblFormTitle.Text = "Update Contact";
-                FillForm(person); 
+                //lblFormTitle.Text = "Update Contact";
+                FillForm(); 
             }
 
          
         }
        
-        private void FillForm(clsContact contact) 
+        private void FillForm() 
         {
              if(mode == enMode.Updated)
              {
-                txtbNationalNo.Text =contact.NationalNo;
-                txtbFirstName.Text = contact.FirstName;
-                txtbSecondName.Text = contact.SecondName;
-                txtbThirdName.Text = contact.ThirdName;
-                txtbLastName.Text = contact.LastName;
-                txtbAdress.Text = contact.Address;
-                txtbPhone.Text = contact.Phone;
-                txtbEmail.Text = contact.Email;
-                dateTimePicker1.Value = contact.DateOfBirth;
-                if(contact.Gendor == 0 )
+                lblFormTitle.Text = "Update Person";
+                lblPersonID.Text = person.Id.ToString();
+                txtbNationalNo.Text =person.NationalNo;
+                txtbFirstName.Text = person.FirstName;
+                txtbSecondName.Text = person.SecondName;
+                txtbThirdName.Text = person.ThirdName;
+                txtbLastName.Text = person.LastName;
+                txtbAdress.Text = person.Address;
+                txtbPhone.Text = person.Phone;
+                txtbEmail.Text = person.Email;
+                dateTimePicker1.Value = person.DateOfBirth;
+                if(person.Gendor == 0 )
                 {
                     rbMale.Checked = true;
                 }
@@ -56,9 +59,25 @@ namespace Full_Real_Project
                 {
                     rbMale.Checked = true;
                 }
+                if (person.ImagePath != null && person.ImagePath != "")
+                {
+                    pictureBox1.Load(person.ImagePath);
+                    llblRemovePicture.Visible = true;
+                }
+                else
+                {
+
+                    llblRemovePicture.Visible = false;
+                }
+
                 // give error and in loding not why ?????????????????????????????????????????????????????????????????????
                 //cbCountries.SelectedIndex = 0;
 
+            }
+            else
+            {
+                lblFormTitle.Text = "Added New Person";
+                llblRemovePicture.Visible = false;
             }
         }
             
@@ -77,15 +96,21 @@ namespace Full_Real_Project
             {
                 cbCountries.Items.Add(row["CountryName"].ToString());
             }
+             
+
+
+
+
             if (mode == enMode.Updated)
             {
-                cbCountries.SelectedIndex = person.NationalityCountryID;
+                cbCountries.SelectedIndex = person.NationalityCountryID-1;
             }
             else
             {
                 cbCountries.SelectedIndex=50;
                 rbMale.Checked=true;
             }
+
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -117,12 +142,16 @@ namespace Full_Real_Project
             }
             person.DateOfBirth = dateTimePicker1.Value.Date;
             person.NationalityCountryID = cbCountries.SelectedIndex+1;
-            if (pictureBox1.ImageLocation != null)
+            if (pictureBox1.ImageLocation != null && pictureBox1.ImageLocation != "")
                 person.ImagePath = pictureBox1.ImageLocation;
             else
                 person.ImagePath =null;
           
             person.Save();
+
+            //lblFormTitle.Text = "Update Person";
+            mode = enMode.Updated;
+            FillForm();
 
         }
 
@@ -134,9 +163,16 @@ namespace Full_Real_Project
             if(openFileDialog1.ShowDialog() == DialogResult.OK )
             {
                 pictureBox1.Load(openFileDialog1.FileName);
+                llblRemovePicture.Visible= true;
                 
             }
+        }
 
+        private void llblRemovePicture_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            person.ImagePath=null;
+            pictureBox1.ImageLocation=null;
+            llblRemovePicture.Visible = false;
         }
     }
 }

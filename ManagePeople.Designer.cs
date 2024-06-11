@@ -41,6 +41,9 @@
             this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.r = new System.ComponentModel.BackgroundWorker();
+            this.directorySearcher1 = new System.DirectoryServices.DirectorySearcher();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPeople)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -107,6 +110,7 @@
             this.showDetailsToolStripMenuItem.Name = "showDetailsToolStripMenuItem";
             this.showDetailsToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.showDetailsToolStripMenuItem.Text = "ShowDetails";
+            this.showDetailsToolStripMenuItem.Click += new System.EventHandler(this.showDetailsToolStripMenuItem_Click);
             // 
             // addedNewPersonToolStripMenuItem
             // 
@@ -160,6 +164,12 @@
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
             // 
+            // directorySearcher1
+            // 
+            this.directorySearcher1.ClientTimeout = System.TimeSpan.Parse("-00:00:01");
+            this.directorySearcher1.ServerPageTimeLimit = System.TimeSpan.Parse("-00:00:01");
+            this.directorySearcher1.ServerTimeLimit = System.TimeSpan.Parse("-00:00:01");
+            // 
             // frmManagePeoPle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -173,7 +183,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Name = "frmManagePeoPle";
-            this.Text = "Form2";
+            this.Text = "  ";
             this.Load += new System.EventHandler(this.Form2_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPeople)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
@@ -197,5 +207,8 @@
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem showDetailsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addedNewPersonToolStripMenuItem;
+        private System.ComponentModel.BackgroundWorker r;
+        private System.DirectoryServices.DirectorySearcher directorySearcher1;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }

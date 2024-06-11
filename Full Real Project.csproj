@@ -35,6 +35,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,17 +47,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddandEditeFrm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AddandEditeFrm.Designer.cs">
-      <DependentUpon>AddandEditeFrm.cs</DependentUpon>
-    </Compile>
     <Compile Include="AddEdite.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="AddEdite.Designer.cs">
       <DependentUpon>AddEdite.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ctrlPersonInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ctrlPersonInfo.Designer.cs">
+      <DependentUpon>ctrlPersonInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmShowPersonDetails.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="frmShowPersonDetails.Designer.cs">
+      <DependentUpon>frmShowPersonDetails.cs</DependentUpon>
     </Compile>
     <Compile Include="ManagePeople.cs">
       <SubType>Form</SubType>
@@ -64,16 +71,28 @@
     <Compile Include="ManagePeople.Designer.cs">
       <DependentUpon>ManagePeople.cs</DependentUpon>
     </Compile>
+    <Compile Include="PersonInfoCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PersonInfoCard.Designer.cs">
+      <DependentUpon>PersonInfoCard.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="AddandEditeFrm.resx">
-      <DependentUpon>AddandEditeFrm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="AddEdite.resx">
       <DependentUpon>AddEdite.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ctrlPersonInfo.resx">
+      <DependentUpon>ctrlPersonInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmShowPersonDetails.resx">
+      <DependentUpon>frmShowPersonDetails.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ManagePeople.resx">
       <DependentUpon>ManagePeople.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PersonInfoCard.resx">
+      <DependentUpon>PersonInfoCard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

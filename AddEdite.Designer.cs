@@ -30,9 +30,12 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddEdite));
             this.lbl1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblPersonID = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.txtbEmail = new System.Windows.Forms.TextBox();
             this.cbCountries = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -55,9 +58,6 @@
             this.txtbSecondName = new System.Windows.Forms.TextBox();
             this.txtbFirstName = new System.Windows.Forms.TextBox();
             this.lblFormTitle = new System.Windows.Forms.Label();
-            this.txtbEmail = new System.Windows.Forms.TextBox();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.btnSave = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -73,16 +73,16 @@
             this.lbl1.TabIndex = 0;
             this.lbl1.Text = "PersonID:";
             // 
-            // label2
+            // lblPersonID
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(110, 58);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(28, 16);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "???";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+            this.lblPersonID.AutoSize = true;
+            this.lblPersonID.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPersonID.Location = new System.Drawing.Point(110, 58);
+            this.lblPersonID.Name = "lblPersonID";
+            this.lblPersonID.Size = new System.Drawing.Size(28, 16);
+            this.lblPersonID.TabIndex = 1;
+            this.lblPersonID.Text = "???";
+            this.lblPersonID.Click += new System.EventHandler(this.label2_Click);
             // 
             // label3
             // 
@@ -126,6 +126,37 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(987, 370);
             this.panel1.TabIndex = 3;
+            // 
+            // btnSave
+            // 
+            this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
+            this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSave.Location = new System.Drawing.Point(871, 303);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(75, 37);
+            this.btnSave.TabIndex = 26;
+            this.btnSave.Text = "Save";
+            this.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSave.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Location = new System.Drawing.Point(737, 303);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(97, 37);
+            this.btnCancel.TabIndex = 25;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // txtbEmail
+            // 
+            this.txtbEmail.Location = new System.Drawing.Point(164, 183);
+            this.txtbEmail.Name = "txtbEmail";
+            this.txtbEmail.Size = new System.Drawing.Size(100, 20);
+            this.txtbEmail.TabIndex = 24;
             // 
             // cbCountries
             // 
@@ -282,6 +313,7 @@
             this.llblRemovePicture.TabIndex = 8;
             this.llblRemovePicture.TabStop = true;
             this.llblRemovePicture.Text = "RemovePicture";
+            this.llblRemovePicture.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblRemovePicture_LinkClicked);
             // 
             // pictureBox1
             // 
@@ -329,51 +361,20 @@
             this.lblFormTitle.TabIndex = 3;
             this.lblFormTitle.Text = "Title";
             // 
-            // txtbEmail
-            // 
-            this.txtbEmail.Location = new System.Drawing.Point(164, 183);
-            this.txtbEmail.Name = "txtbEmail";
-            this.txtbEmail.Size = new System.Drawing.Size(100, 20);
-            this.txtbEmail.TabIndex = 24;
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.Location = new System.Drawing.Point(737, 303);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(97, 37);
-            this.btnCancel.TabIndex = 25;
-            this.btnCancel.Text = "Cancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // btnSave
-            // 
-            this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
-            this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSave.Location = new System.Drawing.Point(871, 303);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 37);
-            this.btnSave.TabIndex = 26;
-            this.btnSave.Text = "Save";
-            this.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSave.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // Form1
+            // AddEdite
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(987, 450);
             this.Controls.Add(this.lblFormTitle);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lblPersonID);
             this.Controls.Add(this.lbl1);
-            this.Name = "Form1";
+            this.Name = "AddEdite";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
@@ -387,7 +388,7 @@
         #endregion
 
         private System.Windows.Forms.Label lbl1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblPersonID;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lblFormTitle;
