@@ -60,7 +60,7 @@ namespace Full_Real_Project_Buisness_layer_
             Address = "";
             Gendor = 0; 
             DateOfBirth = DateTime.Now;
-            NationalityCountryID = 0;
+            NationalityCountryID = 50;
             ImagePath = "";
         }
 
@@ -143,7 +143,7 @@ namespace Full_Real_Project_Buisness_layer_
         {
             return clsContactsDataAccess.IsContactExist(ID);
         }
-
+        //?country
         public static bool IsContryExist(string CoutryName)
         {
             return clsCountryData.IsContryExist(CoutryName);
