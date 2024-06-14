@@ -75,7 +75,7 @@ namespace Full_Real_Project_DataAccess_layer_
         }
 
 
-
+        // getContact by Name
         public static int AddedNewContact(string NationalNo, string FirstName, string SecondName, string ThirdName, string LastName,
             string Email, string Phone, string Address,  int Gendor, DateTime DataOfBirth, int NationalityCountryID,string ImagePath)
         {

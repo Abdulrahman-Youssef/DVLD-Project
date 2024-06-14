@@ -124,7 +124,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(0, 80);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(987, 370);
+            this.panel1.Size = new System.Drawing.Size(988, 370);
             this.panel1.TabIndex = 3;
             // 
             // btnSave
@@ -157,6 +157,7 @@
             this.txtbEmail.Name = "txtbEmail";
             this.txtbEmail.Size = new System.Drawing.Size(100, 20);
             this.txtbEmail.TabIndex = 24;
+            this.txtbEmail.Validating += new System.ComponentModel.CancelEventHandler(this.txtbEmail_Validating);
             // 
             // cbCountries
             // 
@@ -209,6 +210,7 @@
             this.rbMale.Tag = "0";
             this.rbMale.Text = "Male";
             this.rbMale.UseVisualStyleBackColor = true;
+            this.rbMale.CheckedChanged += new System.EventHandler(this.rbMale_CheckedChanged);
             // 
             // dateTimePicker1
             // 
@@ -225,6 +227,7 @@
             this.txtbPhone.Name = "txtbPhone";
             this.txtbPhone.Size = new System.Drawing.Size(200, 20);
             this.txtbPhone.TabIndex = 17;
+            this.txtbPhone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtbPhone_KeyPress);
             // 
             // label7
             // 
@@ -320,6 +323,7 @@
             this.pictureBox1.Location = new System.Drawing.Point(737, 15);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(247, 181);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 7;
             this.pictureBox1.TabStop = false;
             // 
@@ -369,7 +373,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(987, 450);
+            this.ClientSize = new System.Drawing.Size(988, 450);
             this.Controls.Add(this.lblFormTitle);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.lblPersonID);

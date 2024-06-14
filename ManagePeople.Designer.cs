@@ -35,15 +35,12 @@
             this.dgvPeople = new System.Windows.Forms.DataGridView();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.showDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addedNewPersonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.addedNewPersonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.r = new System.ComponentModel.BackgroundWorker();
-            this.directorySearcher1 = new System.DirectoryServices.DirectorySearcher();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPeople)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -112,14 +109,6 @@
             this.showDetailsToolStripMenuItem.Text = "ShowDetails";
             this.showDetailsToolStripMenuItem.Click += new System.EventHandler(this.showDetailsToolStripMenuItem_Click);
             // 
-            // addedNewPersonToolStripMenuItem
-            // 
-            this.addedNewPersonToolStripMenuItem.Image = global::Full_Real_Project.Properties.Resources.AddPerson;
-            this.addedNewPersonToolStripMenuItem.Name = "addedNewPersonToolStripMenuItem";
-            this.addedNewPersonToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
-            this.addedNewPersonToolStripMenuItem.Text = "Added New Person";
-            this.addedNewPersonToolStripMenuItem.Click += new System.EventHandler(this.addedNewPersonToolStripMenuItem_Click);
-            // 
             // editeToolStripMenuItem
             // 
             this.editeToolStripMenuItem.Name = "editeToolStripMenuItem";
@@ -154,6 +143,14 @@
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
+            // addedNewPersonToolStripMenuItem
+            // 
+            this.addedNewPersonToolStripMenuItem.Image = global::Full_Real_Project.Properties.Resources.AddPerson;
+            this.addedNewPersonToolStripMenuItem.Name = "addedNewPersonToolStripMenuItem";
+            this.addedNewPersonToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.addedNewPersonToolStripMenuItem.Text = "Added New Person";
+            this.addedNewPersonToolStripMenuItem.Click += new System.EventHandler(this.addedNewPersonToolStripMenuItem_Click);
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Full_Real_Project.Properties.Resources.ManagePPLImage;
@@ -163,12 +160,6 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
-            // 
-            // directorySearcher1
-            // 
-            this.directorySearcher1.ClientTimeout = System.TimeSpan.Parse("-00:00:01");
-            this.directorySearcher1.ServerPageTimeLimit = System.TimeSpan.Parse("-00:00:01");
-            this.directorySearcher1.ServerTimeLimit = System.TimeSpan.Parse("-00:00:01");
             // 
             // frmManagePeoPle
             // 
@@ -207,8 +198,5 @@
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem showDetailsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addedNewPersonToolStripMenuItem;
-        private System.ComponentModel.BackgroundWorker r;
-        private System.DirectoryServices.DirectorySearcher directorySearcher1;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }

@@ -1,4 +1,5 @@
-﻿using Full_Real_Project_Buisness_layer_;
+﻿using Full_Real_Project.Properties;
+using Full_Real_Project_Buisness_layer_;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,39 +9,123 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Full_Real_Project
 {
-    public partial class PersonInfoCard : UserControl
-    {
-        clsContact Person;
-        public PersonInfoCard(int personID)
-        {
-            InitializeComponent();
-            if (clsContact.IsContactExist(personID))
-            {
-                Person = clsContact.Find(personID);
-            }
-            else
-            {
-                MessageBox.Show("this PersonID is not exist");
+    public partial class try2 : UserControl
+    {//contact
+        private clsContact _Person;
 
-            }
+        private int _PersonID = -1;
+
+        public int PersonID
+        {
+            get { return _PersonID; }
+        }
+        //contact
+        public clsContact SelectedPersonInfo
+        {
+            get { return _Person; }
+        }
+        //constructer
+        public try2()
+        {
+            InitializeComponent();            
         }
 
-        private void PersonInfoCard_Load(object sender, EventArgs e)
+        public void LoadPersonInfo(int PersonID)
         {
-            lblpersonID.Text = Person.Id.ToString();
-            lblNationalNo.Text = Person.NationalNo;
-            lblName.Text = Person.FirstName + " " + Person.SecondName + " " + Person.ThirdName + " " + Person.LastName;
-            lblEmails.Text = Person.Email;
-            lblCountry.Text = clsCountry.Find(Person.NationalityCountryID).CountryName;
-            lblAddress.Text = Person.Address;
-            if (Person.Gendor == 0)
-                lblGendor.Text = "Male";
-            lblGendor.Text = "Female";
+            _Person = clsContact.Find(PersonID);
+            if (_Person == null)
+            {
+                ResetPersonInfo();
+                MessageBox.Show("No Person with PersonID = " + PersonID.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            _FillPersonInfo();
+        }
+
+        //public void LoadPersonInfo(string NationalNo)
+        //{
+        //    _Person = clsContact.Find(NationalNo);
+        //    if (_Person == null)
+        //    {
+        //        ResetPersonInfo();
+        //        MessageBox.Show("No Person with National No. = " + NationalNo.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //        return;
+        //    }
+
+        //    _FillPersonInfo();
+        //}
+
+        private void _LoadPersonImage()
+        {
+            if (_Person.Gendor == 0)
+                pbPersonImage.Image = Resources.DefultBoyPhoto;
+            else
+                pbPersonImage.Image = Resources.DefultGirlPhoto;
+
+            string ImagePath = _Person.ImagePath;
+            if (ImagePath != "")
+                if (File.Exists(ImagePath))
+                    pbPersonImage.ImageLocation = ImagePath;
+                else
+                    MessageBox.Show("Could not find this image: = " + ImagePath, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+        }
+
+        private void _FillPersonInfo()
+        {
+            llEditPersonInfo.Enabled = true;
+            _PersonID = _Person.Id;
+            lblPersonID.Text = _Person.Id.ToString();
+            lblNationalNo.Text = _Person.NationalNo;
+            lblFullName.Text = _Person.FirstName + " " + _Person.SecondName + " " + _Person.ThirdName + " " + _Person.LastName;
+
+            lblGendor.Text = _Person.Gendor == 0 ? "Male" : "Female";
+            lblEmail.Text = _Person.Email;
+            lblPhone.Text = _Person.Phone;
+            lblDateOfBirth.Text = _Person.DateOfBirth.ToShortDateString();
+            lblCountry.Text = clsCountry.Find(_Person.NationalityCountryID).CountryName;
+            lblAddress.Text = _Person.Address;
+            _LoadPersonImage();
 
 
+
+
+        }
+
+        public void ResetPersonInfo()
+        {
+            _PersonID = -1;
+            lblPersonID.Text = "[????]";
+            lblNationalNo.Text = "[????]";
+            lblFullName.Text = "[????]";
+            //pbGendor.Image = Resources.Man_32;
+            lblGendor.Text = "[????]";
+            lblEmail.Text = "[????]";
+            lblPhone.Text = "[????]";
+            lblDateOfBirth.Text = "[????]";
+            lblCountry.Text = "[????]";
+            lblAddress.Text = "[????]";
+            //pbPersonImage.Image = Resources.Male_512;
+
+        }
+
+        private void llEditPersonInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            AddEdite frm = new AddEdite(_PersonID);
+            frm.ShowDialog();
+
+            //refresh
+            LoadPersonInfo(_PersonID);
+        }
+
+        private void try2_Load(object sender, EventArgs e)
+        {
+            lblAddress.Text = "perosn"; 
         }
     }
 }

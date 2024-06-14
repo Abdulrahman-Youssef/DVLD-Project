@@ -1,9 +1,13 @@
 ﻿using Full_Real_Project_Buisness_layer_;
 using System;
 using System.Data;
-
 using System.Windows.Forms;
-
+// to copy file from place to place
+using System.IO;
+//for valadiating
+using System.Text.RegularExpressions;
+using System.Resources;
+using Full_Real_Project.Properties;
 namespace Full_Real_Project
 {
 
@@ -24,6 +28,7 @@ namespace Full_Real_Project
                 mode = enMode.AddedNew;
                 //lblFormTitle.Text = "Added New";
                 FillForm();
+                
             }
             else
             {
@@ -59,9 +64,10 @@ namespace Full_Real_Project
                 {
                     rbMale.Checked = true;
                 }
-                if (person.ImagePath != null && person.ImagePath != "")
+                if (person.ImagePath != null && person.ImagePath != "" && pictureBox1.Image == null)
                 {
-                    pictureBox1.Load(person.ImagePath);
+                    pictureBox1.ImageLocation =  person.ImagePath;
+
                     llblRemovePicture.Visible = true;
                 }
                 else
@@ -81,8 +87,16 @@ namespace Full_Real_Project
             }
         }
             
+        // valiadaion for every text box ?
+       private void _ValidateTextBoxes()
+       {
+            pictureBox1.Image = pictureBox1.Image;
+            pictureBox1.ImageLocation = pictureBox1.ImageLocation
+                ;
+            pictureBox1.Location = pictureBox1.Location;
 
-       
+
+       }
 
       
 
@@ -133,7 +147,7 @@ namespace Full_Real_Project
             person.Email = txtbEmail.Text;
             person.Phone = txtbPhone.Text;
             person.Address = txtbAdress.Text;
-            if(rbMale.Enabled)
+            if(rbMale.Checked)
             {
                 person.Gendor = 0; 
             }else
@@ -163,8 +177,7 @@ namespace Full_Real_Project
             if(openFileDialog1.ShowDialog() == DialogResult.OK )
             {
                 pictureBox1.Load(openFileDialog1.FileName);
-                llblRemovePicture.Visible= true;
-                
+                llblRemovePicture.Visible= true;                 
             }
         }
 
@@ -172,7 +185,52 @@ namespace Full_Real_Project
         {
             person.ImagePath=null;
             pictureBox1.ImageLocation=null;
+            pictureBox1.Image = null;
             llblRemovePicture.Visible = false;
         }
+
+        private void txtbPhone_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true; // Ignore the character
+            }
+        }
+
+        private void txtbEmail_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            string emailPattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
+            if (!Regex.IsMatch(txtbEmail.Text, emailPattern))
+            {
+                e.Cancel = true; // Cancel the event and keep the focus on the text box
+                //txtbEmail.BackColor = Color.LightCoral; // Optionally change the background color to indicate error
+                MessageBox.Show("Please enter a valid email address.");
+            }
+            else
+            {
+                //txtbEmail.BackColor = SystemColors.Window; // Reset the background color if the input is valid
+            }
+        }
+
+        private void rbMale_CheckedChanged(object sender, EventArgs e)
+        {
+            if (person.ImagePath !=null && person.ImagePath !="")
+            {
+
+            }
+            else
+            {
+                if (rbMale.Checked)
+                {
+                    pictureBox1.Image = Resources.DefultBoyPhoto;
+                }
+                else
+                {
+                    pictureBox1.Image = Resources.DefultGirlPhoto;
+                }
+            }
+        }
+
+        
     }
 }

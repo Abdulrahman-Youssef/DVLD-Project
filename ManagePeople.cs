@@ -5,8 +5,7 @@ using Full_Real_Project_Buisness_layer_;
 using System.Windows.Forms;
 using Full_Real_Project.Properties;
 using System.Data;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using System.Linq;
+
 namespace Full_Real_Project
 {
 
@@ -122,6 +121,13 @@ namespace Full_Real_Project
         }
 
         private void showDetailsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmShowPersonDetails frm = new frmShowPersonDetails(Convert.ToInt32(dgvPeople.CurrentRow.Cells[0].Value));
+            frm.Show();
+            Refreshdgv();
+        }
+
+        private void ctrlPersonInfo1_Load(object sender, EventArgs e)
         {
 
         }
