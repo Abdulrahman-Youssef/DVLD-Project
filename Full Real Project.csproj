@@ -53,14 +53,20 @@
     <Compile Include="AddEdite.Designer.cs">
       <DependentUpon>AddEdite.cs</DependentUpon>
     </Compile>
-    <Compile Include="ctrlPersonInfo.cs">
-      <SubType>UserControl</SubType>
+    <Compile Include="frmLogin.cs">
+      <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ctrlPersonInfo.Designer.cs">
-      <DependentUpon>ctrlPersonInfo.cs</DependentUpon>
+    <Compile Include="frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMianScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMianScreen.Designer.cs">
+      <DependentUpon>frmMianScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="frmShowPersonDetails.cs">
-      <SubType>UserControl</SubType>
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmShowPersonDetails.Designer.cs">
       <DependentUpon>frmShowPersonDetails.cs</DependentUpon>
@@ -71,28 +77,28 @@
     <Compile Include="ManagePeople.Designer.cs">
       <DependentUpon>ManagePeople.cs</DependentUpon>
     </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PersonInfoCard.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="PersonInfoCard.Designer.cs">
       <DependentUpon>PersonInfoCard.cs</DependentUpon>
     </Compile>
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AddEdite.resx">
       <DependentUpon>AddEdite.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ctrlPersonInfo.resx">
-      <DependentUpon>ctrlPersonInfo.cs</DependentUpon>
+    <EmbeddedResource Include="frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMianScreen.resx">
+      <DependentUpon>frmMianScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmShowPersonDetails.resx">
       <DependentUpon>frmShowPersonDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ManagePeople.resx">
       <DependentUpon>ManagePeople.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PersonInfoCard.resx">
-      <DependentUpon>PersonInfoCard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -104,6 +110,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="PersonInfoCard.resx">
+      <DependentUpon>PersonInfoCard.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

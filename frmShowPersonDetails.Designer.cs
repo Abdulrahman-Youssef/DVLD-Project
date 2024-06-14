@@ -1,6 +1,6 @@
 ﻿namespace Full_Real_Project
 {
-    partial class PersonInfoCard
+    partial class frmShowPersonDetails
     {
         /// <summary>
         /// Required designer variable.
@@ -28,13 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.try21 = new Full_Real_Project.try2();
             this.SuspendLayout();
+            // 
+            // try21
+            // 
+            this.try21.Location = new System.Drawing.Point(12, 12);
+            this.try21.Name = "try21";
+            this.try21.Size = new System.Drawing.Size(871, 254);
+            this.try21.TabIndex = 0;
             // 
             // frmShowPersonDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1228, 528);
+            this.ClientSize = new System.Drawing.Size(933, 300);
+            this.Controls.Add(this.try21);
             this.Name = "frmShowPersonDetails";
             this.Text = "frmShowPersonDetails";
             this.Load += new System.EventHandler(this.frmShowPersonDetails_Load);
@@ -43,5 +52,7 @@
         }
 
         #endregion
+
+        private try2 try21;
     }
 }

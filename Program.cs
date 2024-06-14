@@ -16,7 +16,7 @@ namespace Full_Real_Project
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmManagePeoPle());
+            Application.Run(new frmMianScreen());
         }
     }
 }
