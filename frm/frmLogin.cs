@@ -27,15 +27,22 @@ namespace Full_Real_Project
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            int userId = clsUsers.LoginSearch(txtbUserName.Text, txtbPassword.Text);
+            // just when u time cut
+            txtbUserName.Text = "user4"; 
+            txtbPassword.Text = "1234";
 
-            if (userId != -1)
+            clsGlobal.User = clsUsers.LoginSearch(txtbUserName.Text.ToString(), txtbPassword.Text.ToString());
+
+            if (clsGlobal.User != null)
             {
-                frmManagePeoPle frmManageppl = new frmManagePeoPle();
-                frmManageppl.Show();
-                //this.Close();
-                 
-               
+                frmMianScreen frmMianscreen= new frmMianScreen();
+                this.Hide();
+                frmMianscreen.ShowDialog();
+                    
+
+
+
+
             }
             else
             {
@@ -65,6 +72,8 @@ namespace Full_Real_Project
 
         private void txtbPassword_Validating(object sender, CancelEventArgs e)
         {
+
+            
             if (string.IsNullOrWhiteSpace( txtbPassword.Text))
             {
                 e.Cancel = true;
@@ -76,6 +85,11 @@ namespace Full_Real_Project
                 e.Cancel = false;
                 errorProvider1.SetError(txtbPassword, "");
             }
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
