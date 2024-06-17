@@ -75,7 +75,75 @@ namespace Full_Real_Project_DataAccess_layer_
         }
 
 
-        // getContact by Name
+        // getContact by Nam
+        public static bool GetContactByName(int ID, ref string NationalNo, ref string FirstName, ref string SecondName, ref string ThirdName, ref string LastName,
+            ref string Email, ref string Phone, ref string Address, ref int Gendor, ref DateTime DataOfBirth, ref int NationalityCountryID,
+            ref string ImagePath)
+        {
+            bool Found = false;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessLayerSettings.ConnectionString);
+
+            string query = "SELECT * FROM People WHERE FirstName = @FirstName";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@FirstName", FirstName);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    Found = true;
+                    ID = Convert.ToInt32(reader["PersonID"]);
+                    NationalNo = (string)reader["NationalNo"];
+                    FirstName = (string)reader["FirstName"];
+                    LastName = (string)reader["LastName"];
+                    SecondName = (string)reader["SecondName"];
+                    ThirdName = (string)reader["ThirdName"];
+                    Email = (string)reader["Email"];
+                    Phone = (string)reader["Phone"];
+                    Address = (string)reader["Address"];
+                    //error
+                    //Gendor = (int)reader["Gendor"]; 
+                    //no error ?????????????????? just how
+                    Gendor = Convert.ToInt32(reader["Gendor"]);
+                    DataOfBirth = (DateTime)reader["DateOFBirth"];
+
+                    NationalityCountryID = Convert.ToInt32(reader["NationalityCountryID"]);
+                    if (reader["ImagePath"] != DBNull.Value)
+                    {
+                        ImagePath = (string)reader["ImagePath"];
+                    }
+                    else
+                    {
+                        ImagePath = "";
+                    }
+
+
+                }
+                else
+                {
+                    Found = false;
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                //Console.WriteLine("error : " + ex.ToString());
+                Found = false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return Found;
+        }
+
         public static int AddedNewContact(string NationalNo, string FirstName, string SecondName, string ThirdName, string LastName,
             string Email, string Phone, string Address,  int Gendor, DateTime DataOfBirth, int NationalityCountryID,string ImagePath)
         {
@@ -85,9 +153,9 @@ namespace Full_Real_Project_DataAccess_layer_
 
 
             string query = @"INSERT INTO People (NationalNo ,FirstName ,SecondName,ThirdName, LastName , Email, Phone,Address,Gendor
-,DateOfBirth,NationalityCountryID , ImagePath)
+                            ,DateOfBirth,NationalityCountryID , ImagePath)
                                VALUES (@NationalNo,@FirstName,@SecondName,@ThirdName,@LastName,@Email,@Phone,@Address,@Gendor,
-@DateOfBirth,@NationalityCountryID,@ImagePath)
+                            @DateOfBirth,@NationalityCountryID,@ImagePath)
                                     SELECT SCOPE_IDENTITY()";
             SqlCommand command = new SqlCommand(query, connection);
 

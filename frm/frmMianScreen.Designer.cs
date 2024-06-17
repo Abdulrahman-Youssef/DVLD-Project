@@ -31,11 +31,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMianScreen));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.applicationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tempToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.peoopleManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.driversToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.accountSittingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tempToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -64,6 +64,12 @@
             this.applicationToolStripMenuItem.Size = new System.Drawing.Size(181, 41);
             this.applicationToolStripMenuItem.Text = "Application";
             // 
+            // tempToolStripMenuItem
+            // 
+            this.tempToolStripMenuItem.Name = "tempToolStripMenuItem";
+            this.tempToolStripMenuItem.Size = new System.Drawing.Size(158, 42);
+            this.tempToolStripMenuItem.Text = "Temp";
+            // 
             // peoopleManagementToolStripMenuItem
             // 
             this.peoopleManagementToolStripMenuItem.Image = global::Full_Real_Project.Properties.Resources.ManagePPLImage;
@@ -85,6 +91,7 @@
             this.usersToolStripMenuItem.Name = "usersToolStripMenuItem";
             this.usersToolStripMenuItem.Size = new System.Drawing.Size(109, 41);
             this.usersToolStripMenuItem.Text = "Users";
+            this.usersToolStripMenuItem.Click += new System.EventHandler(this.usersToolStripMenuItem_Click);
             // 
             // accountSittingToolStripMenuItem
             // 
@@ -94,24 +101,20 @@
             this.accountSittingToolStripMenuItem.Text = "Account Settings";
             this.accountSittingToolStripMenuItem.Click += new System.EventHandler(this.accountSittingToolStripMenuItem_Click);
             // 
-            // tempToolStripMenuItem
-            // 
-            this.tempToolStripMenuItem.Name = "tempToolStripMenuItem";
-            this.tempToolStripMenuItem.Size = new System.Drawing.Size(180, 42);
-            this.tempToolStripMenuItem.Text = "Temp";
-            // 
             // frmMianScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(1195, 692);
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(1195, 493);
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmMianScreen";
             this.Text = "frmMianScreen";
+            this.Load += new System.EventHandler(this.frmMianScreen_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);

@@ -89,7 +89,7 @@ namespace Full_Real_Project
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-            AddEdite frm = new AddEdite(-1);
+            frmAddEditePeople frm = new frmAddEditePeople(-1);
             frm.ShowDialog();
             Refreshdgv();
         }
@@ -98,7 +98,7 @@ namespace Full_Real_Project
 
         private void addedNewPersonToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AddEdite frm = new AddEdite(-1);
+            frmAddEditePeople frm = new frmAddEditePeople(-1);
             frm.ShowDialog();
             Refreshdgv();
         }
@@ -106,7 +106,7 @@ namespace Full_Real_Project
         private void editeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //Console.WriteLine((string)dgvPeople.CurrentRow.Cells[0].Value);
-            AddEdite frm= new AddEdite(Convert.ToInt32(dgvPeople.CurrentRow.Cells[0].Value));
+            frmAddEditePeople frm= new frmAddEditePeople(Convert.ToInt32(dgvPeople.CurrentRow.Cells[0].Value));
             frm.ShowDialog();
             Refreshdgv();
         }

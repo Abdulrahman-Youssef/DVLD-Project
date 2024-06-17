@@ -13,7 +13,7 @@ using System.IO;
 
 namespace Full_Real_Project
 {
-    public partial class try2 : UserControl
+    public partial class PersonInfoCard : UserControl
     {//contact
         private clsContact _Person;
 
@@ -29,7 +29,7 @@ namespace Full_Real_Project
             get { return _Person; }
         }
         //constructer
-        public try2()
+        public PersonInfoCard()
         {
             InitializeComponent();            
         }
@@ -116,7 +116,7 @@ namespace Full_Real_Project
 
         private void llEditPersonInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            AddEdite frm = new AddEdite(_PersonID);
+            frmAddEditePeople frm = new frmAddEditePeople(_PersonID);
             frm.ShowDialog();
 
             //refresh

@@ -12,12 +12,12 @@ namespace Full_Real_Project
 {
 
 
-    public partial class AddEdite : Form
+    public partial class frmAddEditePeople : Form
     {
         enum enMode { AddedNew, Updated };
         enMode mode;
         private clsContact person;
-        public AddEdite(int PersonID)
+        public frmAddEditePeople(int PersonID)
         {
             InitializeComponent();
 

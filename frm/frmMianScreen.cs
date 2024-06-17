@@ -13,8 +13,6 @@ namespace Full_Real_Project
 {
     public partial class frmMianScreen : Form
     {
-        clsUsers User = new clsUsers(); 
-
 
 
         public frmMianScreen()
@@ -31,6 +29,20 @@ namespace Full_Real_Project
         {
            frmManagePeoPle frmManagePple = new frmManagePeoPle();
             frmManagePple.Show();
+        }
+
+        private void frmMianScreen_Load(object sender, EventArgs e)
+        {
+            
+            
+
+        }
+
+        private void usersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmManageUsers frmManageUsers = new frmManageUsers();
+            frmManageUsers.ShowDialog();
+
         }
     }
 }

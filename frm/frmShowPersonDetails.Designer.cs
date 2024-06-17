@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.try21 = new Full_Real_Project.try2();
+            this.try21 = new Full_Real_Project.PersonInfoCard();
             this.SuspendLayout();
             // 
             // try21
@@ -53,6 +53,6 @@
 
         #endregion
 
-        private try2 try21;
+        private PersonInfoCard try21;
     }
 }

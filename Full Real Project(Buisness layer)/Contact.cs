@@ -40,6 +40,7 @@ namespace Full_Real_Project_Buisness_layer_
         public string SecondName {  get; set; }
         public string ThirdName { get; set; }       
         public string LastName { get; set; }
+        public string FullName {  get; set; }
         public string Email { get; set; }
         public string Phone { get; set; }
         public string Address { get; set; }
@@ -73,6 +74,7 @@ namespace Full_Real_Project_Buisness_layer_
             this.SecondName = SecondName;
             this.ThirdName = ThirdName;
             this.LastName = LastName;
+            this.FullName = FirstName + " " + SecondName + " " + ThirdName + " " + LastName;
             this.Email = Email;
             this.Phone = Phone;
             this.Address = Address;
@@ -151,9 +153,11 @@ namespace Full_Real_Project_Buisness_layer_
 
         // to five the dgv the dataTable filtered
         public static DataTable FiltertedTable() { 
+
+
         DataTable original = GetAllContacts();
         
-            DataTable filtered = new DataTable();
+        DataTable filtered = new DataTable();
 
             filtered.Columns.Add(original.Columns[0].ColumnName);//ID
             filtered.Columns.Add(original.Columns[1].ColumnName);//nationaltyNo

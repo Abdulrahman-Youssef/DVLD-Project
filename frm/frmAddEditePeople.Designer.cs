@@ -1,6 +1,6 @@
 ﻿namespace Full_Real_Project
 {
-    partial class AddEdite
+    partial class frmAddEditePeople
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddEdite));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAddEditePeople));
             this.lbl1 = new System.Windows.Forms.Label();
             this.lblPersonID = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
