@@ -36,6 +36,10 @@
             this.driversToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.accountSittingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.currentUserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.changePasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.logOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnCancelApp = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -95,11 +99,45 @@
             // 
             // accountSittingToolStripMenuItem
             // 
+            this.accountSittingToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.currentUserToolStripMenuItem,
+            this.changePasswordToolStripMenuItem,
+            this.logOutToolStripMenuItem});
             this.accountSittingToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("accountSittingToolStripMenuItem.Image")));
             this.accountSittingToolStripMenuItem.Name = "accountSittingToolStripMenuItem";
             this.accountSittingToolStripMenuItem.Size = new System.Drawing.Size(243, 41);
             this.accountSittingToolStripMenuItem.Text = "Account Settings";
             this.accountSittingToolStripMenuItem.Click += new System.EventHandler(this.accountSittingToolStripMenuItem_Click);
+            // 
+            // currentUserToolStripMenuItem
+            // 
+            this.currentUserToolStripMenuItem.Name = "currentUserToolStripMenuItem";
+            this.currentUserToolStripMenuItem.Size = new System.Drawing.Size(296, 42);
+            this.currentUserToolStripMenuItem.Text = "Current User";
+            this.currentUserToolStripMenuItem.Click += new System.EventHandler(this.currentUserToolStripMenuItem_Click);
+            // 
+            // changePasswordToolStripMenuItem
+            // 
+            this.changePasswordToolStripMenuItem.Name = "changePasswordToolStripMenuItem";
+            this.changePasswordToolStripMenuItem.Size = new System.Drawing.Size(296, 42);
+            this.changePasswordToolStripMenuItem.Text = "ChangePassword";
+            this.changePasswordToolStripMenuItem.Click += new System.EventHandler(this.changePasswordToolStripMenuItem_Click);
+            // 
+            // logOutToolStripMenuItem
+            // 
+            this.logOutToolStripMenuItem.Name = "logOutToolStripMenuItem";
+            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(296, 42);
+            this.logOutToolStripMenuItem.Text = "LogOut";
+            // 
+            // btnCancelApp
+            // 
+            this.btnCancelApp.Location = new System.Drawing.Point(1108, 446);
+            this.btnCancelApp.Name = "btnCancelApp";
+            this.btnCancelApp.Size = new System.Drawing.Size(75, 35);
+            this.btnCancelApp.TabIndex = 1;
+            this.btnCancelApp.Text = "Cancel";
+            this.btnCancelApp.UseVisualStyleBackColor = true;
+            this.btnCancelApp.Click += new System.EventHandler(this.btnCancelApp_Click);
             // 
             // frmMianScreen
             // 
@@ -108,6 +146,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1195, 493);
+            this.Controls.Add(this.btnCancelApp);
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MainMenuStrip = this.menuStrip1;
@@ -131,5 +170,9 @@
         private System.Windows.Forms.ToolStripMenuItem usersToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem accountSittingToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tempToolStripMenuItem;
+        private System.Windows.Forms.Button btnCancelApp;
+        private System.Windows.Forms.ToolStripMenuItem currentUserToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem changePasswordToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem logOutToolStripMenuItem;
     }
 }

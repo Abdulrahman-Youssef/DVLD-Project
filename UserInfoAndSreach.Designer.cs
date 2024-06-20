@@ -50,11 +50,10 @@
             this.groupBox1.Controls.Add(this.cbFindby);
             this.groupBox1.Location = new System.Drawing.Point(3, 16);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(816, 71);
+            this.groupBox1.Size = new System.Drawing.Size(813, 71);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            this.groupBox1.Text = "gbFilter";
             // 
             // pictureBox2
             // 

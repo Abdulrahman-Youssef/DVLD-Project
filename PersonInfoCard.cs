@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using Full_Real_Project.frm;
 
 namespace Full_Real_Project
 {
@@ -78,7 +79,7 @@ namespace Full_Real_Project
 
         private void _FillPersonInfo()
         {
-            llEditPersonInfo.Enabled = true;
+            llblEditPersonInfo.Enabled = true;
             _PersonID = _Person.Id;
             lblPersonID.Text = _Person.Id.ToString();
             lblNationalNo.Text = _Person.NationalNo;
@@ -111,7 +112,7 @@ namespace Full_Real_Project
             lblCountry.Text = "[????]";
             lblAddress.Text = "[????]";
             //pbPersonImage.Image = Resources.Male_512;
-
+            llblEditPersonInfo.Enabled = true; 
         }
 
         private void llEditPersonInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -125,7 +126,13 @@ namespace Full_Real_Project
 
         private void try2_Load(object sender, EventArgs e)
         {
-            lblAddress.Text = "perosn"; 
+            //lblAddress.Text = "perosn"; 
+        }
+
+        private void llEditPersonInfo_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            frmAddEditeUser frmAddEditeUser = new frmAddEditeUser(PersonID);
+            frmAddEditeUser.ShowDialog();
         }
     }
 }

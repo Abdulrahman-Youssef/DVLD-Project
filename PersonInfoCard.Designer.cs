@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.llEditPersonInfo = new System.Windows.Forms.LinkLabel();
+            this.llblEditPersonInfo = new System.Windows.Forms.LinkLabel();
             this.lblCountry = new System.Windows.Forms.Label();
             this.lblPhone = new System.Windows.Forms.Label();
             this.lblDateOfBirth = new System.Windows.Forms.Label();
@@ -67,17 +67,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbPersonImage)).BeginInit();
             this.SuspendLayout();
             // 
-            // llEditPersonInfo
+            // llblEditPersonInfo
             // 
-            this.llEditPersonInfo.AutoSize = true;
-            this.llEditPersonInfo.Enabled = false;
-            this.llEditPersonInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.llEditPersonInfo.Location = new System.Drawing.Point(588, 51);
-            this.llEditPersonInfo.Name = "llEditPersonInfo";
-            this.llEditPersonInfo.Size = new System.Drawing.Size(116, 16);
-            this.llEditPersonInfo.TabIndex = 167;
-            this.llEditPersonInfo.TabStop = true;
-            this.llEditPersonInfo.Text = "Edit Person Info";
+            this.llblEditPersonInfo.AutoSize = true;
+            this.llblEditPersonInfo.Enabled = false;
+            this.llblEditPersonInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.llblEditPersonInfo.Location = new System.Drawing.Point(588, 51);
+            this.llblEditPersonInfo.Name = "llblEditPersonInfo";
+            this.llblEditPersonInfo.Size = new System.Drawing.Size(116, 16);
+            this.llblEditPersonInfo.TabIndex = 167;
+            this.llblEditPersonInfo.TabStop = true;
+            this.llblEditPersonInfo.Text = "Edit Person Info";
+            this.llblEditPersonInfo.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llEditPersonInfo_LinkClicked_1);
             // 
             // lblCountry
             // 
@@ -363,11 +364,11 @@
             this.pbPersonImage.TabIndex = 140;
             this.pbPersonImage.TabStop = false;
             // 
-            // try2
+            // PersonInfoCard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.llEditPersonInfo);
+            this.Controls.Add(this.llblEditPersonInfo);
             this.Controls.Add(this.lblCountry);
             this.Controls.Add(this.lblPhone);
             this.Controls.Add(this.lblDateOfBirth);
@@ -395,7 +396,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pbPersonImage);
-            this.Name = "try2";
+            this.Name = "PersonInfoCard";
             this.Size = new System.Drawing.Size(769, 254);
             this.Load += new System.EventHandler(this.try2_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
@@ -414,7 +415,7 @@
 
         #endregion
 
-        private System.Windows.Forms.LinkLabel llEditPersonInfo;
+        private System.Windows.Forms.LinkLabel llblEditPersonInfo;
         private System.Windows.Forms.Label lblCountry;
         private System.Windows.Forms.Label lblPhone;
         private System.Windows.Forms.Label lblDateOfBirth;

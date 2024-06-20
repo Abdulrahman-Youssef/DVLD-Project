@@ -44,21 +44,21 @@ namespace Full_Real_Project_DataAccess_layer_
               return allUsers;
         }
 
-        public static int AddedUser( int PersonID, string UserName, string PassoWord, bool Acticve)
+        public static int AddedUser( int PersonID, string UserName, string Password, bool IsActive)
         {
             // not confirmed
             SqlConnection conn = new SqlConnection(clsDataAccessLayerSettings.ConnectionString);
 
             string Qiury = @"INSERT INTO Users (PersonID , UserName , Password , IsActive)
                             VALUES( @PersonID , @UserName , @Password , @IsActive)
-                            SELECT SCOPE_IDETITY()";
+                             SELECT SCOPE_IDENTITY()";
 
             SqlCommand command = new SqlCommand(Qiury , conn);
 
-            command.Parameters.AddWithValue("@PeronID" , PersonID);
+            //command.Parameters.AddWithValue("@PersonID", PersonID);
             command.Parameters.AddWithValue("@UserName",UserName);
-            command.Parameters.AddWithValue("@Password", PassoWord);
-            command.Parameters.AddWithValue("@IsActive" , Acticve);
+            command.Parameters.AddWithValue("@Password", Password);
+            command.Parameters.AddWithValue("@IsActive" , IsActive);
 
             try
             {
@@ -83,7 +83,7 @@ namespace Full_Real_Project_DataAccess_layer_
 
         }
 
-        public static int UpdateUser(int UserID , string UserName ,string Password , bool IsActive)
+        public static int UpdateUserByUserID(int UserID , string UserName ,string Password , bool IsActive)
         {  
             // not comfirmed
             int result = 0; 
@@ -93,7 +93,7 @@ namespace Full_Real_Project_DataAccess_layer_
                             UserName = @UserName,
                             Password = @Password,
                             IsActive = @IsActive
-                            WHERE UserID = @UesrID";
+                            WHERE UserID = @UserID";
             SqlCommand command = new SqlCommand(Qiury,connection);
 
             command.Parameters.AddWithValue("@UserID" , UserID);    
@@ -105,23 +105,40 @@ namespace Full_Real_Project_DataAccess_layer_
             {
                  connection.Open();
                  result = command.ExecuteNonQuery();
-
             }
-            catch 
-            {
-            
-            }
+            catch{ }                 
             finally 
             {             
                 connection.Close();
             }
+            return result;
+        }
+        public static int updateUserPassword(int UserID, string Password)
+        {
+            int result = 0;
+            SqlConnection connection = new SqlConnection(clsDataAccessLayerSettings.ConnectionString);
+            string qeury = @"UPDATE Users SET
+                              Password = @Password
+                              WHERE UserID = @UserID";
+            SqlCommand cmd = new SqlCommand(qeury,connection);
 
+            cmd.Parameters.AddWithValue("@Password", Password);
+            cmd.Parameters.AddWithValue("@UserID" , UserID);
+            try
+            {
+                connection.Open();
+                result = cmd.ExecuteNonQuery();
+            }
+            catch{}
+            finally
+            {
+                connection.Close(); 
+            }
 
             return result;
         }
 
-
-        public static int DeleteUser(int UserID) 
+        public static int DeleteUserByUserID(int UserID) 
         {
             // not comfirmed
             int result = 0;
@@ -323,6 +340,7 @@ namespace Full_Real_Project_DataAccess_layer_
 
             return Found;
         }
+
 
 
     }

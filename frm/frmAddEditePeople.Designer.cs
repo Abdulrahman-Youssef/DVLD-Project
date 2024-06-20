@@ -369,7 +369,7 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // AddEdite
+            // frmAddEditePeople
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -378,7 +378,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.lblPersonID);
             this.Controls.Add(this.lbl1);
-            this.Name = "AddEdite";
+            this.Name = "frmAddEditePeople";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
