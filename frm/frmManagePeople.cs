@@ -63,6 +63,7 @@ namespace Full_Real_Project
         private void Refreshdgv()
         {
             poepleDataSource = clsContact.FiltertedTable();
+            //must
             dgvPeople.DataSource = poepleDataSource;
         }
         private void Form2_Load(object sender, EventArgs e)

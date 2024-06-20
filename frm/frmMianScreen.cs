@@ -1,4 +1,5 @@
-﻿using Full_Real_Project_Buisness_layer_;
+﻿using Full_Real_Project.frm;
+using Full_Real_Project_Buisness_layer_;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -43,6 +44,23 @@ namespace Full_Real_Project
             frmManageUsers frmManageUsers = new frmManageUsers();
             frmManageUsers.ShowDialog();
 
+        }
+
+        private void btnCancelApp_Click(object sender, EventArgs e)
+        {
+            Environment.Exit(0);
+        }
+
+        private void currentUserToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmShowCurrentUser frm = new frmShowCurrentUser();
+            frm.ShowDialog();
+        }
+
+        private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmChangeCurrentUserPassword frm = new frmChangeCurrentUserPassword();
+            frm.ShowDialog();
         }
     }
 }

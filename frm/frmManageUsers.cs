@@ -18,6 +18,7 @@ namespace Full_Real_Project
         private void _RefershdgvUsers() 
         {
             dgvSource = clsUsers.FilteredTable();
+            dgvUsers.DataSource = dgvSource;
         }
         public frmManageUsers()
         {
@@ -27,14 +28,34 @@ namespace Full_Real_Project
         private void frmManageUsers_Load(object sender, EventArgs e)
         {
             dgvUsers.DataSource = dgvSource;
-
-
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-            frmAddEditeUser frmAddEditeUser = new frmAddEditeUser();
+            frmAddEditeUser frmAddEditeUser = new frmAddEditeUser(-1);
             frmAddEditeUser.ShowDialog();
+            _RefershdgvUsers(); 
         }
+
+      
+
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //frmAddEditeUser frmAddEditeUser = new frmAddEditeUser(Convert.ToInt32(dgvUsers.CurrentRow.Cells[0].Value));
+            clsUsers.DeleteUserByUserID(Convert.ToInt32(dgvUsers.CurrentRow.Cells[0].Value));
+            _RefershdgvUsers();
+        }
+
+        private void cmsEdite_Click(object sender, EventArgs e)
+        {
+            frmAddEditeUser frmaddEditeUser = new frmAddEditeUser(Convert.ToInt32(dgvUsers.CurrentRow.Cells[0].Value));
+            frmaddEditeUser._AbleTheLogin(1);
+            frmaddEditeUser.enabledFiltercb(false);
+            frmaddEditeUser.LoadPersonInfo();
+            frmaddEditeUser.ShowDialog();
+            _RefershdgvUsers();
+        }
+
+      
     }
 }

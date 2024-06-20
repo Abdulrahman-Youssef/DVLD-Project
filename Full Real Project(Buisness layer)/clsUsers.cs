@@ -17,28 +17,28 @@ namespace Full_Real_Project_Buisness_layer_
         public enMode Mode = enMode.AddNew;
         //enActive Afctice { get; set; }
 
-        private bool _AddedNewContact() 
+        private bool _AddedNewContact()
         {
-            this.UserID = clsUsersDataAccess.AddedUser(this.PersonID,this.UserName ,this.Password , this.Active);
-           return this.UserID != -1;        
+            this.UserID = clsUsersDataAccess.AddedUser(this.PersonID, this.UserName, this.Password, this.Active);
+            return this.UserID != -1;
         }
 
         private bool _UpdateContact()
         {
-            int EffectedRows = clsUsersDataAccess.UpdateUser(this.UserID , this.UserName , this.Password , this.Active);
+            int EffectedRows = clsUsersDataAccess.UpdateUserByUserID(this.UserID, this.UserName, this.Password, this.Active);
             return EffectedRows > 0;
         }
 
         //clsUsers Users { get; set; }
 
         public int UserID;
-        
+
         public int PersonID;
         public string UserName { get; set; }
         public string Password { get; set; }
         public bool Active { get; set; }
 
-        public clsUsers() 
+        public clsUsers()
         {
             this.UserName = "";
             this.Password = "";
@@ -48,19 +48,19 @@ namespace Full_Real_Project_Buisness_layer_
             Mode = enMode.AddNew;
         }
 
-      private clsUsers(int UserID , int PersonID , string  UserName, string Password , bool IsActive)
-      {
-        this.UserID   = UserID;
-        this.PersonID = PersonID;
-        this.UserName = UserName;
-        this.Password = Password;
-        this.Active   =IsActive;
-        Mode = enMode.Update;
-      }
-
-        public static bool IsUserExistByPersonID(int PersonID) 
+        private clsUsers(int UserID, int PersonID, string UserName, string Password, bool IsActive)
         {
-            return clsUsersDataAccess.IsUserExistByPersonID(PersonID);            
+            this.UserID = UserID;
+            this.PersonID = PersonID;
+            this.UserName = UserName;
+            this.Password = Password;
+            this.Active = IsActive;
+            Mode = enMode.Update;
+        }
+
+        public static bool IsUserExistByPersonID(int PersonID)
+        {
+            return clsUsersDataAccess.IsUserExistByPersonID(PersonID);
         }
 
         public static DataTable GetAllUsers()
@@ -72,13 +72,13 @@ namespace Full_Real_Project_Buisness_layer_
         //public static int LoginSearch(string UserName , string PassWord) 
         //{
         //    DataTable dt = clsUsersDataAccess.GetAllUsers(); 
-            
+
         //   foreach (DataRow DR in dt.Rows)
         //    {
         //        if (DR[2].ToString() == UserName && DR["Password"].ToString() == PassWord)
         //        {
         //            return int.Parse(DR[0].ToString());
-                    
+
         //        }
         //    }
 
@@ -86,18 +86,44 @@ namespace Full_Real_Project_Buisness_layer_
         //}
 
 
-
-        public static clsUsers LoginSearch(string UserName , string PassWord) 
+        public static clsUsers FindUserByUesrID(int UserID)
         {
-            int UserID = 0, PersonID = -1; 
+            string UserName = "", Password = "";
+            int PersonID = -1;
             bool IsActive = false;
-           if( clsUsersDataAccess.FindUserByUserNameAndPassword(ref UserID,ref PersonID,ref  UserName, ref PassWord ,ref IsActive))
-           {
-             return  new clsUsers(UserID,PersonID, UserName, PassWord ,IsActive );
-           }     
-           return null;
+
+            if (clsUsersDataAccess.FindUserByUserID(ref UserID, ref PersonID, ref UserName, ref Password, ref IsActive))
+            {
+                return new clsUsers(UserID, PersonID, UserName, Password, IsActive);
+            }
+            else
+            {
+                return null;
+            }
+
+        }
+
+        public static bool DeleteUserByUserID(int UserID)
+        {
+            return 0 < clsUsersDataAccess.DeleteUserByUserID(UserID);
+        }
+
+        public static clsUsers LoginSearch(string UserName, string PassWord)
+        {
+            int UserID = 0, PersonID = -1;
+            bool IsActive = false;
+            if (clsUsersDataAccess.FindUserByUserNameAndPassword(ref UserID, ref PersonID, ref UserName, ref PassWord, ref IsActive))
+            {
+                return new clsUsers(UserID, PersonID, UserName, PassWord, IsActive);
+            }
+            return null;
 
 
+        }
+
+        public static bool UpdatePasswordByUserID (int UserID ,string Password)
+        {
+          return 0 < clsUsersDataAccess.updateUserPassword(UserID , Password);
         }
 
         public bool Save()

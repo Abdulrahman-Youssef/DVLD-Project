@@ -29,7 +29,7 @@ namespace Full_Real_Project
         {
             // just when u time cut
             txtbUserName.Text = "user4"; 
-            txtbPassword.Text = "1234";
+            txtbPassword.Text = "123";
 
             clsGlobal.User = clsUsers.LoginSearch(txtbUserName.Text.ToString(), txtbPassword.Text.ToString());
 

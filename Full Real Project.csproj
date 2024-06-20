@@ -47,11 +47,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ctrlUserinfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ctrlUserinfo.Designer.cs">
+      <DependentUpon>ctrlUserinfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm\frmAddEditeUser.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frm\frmAddEditeUser.Designer.cs">
       <DependentUpon>frmAddEditeUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm\frmChangeCurrentUserPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm\frmChangeCurrentUserPassword.Designer.cs">
+      <DependentUpon>frmChangeCurrentUserPassword.cs</DependentUpon>
     </Compile>
     <Compile Include="frm\frmManageUsers.cs">
       <SubType>Form</SubType>
@@ -76,6 +88,12 @@
     </Compile>
     <Compile Include="frm\frmMianScreen.Designer.cs">
       <DependentUpon>frmMianScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm\frmShowCurrentUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm\frmShowCurrentUser.Designer.cs">
+      <DependentUpon>frmShowCurrentUser.cs</DependentUpon>
     </Compile>
     <Compile Include="frm\frmShowPersonDetails.cs">
       <SubType>Form</SubType>
@@ -104,11 +122,17 @@
     <Compile Include="UserInfoAndSreach.Designer.cs">
       <DependentUpon>UserInfoAndSreach.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ctrlUserinfo.resx">
+      <DependentUpon>ctrlUserinfo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frm\frmAddEditePeople.resx">
       <DependentUpon>frmAddEditePeople.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm\frmAddEditeUser.resx">
       <DependentUpon>frmAddEditeUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm\frmChangeCurrentUserPassword.resx">
+      <DependentUpon>frmChangeCurrentUserPassword.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
@@ -118,6 +142,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frm\frmMianScreen.resx">
       <DependentUpon>frmMianScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm\frmShowCurrentUser.resx">
+      <DependentUpon>frmShowCurrentUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm\frmShowPersonDetails.resx">
       <DependentUpon>frmShowPersonDetails.cs</DependentUpon>

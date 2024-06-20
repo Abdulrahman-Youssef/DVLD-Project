@@ -15,11 +15,21 @@ namespace Full_Real_Project
 
         public int PersonID { get; set; }
 
+        public void enabledFilter(bool OFFON , int PersonID)
+        {
+            groupBox1.Enabled = OFFON;
+            textBox1.Text = PersonID.ToString();
+        }
         public UserInfoAndSreach()
         {
             InitializeComponent();
+            
         }
 
+        public void LoadUserInfo(int PersonID)
+        {
+            ctralPersonCard.LoadPersonInfo(PersonID);
+        }
         private void try21_Load(object sender, EventArgs e)
         {
 
@@ -42,7 +52,6 @@ namespace Full_Real_Project
             if (textBox1.Text.ToString() != "")
             {
               ctralPersonCard.LoadPersonInfo(int.Parse(textBox1.Text.ToString().Trim()));
-
             }
         }
 
@@ -52,10 +61,7 @@ namespace Full_Real_Project
             frmAddEditePeople.ShowDialog();
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
+       
 
         private void UserInfoAndSreach_Load(object sender, EventArgs e)
         {
