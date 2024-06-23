@@ -53,17 +53,53 @@
     <Compile Include="ctrlUserinfo.Designer.cs">
       <DependentUpon>ctrlUserinfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmtemp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmtemp.Designer.cs">
+      <DependentUpon>frmtemp.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm\frmAddEditeUser.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frm\frmAddEditeUser.Designer.cs">
       <DependentUpon>frmAddEditeUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm\frmAplication.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm\frmAplication.Designer.cs">
+      <DependentUpon>frmAplication.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm\frmChangeCurrentUserPassword.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frm\frmChangeCurrentUserPassword.Designer.cs">
       <DependentUpon>frmChangeCurrentUserPassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm\frmEditeApplicationFees.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm\frmEditeApplicationFees.Designer.cs">
+      <DependentUpon>frmEditeApplicationFees.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm\frmManageApplications.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm\frmManageApplications.Designer.cs">
+      <DependentUpon>frmManageApplications.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm\frmManageLocalDrivingLicense.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm\frmManageLocalDrivingLicense.Designer.cs">
+      <DependentUpon>frmManageLocalDrivingLicense.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm\frmManageTestType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm\frmManageTestType.Designer.cs">
+      <DependentUpon>frmManageTestType.cs</DependentUpon>
     </Compile>
     <Compile Include="frm\frmManageUsers.cs">
       <SubType>Form</SubType>
@@ -101,6 +137,12 @@
     <Compile Include="frm\frmShowPersonDetails.Designer.cs">
       <DependentUpon>frmShowPersonDetails.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm\frmEditeTestTypes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm\frmEditeTestTypes.Designer.cs">
+      <DependentUpon>frmEditeTestTypes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Global.cs" />
     <Compile Include="frm\frmManagePeople.cs">
       <SubType>Form</SubType>
@@ -125,17 +167,35 @@
     <EmbeddedResource Include="ctrlUserinfo.resx">
       <DependentUpon>ctrlUserinfo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmtemp.resx">
+      <DependentUpon>frmtemp.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frm\frmAddEditePeople.resx">
       <DependentUpon>frmAddEditePeople.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm\frmAddEditeUser.resx">
       <DependentUpon>frmAddEditeUser.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frm\frmAplication.resx">
+      <DependentUpon>frmAplication.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frm\frmChangeCurrentUserPassword.resx">
       <DependentUpon>frmChangeCurrentUserPassword.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frm\frmEditeApplicationFees.resx">
+      <DependentUpon>frmEditeApplicationFees.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frm\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm\frmManageApplications.resx">
+      <DependentUpon>frmManageApplications.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm\frmManageLocalDrivingLicense.resx">
+      <DependentUpon>frmManageLocalDrivingLicense.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm\frmManageTestType.resx">
+      <DependentUpon>frmManageTestType.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm\frmManageUsers.resx">
       <DependentUpon>frmManageUsers.cs</DependentUpon>
@@ -151,6 +211,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frm\frmManagePeople.resx">
       <DependentUpon>frmManagePeople.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm\frmEditeTestTypes.resx">
+      <DependentUpon>frmEditeTestTypes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

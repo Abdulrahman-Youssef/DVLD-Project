@@ -30,13 +30,13 @@ namespace Full_Real_Project_DataAccess_layer_
                 {
                     Found = true;
                     NationalNo = (string)reader["NationalNo"];
-                    FirstName = (string)reader["FirstName"];
-                    LastName = (string)reader["LastName"];
+                    FirstName  = (string)reader["FirstName"];
+                    LastName   = (string)reader["LastName"];
                     SecondName = (string)reader["SecondName"];
-                    ThirdName = (string)reader["ThirdName"];
-                    Email = (string)reader["Email"];
-                    Phone = (string)reader["Phone"];
-                    Address = (string)reader["Address"];
+                    ThirdName  = (string)reader["ThirdName"];
+                    Email      = (string)reader["Email"];
+                    Phone      = (string)reader["Phone"];
+                    Address    = (string)reader["Address"];
                     //error
                     //Gendor = (int)reader["Gendor"]; 
                     //no error ?????????????????? just how

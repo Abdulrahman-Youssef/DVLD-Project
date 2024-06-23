@@ -37,21 +37,31 @@ namespace Full_Real_Project
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            if (textBox1.Text.ToString() != "")
-            {
-                this.PersonID = int.Parse(textBox1.Text.Trim().ToString()); 
-            }
-            else
-            {
-                PersonID = -1;
-            }
+            //if (textBox1.Text.ToString() != "")
+            //{
+            //    this.PersonID = int.Parse(textBox1.Text.Trim().ToString());
+            //}
+            //else
+            //{
+            //    PersonID = -1;
+            //}
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
+          
+
             if (textBox1.Text.ToString() != "")
             {
-              ctralPersonCard.LoadPersonInfo(int.Parse(textBox1.Text.ToString().Trim()));
+                if (textBox1.Text.ToString() != "")
+                {
+                    this.PersonID = int.Parse(textBox1.Text.Trim().ToString());
+                }
+                else
+                {
+                    PersonID = -1;
+                }
+                ctralPersonCard.LoadPersonInfo(int.Parse(textBox1.Text.ToString().Trim()));
             }
         }
 

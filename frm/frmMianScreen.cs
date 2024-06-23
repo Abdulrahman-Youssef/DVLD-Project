@@ -14,11 +14,12 @@ namespace Full_Real_Project
 {
     public partial class frmMianScreen : Form
     {
+        frmLogin frmlogin;
 
-
-        public frmMianScreen()
+        public frmMianScreen(frmLogin frm)
         {
             InitializeComponent();
+            this.frmlogin = frm;
         }
 
         private void accountSittingToolStripMenuItem_Click(object sender, EventArgs e)
@@ -61,6 +62,44 @@ namespace Full_Real_Project
         {
             frmChangeCurrentUserPassword frm = new frmChangeCurrentUserPassword();
             frm.ShowDialog();
+        }
+
+        private void logOutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            clsGlobal.User = null; 
+            this.Close();
+            frmlogin.Show();
+        }
+
+        private void ManagePeopleApplicationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmManageApplications frmManageApplications = new frmManageApplications();
+            frmManageApplications.ShowDialog();
+        }
+
+        private void manageTestTypeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmManageTestType frmTests = new frmManageTestType();
+            frmTests.ShowDialog();
+        }
+
+        
+
+        private void localDrivingLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmAplication frmAplication = new frmAplication(); 
+            frmAplication.ShowDialog();
+        }
+
+        private void internatinalDrivingLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void localDrivingLicenseToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            frmManageLocalDrivingLicense frmLocalDrivinglicense = new frmManageLocalDrivingLicense();
+            frmLocalDrivinglicense.ShowDialog();
         }
     }
 }
