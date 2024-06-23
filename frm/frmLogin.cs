@@ -35,7 +35,7 @@ namespace Full_Real_Project
 
             if (clsGlobal.User != null)
             {
-                frmMianScreen frmMianscreen= new frmMianScreen();
+                frmMianScreen frmMianscreen= new frmMianScreen(this);
                 this.Hide();
                 frmMianscreen.ShowDialog();
                     
