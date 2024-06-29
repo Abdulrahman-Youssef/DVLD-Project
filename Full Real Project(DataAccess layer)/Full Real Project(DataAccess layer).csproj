@@ -43,7 +43,11 @@
   <ItemGroup>
     <Compile Include="clsApplicationDataAccessLayer.cs" />
     <Compile Include="clsApplicationTypesDataAccessLayer.cs" />
+    <Compile Include="clsDriversDataAccess.cs" />
+    <Compile Include="clsInternationalDrivingLicenseDataAccess.cs" />
     <Compile Include="clsLicenseClassesDataAccess.cs" />
+    <Compile Include="clsLicenseDataAccess.cs" />
+    <Compile Include="clsTestDataAccess.cs" />
     <Compile Include="clsTestTypeDataAccessLayer.cs" />
     <Compile Include="clsUsersDataAccess.cs" />
     <Compile Include="Contact.cs" />
@@ -51,6 +55,7 @@
     <Compile Include="Country.cs" />
     <Compile Include="clsLocalDrivingLicenseApplicationsDataAccessLayer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="clsTestAppointmentsDataAccess.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

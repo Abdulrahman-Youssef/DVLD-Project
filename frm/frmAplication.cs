@@ -19,14 +19,14 @@ namespace Full_Real_Project.frm
         clsApplication Application = new clsApplication();
         clsLocalDrivingLicenseApplications localDrivingLicenseApplications = new clsLocalDrivingLicenseApplications();
 
-        public bool IsLicenseAleadyExist()
+        public bool IsLicenseClassAleadyExist()
         {
             bool Found = true;
             //check first is this user has the same type of application and class or not 
             List<int> listApplicationIDs = new List<int>();
             List<int> listLicenseClassIDs = new List<int>();
-
-            DataTable ApplicationIDs = clsApplication.GetApplicationIDsByPersonID(1037);
+            
+            DataTable ApplicationIDs = clsApplication.GetApplicationIDsByPersonID(userInfoAndSreach1.PersonID);
 
             //dgv.DataSource = d;
 
@@ -43,6 +43,7 @@ namespace Full_Real_Project.frm
 
             foreach (int licenseclassID in listLicenseClassIDs)
             {
+                // جبت كل الابلكيش وبعد كدا جبت كل ليسنس كلاسس اللي الشخص دا عاملها وبعدين وقارنتها باللي عاوز يعملها (كوملبيتد و نيو)بس
                 Console.WriteLine(comboBox1.SelectedIndex.ToString());
                 if (licenseclassID == comboBox1.SelectedIndex + 1)
                 {
@@ -52,7 +53,7 @@ namespace Full_Real_Project.frm
             }
             return Found;
         
-    }
+        }
         private void _enabled(int OnOff)
         {
             if(OnOff == -1)
@@ -122,19 +123,19 @@ namespace Full_Real_Project.frm
             // put that in fucntion
           
             //untill here and the reslut of this funcion will be bool and the answer for the condition
-            if (IsLicenseAleadyExist())
+            if (IsLicenseClassAleadyExist())
             {
-            Application.ApplicationTypeID = comboBox1.SelectedIndex + 1;
+            Application.ApplicationTypeID = 1;
             Application.ApplicantPersonID = userInfoAndSreach1.PersonID;
             Application.CreatedByUserID   = clsGlobal.User.UserID;
-            Application.ApplicationStatus = 1; // prossess
+            Application.ApplicationStatus = 1; // New
             Application.ApplicationDate   = DateTime.Now;
             Application.LastStatusDate    = Application.ApplicationDate.AddHours(1);
             Application.PaidFees          = decimal.Parse(lblApplicationFees.Text.ToString());
             bool bolapp                   = Application.AddedNewApplication(); 
             //add to local license too
             localDrivingLicenseApplications.ApplicationID   = Application.ApplicationID;
-            localDrivingLicenseApplications.LicenseClassID  = Application.ApplicationTypeID;
+            localDrivingLicenseApplications.LicenseClassID  = comboBox1.SelectedIndex +1;
             bool drivinglicense                             = localDrivingLicenseApplications.AddNewLocalDrivingLicenseApplications();
                 if (drivinglicense && bolapp)
                 {

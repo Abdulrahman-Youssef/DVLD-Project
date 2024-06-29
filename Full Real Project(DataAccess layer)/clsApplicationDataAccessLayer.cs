@@ -83,13 +83,13 @@ namespace Full_Real_Project_DataAccess_layer_
     
     
     
-        public static DataTable GetApplicationIDsByPersonID(int PersonID)
+        public static DataTable GetApplicationIDsByPersonIDCopletedNew(int PersonID)
         {
             DataTable dataTable = new DataTable();
             SqlConnection sqlConnection = new SqlConnection(clsDataAccessLayerSettings.ConnectionString);
-            //string query = @"SELECT ApplicationID FROM Applications where ApplicantPersonID IN (" + string.Join("," , PersonID) +")";
+            //string query = @"SELECT ApplicationID FROM Applications where ApplicantPersonID IN (" + string.Join("," , PersonID) +") ";
          
-            string query = @"SELECT ApplicationID FROM Applications where ApplicantPersonID IN (@PersonID) AND ApplicationStatus = 1";
+            string query = @"SELECT ApplicationID FROM Applications where ApplicantPersonID = @PersonID AND ApplicationStatus IN (1 ,3)";
 
             SqlCommand cmd = new SqlCommand(query, sqlConnection);
 
@@ -109,7 +109,71 @@ namespace Full_Real_Project_DataAccess_layer_
             return dataTable;
         }
 
+        public static bool GetApplication(int ApplicationID, ref int ApplicationTypeID,ref int ApplicantPersonID, ref int ApplicationStatus,ref int CreatedByUserID,
+                    ref decimal PaidFees, ref DateTime LastStatusDate, ref DateTime ApplicationDate)
+        {
+            bool Found = false;
+            SqlConnection sqlConnection = new SqlConnection(clsDataAccessLayerSettings.ConnectionString);
+            string query = @"SELECT * FROM Applications WHERE ApplicationID = @ApplicationID";
+            SqlCommand command = new SqlCommand(query, sqlConnection);
+            command.Parameters.AddWithValue("@ApplicationID",  ApplicationID);
 
+            try
+            {
+                sqlConnection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    Found = true; 
+                    ApplicationTypeID = (int)reader["ApplicationTypeID"];
+                    ApplicantPersonID = (int)reader["ApplicantPersonID"];
+                    ApplicationStatus = (byte)reader["ApplicationStatus"];
+                    CreatedByUserID = (int)reader["CreatedByUserID"];
+                    PaidFees = (decimal)reader["PaidFees"];
+                    LastStatusDate = (DateTime)reader["LastStatusDate"];
+                    ApplicationDate = (DateTime)reader["ApplicationDate"];                    
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally { sqlConnection.Close(); }
+
+            return Found;
+
+        }
+
+
+        public static int UpdateLocalDrivingLicenseIDStatusByApplicationID(int ApplicationID, int ApplicationStatus)
+        {
+            int EffectedRows = 0;
+            SqlConnection conn = new SqlConnection(clsDataAccessLayerSettings.ConnectionString);
+            string query = @"UPDATE Applications set 
+                                              ApplicationStatus =  @ApplicationStatus
+                                              WHERE ApplicationID = @ApplicationID";
+
+            SqlCommand command = new SqlCommand(query, conn);
+
+            command.Parameters.AddWithValue("@ApplicationID", ApplicationID);
+            command.Parameters.AddWithValue("@ApplicationStatus", ApplicationStatus);
+
+            try
+            {
+                conn.Open();
+                EffectedRows = command.ExecuteNonQuery(); 
+                
+            }
+            catch
+            {
+
+            }
+            finally {  conn.Close(); }
+            return EffectedRows;
+        }
 
 
 

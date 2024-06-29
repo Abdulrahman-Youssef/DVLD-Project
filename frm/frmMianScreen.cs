@@ -93,13 +93,26 @@ namespace Full_Real_Project
 
         private void internatinalDrivingLicenseToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            frmManageInternationalDrivinglicense frmManageInternational = new frmManageInternationalDrivinglicense();
+            frmManageInternational.ShowDialog();
         }
 
         private void localDrivingLicenseToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             frmManageLocalDrivingLicense frmLocalDrivinglicense = new frmManageLocalDrivingLicense();
             frmLocalDrivinglicense.ShowDialog();
+        }
+
+        private void driversToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmDrivers frmDrivers = new frmDrivers();
+            frmDrivers.ShowDialog();
+        }
+
+        private void internationalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmInternationalDrivingApplication International = new frmInternationalDrivingApplication();
+            International.ShowDialog();
         }
     }
 }

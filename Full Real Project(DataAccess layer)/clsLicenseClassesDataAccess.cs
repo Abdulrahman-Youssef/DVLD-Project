@@ -46,5 +46,41 @@ namespace Full_Real_Project_DataAccess_layer_
             finally { conn.Close(); }
             return dt;
         }
+
+        public static bool GetCNAndCDAndCFByLicenseClassesID(int LicenseClassID , ref string ClassName , ref string ClassDescription  , ref decimal ClassFees)
+        {
+            bool Found = false;
+            DataColumn dataColumn = new DataColumn();
+            SqlConnection conn = new SqlConnection(clsDataAccessLayerSettings.ConnectionString);
+
+            string query = "SELECT * from LicenseClasses WHERE LicenseClassID = @LicenseClassID";
+
+            SqlCommand cmd = new SqlCommand(query, conn);
+
+            cmd.Parameters.AddWithValue("@LicenseClassID", LicenseClassID);
+          
+            try
+            {
+                conn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    Found = true;
+                    ClassName = (string)reader["ClassName"];
+                    ClassDescription = (string)reader["ClassDescription"];
+                    ClassFees = (decimal)reader["ClassFees"];
+                  
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally { conn.Close(); }
+            return Found;
+        }
+
     }
 }
