@@ -81,7 +81,6 @@ namespace Full_Real_Project_DataAccess_layer_
             return -1;
         }
 
-
         public static bool GetLicenseClassByLicenseID(int LicenseID,ref int ApplicationID ,ref int DriverID ,ref int LicenseClass,ref DateTime IssueDate , ref DateTime ExpirationDate1,
                                                     ref string Notes ,ref decimal PaidFees ,ref bool IsActive ,ref int IssueReason1 ,ref int CreatedByUserID)
         {
@@ -129,7 +128,30 @@ namespace Full_Real_Project_DataAccess_layer_
 
 
 
+        public static int UpdatedIsActiveByLincenseID(int LincenseID, bool IsActive)
+        {
+            int EffectedRow = 0;
+            SqlConnection connection = new SqlConnection(clsDataAccessLayerSettings.ConnectionString);
+            string query = @"UPDATE Licenses SET 
+                                             IsActive = @IsActive
+                                        WHERE LicenseID = @LicenseID ";
 
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@IsActive", IsActive);
+            command.Parameters.AddWithValue("@LicenseID", LincenseID);
+            try
+            {
+                connection.Open();
+
+                EffectedRow = command.ExecuteNonQuery();
+
+
+            }
+            catch { }
+            finally { connection.Close(); }
+            return EffectedRow;
+        }
 
 
 

@@ -77,7 +77,10 @@ namespace Full_Real_Project_Buisness_layer_
         }
 
 
-
+        public static bool UpdatedIsActiveByLincenseID(int LincenseID, bool IsActive)
+        {
+            return clsLicenseDataAccess.UpdatedIsActiveByLincenseID(LincenseID,IsActive) > 0 ;
+        }
 
 
 

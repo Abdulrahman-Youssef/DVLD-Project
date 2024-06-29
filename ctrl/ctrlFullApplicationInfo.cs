@@ -11,9 +11,13 @@ using System.Windows.Forms;
 
 namespace Full_Real_Project.ctrl
 {
+
+
     public partial class ctrlFullApplicationInfo : UserControl
     {
-        public int LDLA { get; set; } = -1; 
+        public int LDLA { get; set; } = -1;
+        public decimal ApplicationFees { get; set; }
+       
         clsLicense license;
         clsApplication application;
         clsLicenseClasses licenseClasses;
@@ -25,7 +29,7 @@ namespace Full_Real_Project.ctrl
             LDLA = LicenseID;
             license = clsLicense.GetLicenseClassByLicenseID(LicenseID);
             application = clsApplication.GetApplicationByApplicatoinID(license.ApplicationID);
-            applicationTypes = clsApplicationTypes.GetApplicationTypesByApplicationType(6);
+            applicationTypes = clsApplicationTypes.GetApplicationTypesByApplicationType(application.ApplicationTypeID);
             licenseClasses = clsLicenseClasses.GetCNAndCDAndCFByLicenseClassesID(license.LicenseClass);
             person = clsContact.Find(application.ApplicantPersonID);
             internationalDrivingLicense = clsInternationalDrivingLicense.GetInternationalDrivingLicense(LicenseID);
@@ -46,7 +50,8 @@ namespace Full_Real_Project.ctrl
                 lblLocalLicenseID.Text = internationalDrivingLicense.InternationalLicenseID.ToString();
 
             }
-
+            ApplicationFees = applicationTypes.ApplicationFees;
+          
         }
 
 
