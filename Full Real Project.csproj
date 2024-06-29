@@ -47,6 +47,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ctrl\ctrlApplicationRenewLicense.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ctrl\ctrlApplicationRenewLicense.Designer.cs">
+      <DependentUpon>ctrlApplicationRenewLicense.cs</DependentUpon>
+    </Compile>
     <Compile Include="ctrl\ctrlAddAppointment.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -191,6 +197,12 @@
     <Compile Include="frm\frmMianScreen.Designer.cs">
       <DependentUpon>frmMianScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm\frmRenewDrivingLicense.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm\frmRenewDrivingLicense.Designer.cs">
+      <DependentUpon>frmRenewDrivingLicense.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm\FrmScheduleTestAppointment.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -257,6 +269,9 @@
     <EmbeddedResource Include="ctrl\ctrlLicenseInfo.resx">
       <DependentUpon>ctrlLicenseInfo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ctrl\ctrlApplicationRenewLicense.resx">
+      <DependentUpon>ctrlApplicationRenewLicense.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ctrl\ctrlTakeTaskInfo.resx">
       <DependentUpon>ctrlTakeTaskInfo.cs</DependentUpon>
     </EmbeddedResource>
@@ -313,6 +328,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frm\frmMianScreen.resx">
       <DependentUpon>frmMianScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm\frmRenewDrivingLicense.resx">
+      <DependentUpon>frmRenewDrivingLicense.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm\FrmScheduleTestAppointment.resx">
       <DependentUpon>FrmScheduleTestAppointment.cs</DependentUpon>

@@ -114,5 +114,11 @@ namespace Full_Real_Project
             frmInternationalDrivingApplication International = new frmInternationalDrivingApplication();
             International.ShowDialog();
         }
+
+        private void renewDrivingLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmRenewDrivingLicense frmRenewDrivingLicense = new frmRenewDrivingLicense();
+            frmRenewDrivingLicense.ShowDialog();
+        }
     }
 }

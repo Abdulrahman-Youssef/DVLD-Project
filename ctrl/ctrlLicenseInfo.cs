@@ -17,7 +17,7 @@ namespace Full_Real_Project.ctrl
         clsApplication application;
         clsLicenseClasses licenseClasses;
         clsContact person;
-
+        public DateTime ExpirationDate { get; set; }
         private void _fillClass(int LicenseID)
         {
             license = clsLicense.GetLicenseClassByLicenseID(LicenseID);
@@ -68,8 +68,8 @@ namespace Full_Real_Project.ctrl
             lblDriverID.Text = license.DriverID.ToString();
             lblExpirationDate.Text = license.ExpirationDate1.ToShortDateString();
             lblIsDetained.Text = "No";
+            ExpirationDate = license.ExpirationDate1;
 
-            
         }
 
 
