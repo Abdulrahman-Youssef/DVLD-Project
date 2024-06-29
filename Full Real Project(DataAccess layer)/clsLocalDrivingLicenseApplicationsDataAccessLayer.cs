@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using static System.Net.Mime.MediaTypeNames;
@@ -52,7 +53,7 @@ namespace Full_Real_Project_DataAccess_layer_
                 conn.Open();
 
                 SqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
+                while (reader.HasRows)
                 {
                     dt.Load(reader);
                 }
@@ -67,6 +68,47 @@ namespace Full_Real_Project_DataAccess_layer_
             }
             return dt;
         }
+
+        public static bool GetLocalDrivingLicenseApplicationsByLDLAID_View(int LocalDrivingLicenseApplicationID , ref string ClassName , ref string FullName , ref int  PassedTestCount 
+                                                                            ,ref DateTime ApplicationDate_View , ref int NationalNo_View,ref  int Status_View )
+        {
+            
+           bool Found = false;
+            SqlConnection conn = new SqlConnection(clsDataAccessLayerSettings.ConnectionString);
+            string query = @"SELECT * FROM LocalDrivingLicenseApplications_View WHERE LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID";
+            SqlCommand cmd = new SqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
+
+            try
+            {
+                conn.Open();
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    Found = true;
+
+                    ClassName = (string)reader["ClassName"];
+                    FullName = (string)reader["FullName"];
+                    PassedTestCount = (int)reader["PassedTestCount"];
+                    ApplicationDate_View = (DateTime)reader["ApplicationDate"];
+                    NationalNo_View = (int)reader["NationalNo"];
+                    Status_View = (int)reader["Status"];
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return Found;
+        }
+
 
         public static int AddedLocalDrivingLicenseApplications(int ApplicationID , int LicenseClassID)
         {
@@ -128,5 +170,57 @@ namespace Full_Real_Project_DataAccess_layer_
            
             return dt; 
         }
+
+
+        public static bool GetLocalDrivingLicenseApplicationByLDLAID(int LocalDrivingLicenseApplicationID, ref int ApplicationID, ref int LicenseClassID )
+        {
+            bool Found = false;
+            SqlConnection conn = new SqlConnection(clsDataAccessLayerSettings.ConnectionString);
+            string query = @"SELECT * FROM LocalDrivingLicenseApplications WHERE LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID";
+            SqlCommand cmd = new SqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
+      
+
+            try
+            {
+                conn.Open();
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.Read())
+                {
+                 Found = true; 
+                 ApplicationID = (int)reader["ApplicationID"];
+                 LicenseClassID = (int)reader["LicenseClassID"];
+                }
+                
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return Found;
+
+
+        }
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }

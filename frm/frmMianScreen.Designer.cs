@@ -36,6 +36,8 @@
             this.localDrivingLicenseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.internationalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.manageApplicationsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.localDrivingLicenseToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.internatinalDrivingLicenseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ManagePeopleApplicationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.manageTestTypeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.peoopleManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,8 +48,6 @@
             this.changePasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnCancelApp = new System.Windows.Forms.Button();
-            this.localDrivingLicenseToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.internatinalDrivingLicenseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -108,6 +108,7 @@
             this.internationalToolStripMenuItem.Name = "internationalToolStripMenuItem";
             this.internationalToolStripMenuItem.Size = new System.Drawing.Size(333, 42);
             this.internationalToolStripMenuItem.Text = "international license";
+            this.internationalToolStripMenuItem.Click += new System.EventHandler(this.internationalToolStripMenuItem_Click);
             // 
             // manageApplicationsToolStripMenuItem
             // 
@@ -117,6 +118,20 @@
             this.manageApplicationsToolStripMenuItem.Name = "manageApplicationsToolStripMenuItem";
             this.manageApplicationsToolStripMenuItem.Size = new System.Drawing.Size(419, 42);
             this.manageApplicationsToolStripMenuItem.Text = "Manage Applications";
+            // 
+            // localDrivingLicenseToolStripMenuItem1
+            // 
+            this.localDrivingLicenseToolStripMenuItem1.Name = "localDrivingLicenseToolStripMenuItem1";
+            this.localDrivingLicenseToolStripMenuItem1.Size = new System.Drawing.Size(425, 42);
+            this.localDrivingLicenseToolStripMenuItem1.Text = "Local Driving License";
+            this.localDrivingLicenseToolStripMenuItem1.Click += new System.EventHandler(this.localDrivingLicenseToolStripMenuItem1_Click);
+            // 
+            // internatinalDrivingLicenseToolStripMenuItem
+            // 
+            this.internatinalDrivingLicenseToolStripMenuItem.Name = "internatinalDrivingLicenseToolStripMenuItem";
+            this.internatinalDrivingLicenseToolStripMenuItem.Size = new System.Drawing.Size(425, 42);
+            this.internatinalDrivingLicenseToolStripMenuItem.Text = "International Driving license";
+            this.internatinalDrivingLicenseToolStripMenuItem.Click += new System.EventHandler(this.internatinalDrivingLicenseToolStripMenuItem_Click);
             // 
             // ManagePeopleApplicationToolStripMenuItem
             // 
@@ -146,6 +161,7 @@
             this.driversToolStripMenuItem.Name = "driversToolStripMenuItem";
             this.driversToolStripMenuItem.Size = new System.Drawing.Size(127, 41);
             this.driversToolStripMenuItem.Text = "Drivers";
+            this.driversToolStripMenuItem.Click += new System.EventHandler(this.driversToolStripMenuItem_Click);
             // 
             // usersToolStripMenuItem
             // 
@@ -197,20 +213,6 @@
             this.btnCancelApp.Text = "Cancel";
             this.btnCancelApp.UseVisualStyleBackColor = true;
             this.btnCancelApp.Click += new System.EventHandler(this.btnCancelApp_Click);
-            // 
-            // localDrivingLicenseToolStripMenuItem1
-            // 
-            this.localDrivingLicenseToolStripMenuItem1.Name = "localDrivingLicenseToolStripMenuItem1";
-            this.localDrivingLicenseToolStripMenuItem1.Size = new System.Drawing.Size(425, 42);
-            this.localDrivingLicenseToolStripMenuItem1.Text = "Local Driving License";
-            this.localDrivingLicenseToolStripMenuItem1.Click += new System.EventHandler(this.localDrivingLicenseToolStripMenuItem1_Click);
-            // 
-            // internatinalDrivingLicenseToolStripMenuItem
-            // 
-            this.internatinalDrivingLicenseToolStripMenuItem.Name = "internatinalDrivingLicenseToolStripMenuItem";
-            this.internatinalDrivingLicenseToolStripMenuItem.Size = new System.Drawing.Size(425, 42);
-            this.internatinalDrivingLicenseToolStripMenuItem.Text = "International Driving license";
-            this.internatinalDrivingLicenseToolStripMenuItem.Click += new System.EventHandler(this.internatinalDrivingLicenseToolStripMenuItem_Click);
             // 
             // frmMianScreen
             // 

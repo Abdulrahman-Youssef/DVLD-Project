@@ -72,17 +72,34 @@ namespace Full_Real_Project_Buisness_layer_
 
         public static DataTable GetApplicationIDsByPersonID(int PersonID)
         {
-            return clsApplicationDataAccessLayer.GetApplicationIDsByPersonID (PersonID);
+            return clsApplicationDataAccessLayer.GetApplicationIDsByPersonIDCopletedNew (PersonID);
+        }
+
+
+        public  static clsApplication GetApplicationByApplicatoinID(int ApplicationID)
+        {
+            int ApplicationTypeID = -1, CreatedByUserID = -1, ApplicationStatus = 1, ApplicantPersonID = -1;
+            DateTime ApplicationDate = System.DateTime.Now, LastStatusDate = DateTime.Now;
+            decimal PaidFees = 0;
+
+            if(clsApplicationDataAccessLayer.GetApplication( ApplicationID ,ref ApplicationTypeID, ref ApplicantPersonID ,ref ApplicationStatus,
+                                                           ref CreatedByUserID ,ref PaidFees , ref LastStatusDate ,ref ApplicationDate))
+            {
+               return new clsApplication(ApplicationID,CreatedByUserID,PaidFees,LastStatusDate,ApplicationStatus,ApplicationTypeID,ApplicationDate,ApplicantPersonID);
+            }
+            return null;  
         }
 
 
 
-        
 
 
-
-
-
+        public static bool UpdateLocalDrivingLicenseIDStatusByApplicationID(int ApplicationID , int ApplicationStatus)
+        {            
+            return  0 < clsApplicationDataAccessLayer.UpdateLocalDrivingLicenseIDStatusByApplicationID(ApplicationID ,ApplicationStatus);
+            
+            
+        }
 
 
 

@@ -11,6 +11,10 @@ namespace Full_Real_Project
         public static clsUsers User { get; set; }
        
 
-        
+        public static bool isDriverIsxist(int LocalDrivingLicenseID)
+        {
+
+            return clsDrivers.IsDriverExist(clsApplication.GetApplicationByApplicatoinID(clsLocalDrivingLicenseApplications.GetLocalDrivingLicenseApplicationByLDLAID(LocalDrivingLicenseID).ApplicationID).ApplicantPersonID);
+        }
     }
 }

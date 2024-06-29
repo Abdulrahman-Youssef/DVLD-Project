@@ -58,7 +58,6 @@ namespace Full_Real_Project_DataAccess_layer_
                     Found = true;
                     ApplicationFees = (decimal)reader["ApplicationFees"];
                     ApplicationTypeTitle = (string)reader["ApplicationTypeTitle"];
-
                 }
 
 
