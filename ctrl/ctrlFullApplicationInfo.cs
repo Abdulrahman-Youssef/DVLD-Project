@@ -15,6 +15,7 @@ namespace Full_Real_Project.ctrl
 
     public partial class ctrlFullApplicationInfo : UserControl
     {
+        public int ApplicationTypeID;
         public int LDLA { get; set; } = -1;
         public decimal ApplicationFees { get; set; }
        
@@ -27,9 +28,9 @@ namespace Full_Real_Project.ctrl
         private void _FillClass(int LicenseID)
         {
             LDLA = LicenseID;
-            license = clsLicense.GetLicenseClassByLicenseID(LicenseID);
+            license = clsLicense.GetLicenseByLicenseID(LicenseID);
             application = clsApplication.GetApplicationByApplicatoinID(license.ApplicationID);
-            applicationTypes = clsApplicationTypes.GetApplicationTypesByApplicationType(application.ApplicationTypeID);
+            applicationTypes = clsApplicationTypes.GetApplicationTypesByApplicationTypeID(this.ApplicationTypeID);
             licenseClasses = clsLicenseClasses.GetCNAndCDAndCFByLicenseClassesID(license.LicenseClass);
             person = clsContact.Find(application.ApplicantPersonID);
             internationalDrivingLicense = clsInternationalDrivingLicense.GetInternationalDrivingLicense(LicenseID);
@@ -55,8 +56,9 @@ namespace Full_Real_Project.ctrl
         }
 
 
-        public void loadctrlInfo(int LicenseID)
+        public void loadctrlInfo(int LicenseID ,int ApplicationTypeID)
         {
+            this.ApplicationTypeID = ApplicationTypeID; 
             _FillClass(LicenseID);
             _Fillctrl();
 

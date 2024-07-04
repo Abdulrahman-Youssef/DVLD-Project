@@ -1,5 +1,6 @@
 ﻿using Full_Real_Project.frm;
 using Full_Real_Project_Buisness_layer_;
+using Full_Real_Project_DataAccess_layer_;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -119,6 +120,31 @@ namespace Full_Real_Project
         {
             frmRenewDrivingLicense frmRenewDrivingLicense = new frmRenewDrivingLicense();
             frmRenewDrivingLicense.ShowDialog();
+        }
+
+        private void rToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmReplacedForDamagedOrLost frmReplacedForDamagedOrLost = new frmReplacedForDamagedOrLost();
+            frmReplacedForDamagedOrLost.ShowDialog();
+        }
+
+        private void detainLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmDetainLicense frmdetainLicense = new frmDetainLicense();
+            frmdetainLicense.ShowDialog();
+        }
+
+        private void releceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmReleaseLicense frmReleaseLicense = new frmReleaseLicense();
+            frmReleaseLicense.ShowDialog();
+
+        }
+
+        private void managerDetainedLicensesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmManageDetainedLicense frmManage = new frmManageDetainedLicense();
+            frmManage.ShowDialog();
         }
     }
 }

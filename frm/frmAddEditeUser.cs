@@ -46,7 +46,7 @@ namespace Full_Real_Project.frm
         }
         public void enabledFiltercb(bool OFFON)
         {
-            userInfoAndSreach1.enabledFilter(OFFON , user.UserID);
+            userInfoAndSreach1.LoadWithEnabledFilter(OFFON , user.UserID);
         }
         public void LoadPersonInfo()
         {

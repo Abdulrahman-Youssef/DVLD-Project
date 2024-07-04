@@ -29,19 +29,26 @@ namespace Full_Real_Project.frm
             {
                if (clsLicense.IsLicensefromClass3(int.Parse(textBox2.Text)))
                {
-                    if (clsLicense.GetLicenseClassByLicenseID(int.Parse(textBox2.Text)).IsActive)
-                    {
                         ctrlLicenseInfo1.LoadInfo(int.Parse(textBox2.Text));
                         ctrlApplicationRenewLicense1.LoadInfo(int.Parse(textBox2.Text));
                         if (DateTime.Now > ctrlLicenseInfo1.ExpirationDate) 
                         {
                             btnRenew.Enabled = true;
                         }
-                    }
-                    else
-                    {
+                        if (!clsLicense.GetLicenseByLicenseID(int.Parse(textBox2.Text)).IsActive)
+                        {
+                            btnRenew.Enabled = true;
 
-                    }
+                        }
+                        else
+                        {
+                            btnRenew.Enabled=false;
+                        }
+
+                }
+                else
+                {
+                    MessageBox.Show("License have to be form type 3");
 
                 }
             }
@@ -63,11 +70,11 @@ namespace Full_Real_Project.frm
             if (DateTime.Now > ctrlLicenseInfo1.ExpirationDate)
             {
                 clsApplication application = new clsApplication(); 
-                clsLicense license = clsLicense.GetLicenseClassByLicenseID(ctrlApplicationRenewLicense1.LicenseID);
+                clsLicense license = clsLicense.GetLicenseByLicenseID(ctrlApplicationRenewLicense1.LicenseID);
                 clsApplication fulledapplication2 = clsApplication.GetApplicationByApplicatoinID(license.ApplicationID);
 
                 application.ApplicationDate = DateTime.Now;
-                application.PaidFees = clsApplicationTypes.GetApplicationTypesByApplicationType(2).ApplicationFees;
+                application.PaidFees = clsApplicationTypes.GetApplicationTypesByApplicationTypeID(2).ApplicationFees;
                 application.ApplicationStatus = 3;
                 application.ApplicantPersonID = fulledapplication2.ApplicantPersonID;
                 application.ApplicationTypeID = 2;
@@ -76,6 +83,7 @@ namespace Full_Real_Project.frm
                if (application.AddedNewApplication())
                 {
                     MessageBox.Show("appolication Added"+ application.ApplicantPersonID) ;
+                    license.ApplicationID = application.ApplicationID;
                    if (clsLicense.UpdatedIsActiveByLincenseID(license.LicenseID, false))
                     {
                         MessageBox.Show("License Updated successfuly" + license.LicenseID);

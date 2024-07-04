@@ -28,5 +28,11 @@ namespace Full_Real_Project.frm
         {
             RefresDrivers();
         }
+
+        private void showDriverHistoryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmShowLicenseHistory frmShowLicenseHistory = new frmShowLicenseHistory(Convert.ToInt32(dgvDrivers.CurrentRow.Cells[0].Value));
+            frmShowLicenseHistory.ShowDialog();
+        }
     }
 }

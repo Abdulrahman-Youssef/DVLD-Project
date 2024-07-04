@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Full_Real_Project_Buisness_layer_;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,22 +13,36 @@ namespace Full_Real_Project
 {
     public partial class ctrlUserinfo : UserControl
     {
+        private clsUsers _User; 
 
-        public void LoadTheCurrentUser()
+        public void LoadTheCurrentUser(int UserID)
         {
-            lblUserID.Text = clsGlobal.User.UserID.ToString();
-            lblUserName.Text = clsGlobal.User.UserName.ToString();
-            if (clsGlobal.User.Active == false)
-            {
-                lblIsActive.Text = "0";
-            }
-            else
-            {
-                lblIsActive.Text = "1";
-            }
 
-            personInfoCard1.LoadPersonInfo(clsGlobal.User.PersonID);
+            _User =  clsUsers.FindUserByUesrID(UserID);
+
+            if (_User != null)
+            {
+            lblUserID.Text = UserID.ToString();
+                lblUserName.Text = _User.UserName.ToString();
+                if (_User.Active == false)
+                {
+                    lblIsActive.Text = "0";
+                }
+                else
+                {
+                    lblIsActive.Text = "1";
+                }
+
+                personInfoCard1.LoadPersonInfo(clsGlobal.User.PersonID);
+
+            }
+           
+
         }
+
+
+
+
 
         public ctrlUserinfo()
         {

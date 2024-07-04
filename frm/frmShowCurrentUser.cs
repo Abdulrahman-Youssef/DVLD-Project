@@ -19,7 +19,7 @@ namespace Full_Real_Project.frm
 
         private void frmShowCurrentUser_Load(object sender, EventArgs e)
         {
-            ctrlUserinfo1.LoadTheCurrentUser();
+            ctrlUserinfo1.LoadTheCurrentUser(clsGlobal.User.UserID);
         }
     }
 }

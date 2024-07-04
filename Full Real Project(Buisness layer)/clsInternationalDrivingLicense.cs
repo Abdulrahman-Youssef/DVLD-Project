@@ -61,7 +61,10 @@ namespace Full_Real_Project_Buisness_layer_
 
 
 
-
+        public static DataTable GetInternationalLicenseByDriverID(int DriverID)
+        {
+            return clsInternationalDrivingLicenseDataAccess.GetInternationalLicenseByDriverID(DriverID);
+        }
 
 
 

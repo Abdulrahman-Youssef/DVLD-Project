@@ -35,11 +35,11 @@
             this.dgvPeople = new System.Windows.Forms.DataGridView();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.showDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addedNewPersonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.addedNewPersonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPeople)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
@@ -109,6 +109,14 @@
             this.showDetailsToolStripMenuItem.Text = "ShowDetails";
             this.showDetailsToolStripMenuItem.Click += new System.EventHandler(this.showDetailsToolStripMenuItem_Click);
             // 
+            // addedNewPersonToolStripMenuItem
+            // 
+            this.addedNewPersonToolStripMenuItem.Image = global::Full_Real_Project.Properties.Resources.AddPerson;
+            this.addedNewPersonToolStripMenuItem.Name = "addedNewPersonToolStripMenuItem";
+            this.addedNewPersonToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.addedNewPersonToolStripMenuItem.Text = "Added New Person";
+            this.addedNewPersonToolStripMenuItem.Click += new System.EventHandler(this.addedNewPersonToolStripMenuItem_Click);
+            // 
             // editeToolStripMenuItem
             // 
             this.editeToolStripMenuItem.Name = "editeToolStripMenuItem";
@@ -130,6 +138,7 @@
             this.maskedTextBox1.Size = new System.Drawing.Size(121, 20);
             this.maskedTextBox1.TabIndex = 7;
             this.maskedTextBox1.ValidatingType = typeof(System.DateTime);
+            this.maskedTextBox1.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.maskedTextBox1_MaskInputRejected);
             this.maskedTextBox1.TextChanged += new System.EventHandler(this.maskedTextBox1_TextChanged);
             // 
             // pictureBox2
@@ -142,14 +151,6 @@
             this.pictureBox2.TabIndex = 8;
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
-            // 
-            // addedNewPersonToolStripMenuItem
-            // 
-            this.addedNewPersonToolStripMenuItem.Image = global::Full_Real_Project.Properties.Resources.AddPerson;
-            this.addedNewPersonToolStripMenuItem.Name = "addedNewPersonToolStripMenuItem";
-            this.addedNewPersonToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
-            this.addedNewPersonToolStripMenuItem.Text = "Added New Person";
-            this.addedNewPersonToolStripMenuItem.Click += new System.EventHandler(this.addedNewPersonToolStripMenuItem_Click);
             // 
             // pictureBox1
             // 

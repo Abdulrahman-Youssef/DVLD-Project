@@ -129,6 +129,33 @@ namespace Full_Real_Project_DataAccess_layer_
 
         }
 
+        public static DataTable GetInternationalLicenseByDriverID(int DriverID)
+        {
+            DataTable dt = new DataTable();
+
+            SqlConnection conn = new SqlConnection(clsDataAccessLayerSettings.ConnectionString);
+
+            string query = @"SELECT * from InternationalLicenses WHERE DriverID = @DriverID";
+            SqlCommand command = new SqlCommand(query, conn);
+
+            command.Parameters.AddWithValue("@DriverID", DriverID);
+
+            try
+            {
+                conn.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.HasRows)
+                {
+
+                    dt.Load(reader);
+
+                }
+            }
+            catch { }
+            finally { conn.Close(); }
+
+            return dt;
+        }
 
 
     }

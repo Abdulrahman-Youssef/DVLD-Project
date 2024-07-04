@@ -17,10 +17,12 @@ namespace Full_Real_Project.ctrl
         clsApplication application;
         clsLicenseClasses licenseClasses;
         clsContact person;
+        public int LicenseID { get; set; }
         public DateTime ExpirationDate { get; set; }
         private void _fillClass(int LicenseID)
         {
-            license = clsLicense.GetLicenseClassByLicenseID(LicenseID);
+            this.LicenseID = LicenseID;
+            license = clsLicense.GetLicenseByLicenseID(LicenseID);
             application = clsApplication.GetApplicationByApplicatoinID(license.ApplicationID);
             licenseClasses = clsLicenseClasses.GetCNAndCDAndCFByLicenseClassesID(license.LicenseClass);
             person = clsContact.Find(application.ApplicantPersonID);
@@ -30,6 +32,7 @@ namespace Full_Real_Project.ctrl
 
         private void _Fillctrl()
         {
+
             lblClass.Text = licenseClasses.ClassName;
             lblName.Text = person.FullName;
             lblLicenseID.Text  = license.LicenseID.ToString();
@@ -69,7 +72,14 @@ namespace Full_Real_Project.ctrl
             lblExpirationDate.Text = license.ExpirationDate1.ToShortDateString();
             lblIsDetained.Text = "No";
             ExpirationDate = license.ExpirationDate1;
-
+            if (clsDetainLicense.CheckIfLicenseIsReleased(this.LicenseID))
+            {
+                lblIsDetained.Text = "No";
+            }
+            else
+            {
+                lblIsDetained.Text = "yes";
+            }
         }
 
 

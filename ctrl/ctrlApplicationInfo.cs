@@ -1,23 +1,16 @@
 ﻿using Full_Real_Project_Buisness_layer_;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Full_Real_Project
 {
     public partial class ctrlApplicationInfo : UserControl
     {
-        clsApplication application; 
+        clsApplication application;
         clsApplicationTypes applicationTypes;
-        clsContact Person  ;
+        clsContact Person;
         clsLocalDrivingLicenseApplications LocalDrivingLicenseApplications;
-        public int ApplicationID {  get; set; }
+        public int ApplicationID { get; set; }
 
         private void _Fillctrl()
         {
@@ -26,19 +19,19 @@ namespace Full_Real_Project
             lblCreatedBy.Text = clsGlobal.User.UserName.ToString();
             lblDate.Text = application.ApplicationDate.ToShortDateString();
             lblDateStatus.Text = application.LastStatusDate.ToShortDateString();
-            lblFees.Text = application.PaidFees.ToString(); 
-            lblStatus.Text = application.ApplicationStatus == 1 ? "new" : application.ApplicationStatus == 2 ? "Cancel" : application.ApplicationStatus == 3 ? "Compeleted": "ccompeleted" ;
+            lblFees.Text = application.PaidFees.ToString();
+            lblStatus.Text = application.ApplicationStatus == 1 ? "new" : application.ApplicationStatus == 2 ? "Cancel" : application.ApplicationStatus == 3 ? "Compeleted" : "ccompeleted";
             lblType.Text = applicationTypes.ApplicationTypeTitel.ToString();
-        
-        
+
+
         }
         public void loadApplicationInfo(int LocalDrivingLicenseApplicationID)
         {
-           LocalDrivingLicenseApplications = clsLocalDrivingLicenseApplications.GetLocalDrivingLicenseApplicationByLDLAID(LocalDrivingLicenseApplicationID);
-            application      =  clsApplication.GetApplicationByApplicatoinID(LocalDrivingLicenseApplications.ApplicationID);
-            applicationTypes = clsApplicationTypes.GetApplicationTypesByApplicationType(application.ApplicationTypeID);
-            Person           = clsContact.Find(application.ApplicantPersonID);
-          
+            LocalDrivingLicenseApplications = clsLocalDrivingLicenseApplications.GetLocalDrivingLicenseApplicationByLDLAID(LocalDrivingLicenseApplicationID);
+            application = clsApplication.GetApplicationByApplicatoinID(LocalDrivingLicenseApplications.ApplicationID);
+            applicationTypes = clsApplicationTypes.GetApplicationTypesByApplicationTypeID(application.ApplicationTypeID);
+            Person = clsContact.Find(application.ApplicantPersonID);
+
 
             _Fillctrl();
         }

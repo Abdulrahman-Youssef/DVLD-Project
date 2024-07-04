@@ -64,7 +64,7 @@ namespace Full_Real_Project
                 {
                     rbMale.Checked = true;
                 }
-                if (person.ImagePath != null && person.ImagePath != "" && pictureBox1.Image == null)
+                if (person.ImagePath != null && person.ImagePath != "" && pictureBox1.ImageLocation == null)
                 {
                     pictureBox1.ImageLocation =  person.ImagePath;
 

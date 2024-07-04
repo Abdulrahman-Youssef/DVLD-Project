@@ -25,7 +25,7 @@ namespace Full_Real_Project.frm
         public frmEditeApplicationFees(int ApplicationTypeID)
         {
             InitializeComponent();
-            applicationTypes = clsApplicationTypes.GetApplicationTypesByApplicationType(ApplicationTypeID);
+            applicationTypes = clsApplicationTypes.GetApplicationTypesByApplicationTypeID(ApplicationTypeID);
             _Fillfrm();
         }
 

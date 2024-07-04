@@ -25,7 +25,7 @@ namespace Full_Real_Project.frm
             {
                 if (clsLicense.IsLicensefromClass3(int.Parse(textBox1.Text)))
                 {
-                    ctrlFullApplicationInfo1.loadctrlInfo(int.Parse(textBox1.Text));
+                    ctrlFullApplicationInfo1.loadctrlInfo(int.Parse(textBox1.Text), 6);
                     ctrlLicenseInfo1.LoadInfo(int.Parse(textBox1.Text));
                 }
             }
@@ -45,8 +45,8 @@ namespace Full_Real_Project.frm
                 application.ApplicationStatus = 3;
                 application.ApplicationDate = DateTime.Now;
                 application.LastStatusDate = DateTime.Now;
-                application.PaidFees = clsApplicationTypes.GetApplicationTypesByApplicationType(6).ApplicationFees;
-                application.ApplicantPersonID = clsApplication.GetApplicationByApplicatoinID(clsLicense.GetLicenseClassByLicenseID(ctrlFullApplicationInfo1.LDLA).ApplicationID).ApplicantPersonID;
+                application.PaidFees = clsApplicationTypes.GetApplicationTypesByApplicationTypeID(6).ApplicationFees;
+                application.ApplicantPersonID = clsApplication.GetApplicationByApplicatoinID(clsLicense.GetLicenseByLicenseID(ctrlFullApplicationInfo1.LDLA).ApplicationID).ApplicantPersonID;
                 application.ApplicationTypeID = 6;
                 application.CreatedByUserID = clsGlobal.User.UserID;
                 if(application.AddedNewApplication())
@@ -59,7 +59,7 @@ namespace Full_Real_Project.frm
                 }
 
                 internationalDrivingLicense.ApplicationID = application.ApplicationID;
-                internationalDrivingLicense.DriverID  = clsLicense.GetLicenseClassByLicenseID(ctrlFullApplicationInfo1.LDLA).DriverID;
+                internationalDrivingLicense.DriverID  = clsLicense.GetLicenseByLicenseID(ctrlFullApplicationInfo1.LDLA).DriverID;
                 internationalDrivingLicense.IssuedUsingLocalLicenseID = ctrlFullApplicationInfo1.LDLA; 
                 internationalDrivingLicense.IssueDate = DateTime.Now;
                 internationalDrivingLicense.ExpirationDate = DateTime.Now.AddYears(10);

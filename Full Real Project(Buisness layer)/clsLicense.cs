@@ -1,8 +1,10 @@
 ﻿using Full_Real_Project_DataAccess_layer_;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
@@ -52,12 +54,12 @@ namespace Full_Real_Project_Buisness_layer_
         }
         public static bool IsLicensefromClass3(int LicenseID)
         {
-            return 3== clsLicenseDataAccess.GetLicenseClassByLicenseID(LicenseID);
+            return 3== clsLicenseDataAccess.GetLicenseByLicenseID(LicenseID);
         }
 
 
 
-        public static clsLicense GetLicenseClassByLicenseID(int LicenseID)
+        public static clsLicense GetLicenseByLicenseID(int LicenseID)
         {
             int ApplicationID = -1, licenseClass = -1, DriverID = -1, IssueReason = 1, CreatedByUserID = -1;
             DateTime IssueDate = DateTime.MinValue, ExpirationDate = new DateTime();
@@ -65,7 +67,7 @@ namespace Full_Real_Project_Buisness_layer_
             string Notes = string.Empty;
             bool IsActive = false;
 
-            if (clsLicenseDataAccess.GetLicenseClassByLicenseID(LicenseID ,ref ApplicationID ,ref DriverID ,ref licenseClass ,ref IssueDate ,ref ExpirationDate ,
+            if (clsLicenseDataAccess.GetLicenseByLicenseID(LicenseID ,ref ApplicationID ,ref DriverID ,ref licenseClass ,ref IssueDate ,ref ExpirationDate ,
                                                                 ref Notes ,ref PaidFees ,ref IsActive ,ref IssueReason ,ref CreatedByUserID))
             {
              return new clsLicense(LicenseID ,ApplicationID,DriverID , licenseClass ,IssueDate , ExpirationDate , Notes, PaidFees , IsActive , IssueReason , CreatedByUserID);
@@ -79,13 +81,33 @@ namespace Full_Real_Project_Buisness_layer_
 
         public static bool UpdatedIsActiveByLincenseID(int LincenseID, bool IsActive)
         {
-            return clsLicenseDataAccess.UpdatedIsActiveByLincenseID(LincenseID,IsActive) > 0 ;
+            return clsLicenseDataAccess.UpdatedLicenseIsActiveByLincenseID(LincenseID,IsActive) > 0 ;
+        }
+
+        public static DataTable GetLicensesByDriverID(int DriverID)
+        {
+            return clsLicenseDataAccess.GetLicenseByDriverID(DriverID);
         }
 
 
+        public static clsLicense GetLicenseByDriverID(int DriverID)
+        {
+            int ApplicationID = -1, licenseClass = -1, LicenseID = -1, IssueReason = 1, CreatedByUserID = -1;
+            DateTime IssueDate = DateTime.MinValue, ExpirationDate = new DateTime();
+            decimal PaidFees = 0;
+            string Notes = string.Empty;
+            bool IsActive = false;
+
+            if (clsLicenseDataAccess.GetLicenseByDriverID(ref LicenseID, ref ApplicationID, DriverID, ref licenseClass, ref IssueDate, ref ExpirationDate,
+                                                                ref Notes, ref PaidFees, ref IsActive, ref IssueReason, ref CreatedByUserID))
+            {
+                return new clsLicense(LicenseID, ApplicationID, DriverID, licenseClass, IssueDate, ExpirationDate, Notes, PaidFees, IsActive, IssueReason, CreatedByUserID);
+            }
 
 
+            return null;
 
+        }
 
 
 

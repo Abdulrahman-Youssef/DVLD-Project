@@ -123,7 +123,33 @@ namespace Full_Real_Project_DataAccess_layer_
 
 
 
+        public static bool getDriverIDByDriverID(int DriverID,ref int PersonID, ref int CreatedByUserID, ref DateTime CreatedDate)
+        {
+            bool Found = false;
+            SqlConnection conn = new SqlConnection(clsDataAccessLayerSettings.ConnectionString);
+            string query = @"SELECT * FROM Drivers WHERE DriverID = @DriverID ";
+            SqlCommand command = new SqlCommand(query, conn);
 
+            command.Parameters.AddWithValue("@DriverID", DriverID);
+
+            try
+            {
+                conn.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.Read())
+                {
+                    Found = true;
+                    PersonID = (int)reader["PersonID"];
+                    CreatedByUserID = (int)reader["CreatedByUserID"];
+                    CreatedDate = (DateTime)reader["CreatedDate"];
+
+                }
+            }
+            catch { }
+            finally { conn.Close(); }
+            return Found;
+        }
 
 
 
