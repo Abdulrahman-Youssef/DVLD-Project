@@ -131,8 +131,9 @@ namespace Full_Real_Project
 
         private void llEditPersonInfo_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            frmAddEditeUser frmAddEditeUser = new frmAddEditeUser(PersonID);
+            frmAddEditePeople frmAddEditeUser = new frmAddEditePeople(PersonID);
             frmAddEditeUser.ShowDialog();
+            LoadPersonInfo(PersonID);
         }
     }
 }

@@ -15,10 +15,11 @@ namespace Full_Real_Project
 
         public int PersonID { get; set; }
 
-        public void enabledFilter(bool OFFON , int PersonID)
+        public void LoadWithEnabledFilter(bool OFFON , int PersonID)
         {
             groupBox1.Enabled = OFFON;
             textBox1.Text = PersonID.ToString();
+            ctralPersonCard.LoadPersonInfo(PersonID);
         }
         public UserInfoAndSreach()
         {

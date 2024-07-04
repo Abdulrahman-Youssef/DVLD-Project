@@ -47,6 +47,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ctrl\ctrlApplicationInfoReleaseInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ctrl\ctrlApplicationInfoReleaseInfo.Designer.cs">
+      <DependentUpon>ctrlApplicationInfoReleaseInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="ctrl\ctrlApplicationRenewLicense.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -64,6 +70,12 @@
     </Compile>
     <Compile Include="ctrl\ctrlApplicationInfo.Designer.cs">
       <DependentUpon>ctrlApplicationInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ctrl\ctrlDetianApplicationInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ctrl\ctrlDetianApplicationInfo.Designer.cs">
+      <DependentUpon>ctrlDetianApplicationInfo.cs</DependentUpon>
     </Compile>
     <Compile Include="ctrl\ctrlDrivingLicenseApplicationInfo.cs">
       <SubType>UserControl</SubType>
@@ -101,6 +113,18 @@
     <Compile Include="frmtemp.Designer.cs">
       <DependentUpon>frmtemp.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm\frmManageDetainedLicense.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm\frmManageDetainedLicense.Designer.cs">
+      <DependentUpon>frmManageDetainedLicense.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm\frmReleaseLicense.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm\frmReleaseLicense.Designer.cs">
+      <DependentUpon>frmReleaseLicense.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm\frmAddEditeUser.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -124,6 +148,12 @@
     </Compile>
     <Compile Include="frm\frmChangeCurrentUserPassword.Designer.cs">
       <DependentUpon>frmChangeCurrentUserPassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm\frmDetainLicense.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm\frmDetainLicense.Designer.cs">
+      <DependentUpon>frmDetainLicense.cs</DependentUpon>
     </Compile>
     <Compile Include="frm\frmDrivers.cs">
       <SubType>Form</SubType>
@@ -203,6 +233,12 @@
     <Compile Include="frm\frmRenewDrivingLicense.Designer.cs">
       <DependentUpon>frmRenewDrivingLicense.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm\frmReplacedForDamagedOrLost.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm\frmReplacedForDamagedOrLost.Designer.cs">
+      <DependentUpon>frmReplacedForDamagedOrLost.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm\FrmScheduleTestAppointment.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -214,6 +250,12 @@
     </Compile>
     <Compile Include="frm\frmShowCurrentUser.Designer.cs">
       <DependentUpon>frmShowCurrentUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm\frmShowLicenseHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm\frmShowLicenseHistory.Designer.cs">
+      <DependentUpon>frmShowLicenseHistory.cs</DependentUpon>
     </Compile>
     <Compile Include="frm\frmShowPersonDetails.cs">
       <SubType>Form</SubType>
@@ -260,6 +302,12 @@
     <EmbeddedResource Include="ctrl\ctrlApplicationInfo.resx">
       <DependentUpon>ctrlApplicationInfo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ctrl\ctrlApplicationInfoReleaseInfo.resx">
+      <DependentUpon>ctrlApplicationInfoReleaseInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ctrl\ctrlDetianApplicationInfo.resx">
+      <DependentUpon>ctrlDetianApplicationInfo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ctrl\ctrlDrivingLicenseApplicationInfo.resx">
       <DependentUpon>ctrlDrivingLicenseApplicationInfo.cs</DependentUpon>
     </EmbeddedResource>
@@ -296,6 +344,9 @@
     <EmbeddedResource Include="frm\frmChangeCurrentUserPassword.resx">
       <DependentUpon>frmChangeCurrentUserPassword.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frm\frmDetainLicense.resx">
+      <DependentUpon>frmDetainLicense.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frm\frmDrivers.resx">
       <DependentUpon>frmDrivers.cs</DependentUpon>
     </EmbeddedResource>
@@ -314,6 +365,9 @@
     <EmbeddedResource Include="frm\frmManageApplications.resx">
       <DependentUpon>frmManageApplications.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frm\frmManageDetainedLicense.resx">
+      <DependentUpon>frmManageDetainedLicense.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frm\frmManageInternationalDrivinglicense.resx">
       <DependentUpon>frmManageInternationalDrivinglicense.cs</DependentUpon>
     </EmbeddedResource>
@@ -329,14 +383,23 @@
     <EmbeddedResource Include="frm\frmMianScreen.resx">
       <DependentUpon>frmMianScreen.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frm\frmReleaseLicense.resx">
+      <DependentUpon>frmReleaseLicense.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frm\frmRenewDrivingLicense.resx">
       <DependentUpon>frmRenewDrivingLicense.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm\frmReplacedForDamagedOrLost.resx">
+      <DependentUpon>frmReplacedForDamagedOrLost.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm\FrmScheduleTestAppointment.resx">
       <DependentUpon>FrmScheduleTestAppointment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm\frmShowCurrentUser.resx">
       <DependentUpon>frmShowCurrentUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm\frmShowLicenseHistory.resx">
+      <DependentUpon>frmShowLicenseHistory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm\frmShowPersonDetails.resx">
       <DependentUpon>frmShowPersonDetails.cs</DependentUpon>

@@ -77,6 +77,7 @@
             // ctrlLicenseInfo1
             // 
             this.ctrlLicenseInfo1.ExpirationDate = new System.DateTime(((long)(0)));
+            this.ctrlLicenseInfo1.LicenseID = 0;
             this.ctrlLicenseInfo1.Location = new System.Drawing.Point(6, 46);
             this.ctrlLicenseInfo1.Name = "ctrlLicenseInfo1";
             this.ctrlLicenseInfo1.Size = new System.Drawing.Size(676, 307);

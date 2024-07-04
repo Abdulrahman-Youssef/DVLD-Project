@@ -61,5 +61,28 @@ namespace Full_Real_Project_Buisness_layer_
             return null; 
         }
 
+        public static clsDrivers getDriverIDByDriverID(int DriverID)
+        {
+            int PersonID = 0, UserID = 0;
+            DateTime CreatedDate = DateTime.Now;
+            if (clsDriversDataAccess.getDriverIDByDriverID( DriverID,ref PersonID, ref UserID, ref CreatedDate))
+            {
+                return new clsDrivers(DriverID, UserID, PersonID, CreatedDate);
+            }
+            return null;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }

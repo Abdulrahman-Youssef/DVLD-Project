@@ -26,13 +26,13 @@ namespace Full_Real_Project.ctrl
 
         private bool _fillClass(int LicenseID)
         {
-            license = clsLicense.GetLicenseClassByLicenseID(LicenseID);
+            license = clsLicense.GetLicenseByLicenseID(LicenseID);
             if (license == null)
             {
                 return false;
             }
             application = clsApplication.GetApplicationByApplicatoinID(license.ApplicationID);
-            applicationTypes = clsApplicationTypes.GetApplicationTypesByApplicationType(2); 
+            applicationTypes = clsApplicationTypes.GetApplicationTypesByApplicationTypeID(2); 
             licenseClasses = clsLicenseClasses.GetCNAndCDAndCFByLicenseClassesID(license.LicenseClass);
             person = clsContact.Find(application.ApplicantPersonID);
 

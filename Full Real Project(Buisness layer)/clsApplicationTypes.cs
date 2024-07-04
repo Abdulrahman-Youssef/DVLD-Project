@@ -37,7 +37,7 @@ namespace Full_Real_Project_Buisness_layer_
       {
            return 0 < clsApplicationTypesDataAccessLayer.UpdateFeesByApplicationIDAndApplicationTypeTitle(applicationTypeID,ApplicationFees , ApplicationTypeTitel);
       }
-        public static clsApplicationTypes GetApplicationTypesByApplicationType(int ApplicationTypeID)
+        public static clsApplicationTypes GetApplicationTypesByApplicationTypeID(int ApplicationTypeID)
         {
             string ApplicationTypeTitel = "";  decimal ApplicationFees = 0;
 

@@ -132,6 +132,11 @@ namespace Full_Real_Project
         {
 
         }
+
+        private void maskedTextBox1_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
+        }
     }
 }
 
