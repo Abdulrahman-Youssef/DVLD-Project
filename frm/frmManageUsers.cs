@@ -56,6 +56,10 @@ namespace Full_Real_Project
             _RefershdgvUsers();
         }
 
-      
+        private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmChangeUserPassword frmChangeUserPassword = new frmChangeUserPassword(Convert.ToInt32(dgvUsers.CurrentRow.Cells[0].Value));
+            frmChangeUserPassword.ShowDialog();
+        }
     }
 }

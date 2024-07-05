@@ -61,7 +61,7 @@ namespace Full_Real_Project
 
         private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmChangeCurrentUserPassword frm = new frmChangeCurrentUserPassword();
+            frmChangeUserPassword frm = new frmChangeUserPassword(clsGlobal.User.UserID);
             frm.ShowDialog();
         }
 

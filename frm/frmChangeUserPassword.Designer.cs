@@ -1,6 +1,6 @@
 ﻿namespace Full_Real_Project.frm
 {
-    partial class frmChangeCurrentUserPassword
+    partial class frmChangeUserPassword
     {
         /// <summary>
         /// Required designer variable.

@@ -143,11 +143,11 @@
     <Compile Include="frm\frmAplication.Designer.cs">
       <DependentUpon>frmAplication.cs</DependentUpon>
     </Compile>
-    <Compile Include="frm\frmChangeCurrentUserPassword.cs">
+    <Compile Include="frm\frmChangeUserPassword.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm\frmChangeCurrentUserPassword.Designer.cs">
-      <DependentUpon>frmChangeCurrentUserPassword.cs</DependentUpon>
+    <Compile Include="frm\frmChangeUserPassword.Designer.cs">
+      <DependentUpon>frmChangeUserPassword.cs</DependentUpon>
     </Compile>
     <Compile Include="frm\frmDetainLicense.cs">
       <SubType>Form</SubType>
@@ -275,7 +275,7 @@
     <Compile Include="frm\frmTakeTask.Designer.cs">
       <DependentUpon>frmTakeTask.cs</DependentUpon>
     </Compile>
-    <Compile Include="Global.cs" />
+    <Compile Include="clsGlobal\Global.cs" />
     <Compile Include="frm\frmManagePeople.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -341,8 +341,8 @@
     <EmbeddedResource Include="frm\frmAplication.resx">
       <DependentUpon>frmAplication.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm\frmChangeCurrentUserPassword.resx">
-      <DependentUpon>frmChangeCurrentUserPassword.cs</DependentUpon>
+    <EmbeddedResource Include="frm\frmChangeUserPassword.resx">
+      <DependentUpon>frmChangeUserPassword.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm\frmDetainLicense.resx">
       <DependentUpon>frmDetainLicense.cs</DependentUpon>

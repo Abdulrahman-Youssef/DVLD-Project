@@ -22,27 +22,48 @@ namespace Full_Real_Project
 
         private void frmLogin_Load(object sender, EventArgs e)
         {
+            string UserName = "", Passowrd = "";
+            if (clsGlobal.GetSavedUser(ref UserName, ref Passowrd ))
+            {
+                txtbUserName.Text = UserName;
+                txtbPassword.Text = Passowrd;
+
+            }
+
 
         }
 
-        private void btnLogin_Click(object sender, EventArgs e)
+        private void btnLogin_Click_1(object sender, EventArgs e)
         {
-            // just when u time cut
-            txtbUserName.Text = "user4"; 
-            txtbPassword.Text = "123";
+            // just to time cut
+            //txtbUserName.Text = "user4"; 
+            //txtbPassword.Text = "123";
 
             clsGlobal.User = clsUsers.LoginSearch(txtbUserName.Text.ToString(), txtbPassword.Text.ToString());
 
             if (clsGlobal.User != null)
             {
+                if (cbRemember.Checked)
+                {
+                    clsGlobal.RememberUsernameAndPassword(txtbUserName.Text, txtbPassword.Text);
+                }
+                else
+                {
+                    clsGlobal.RememberUsernameAndPassword("", "");
+                }
+
+
+                if (!clsGlobal.User.Active)
+                {
+                    MessageBox.Show("ur account not active conntact rhe admin ");
+                    return;
+                }
+
+
                 frmMianScreen frmMianscreen= new frmMianScreen(this);
                 this.Hide();
                 frmMianscreen.ShowDialog();
                     
-
-
-
-
             }
             else
             {
@@ -91,5 +112,7 @@ namespace Full_Real_Project
         {
 
         }
+
+       
     }
 }

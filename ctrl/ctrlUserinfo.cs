@@ -33,7 +33,7 @@ namespace Full_Real_Project
                     lblIsActive.Text = "1";
                 }
 
-                personInfoCard1.LoadPersonInfo(clsGlobal.User.PersonID);
+                personInfoCard1.LoadPersonInfo(_User.PersonID);
 
             }
            

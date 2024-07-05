@@ -112,7 +112,7 @@ namespace Full_Real_Project.frm
         }
 
         private void btnSave_Click(object sender, EventArgs e)
-        {
+        { 
             if(txtbUserName.Text == "")
             {
                 errorProvider1.SetError(txtbUserName, "the UesrName cant be empty");
