@@ -20,7 +20,7 @@ namespace Full_Real_Project
             lblDate.Text = application.ApplicationDate.ToShortDateString();
             lblDateStatus.Text = application.LastStatusDate.ToShortDateString();
             lblFees.Text = application.PaidFees.ToString();
-            lblStatus.Text = application.ApplicationStatus == 1 ? "new" : application.ApplicationStatus == 2 ? "Cancel" : application.ApplicationStatus == 3 ? "Compeleted" : "ccompeleted";
+            lblStatus.Text = application.ApplicationStatus == clsApplication.enApplicationStatus.New ? "new" : (int)clsApplication.enApplicationStatus.Cancelled == 2 ? "Cancel" : (int)clsApplication.enApplicationStatus.Completed == 3 ? "Compeleted" : "ccompeleted";
             lblType.Text = applicationTypes.ApplicationTypeTitel.ToString();
 
 

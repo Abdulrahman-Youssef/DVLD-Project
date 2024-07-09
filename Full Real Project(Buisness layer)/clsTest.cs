@@ -48,6 +48,11 @@ namespace Full_Real_Project_Buisness_layer_
             return clsTestDataAccess.GetTestsResultsByTestAppointmentIDs( TestAppointmentIDs );
         }
 
+        public static byte GetPassedTestCount(int LocalDrivingLicenseApplication)
+        {
+            return clsTestDataAccess.GetPassedTestCount(LocalDrivingLicenseApplication);
+        }
+
 
     }
 }

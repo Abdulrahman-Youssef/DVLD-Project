@@ -14,11 +14,6 @@ namespace Full_Real_Project_Buisness_layer_
         public enMode Mode = enMode.AddNew;
 
 
-
-
-
-
-
         public int ID { get; set; }
         public string CountryName { get; set; }
         public string Code { get; set; }

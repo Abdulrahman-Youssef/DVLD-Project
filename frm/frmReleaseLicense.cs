@@ -30,14 +30,15 @@ namespace Full_Real_Project.frm
         private void btnRelease_Click(object sender, EventArgs e)
         {
             clsApplication application = new clsApplication();
-            application.ApplicationStatus = 3;
+            application.ApplicationStatus = clsApplication.enApplicationStatus.Completed;
             application.ApplicantPersonID = clsApplication.GetApplicationByApplicatoinID(clsLicense.GetLicenseByLicenseID(ctrlLicenseInfo1.LicenseID).ApplicationID).ApplicantPersonID; ;
             application.PaidFees = clsApplicationTypes.GetApplicationTypesByApplicationTypeID(clsApplication.GetApplicationByApplicatoinID(clsLicense.GetLicenseByLicenseID(ctrlLicenseInfo1.LicenseID).ApplicationID).ApplicationTypeID).ApplicationFees;
             application.ApplicationDate = DateTime.Now;
             application.CreatedByUserID = clsGlobal.User.UserID;
             application.LastStatusDate = DateTime.Now;
             application.ApplicationTypeID = 5;
-            if (application.AddedNewApplication())
+            if (application.Save())
+            //if (application.AddedNewApplication())
             { 
                 if (clsDetainLicense.UpdateIsReleasedByLicenseID(ctrlLicenseInfo1.LicenseID, true, DateTime.Now, clsGlobal.User.UserID, application.ApplicationID))
                 {

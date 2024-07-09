@@ -75,12 +75,13 @@ namespace Full_Real_Project.frm
 
                 application.ApplicationDate = DateTime.Now;
                 application.PaidFees = clsApplicationTypes.GetApplicationTypesByApplicationTypeID(2).ApplicationFees;
-                application.ApplicationStatus = 3;
+                application.ApplicationStatus = clsApplication.enApplicationStatus.Completed;
                 application.ApplicantPersonID = fulledapplication2.ApplicantPersonID;
                 application.ApplicationTypeID = 2;
                 application.CreatedByUserID = clsGlobal.User.UserID;
                 application.LastStatusDate = DateTime.Now;
-               if (application.AddedNewApplication())
+               if (application.Save())
+               //if (application.AddedNewApplication())
                 {
                     MessageBox.Show("appolication Added"+ application.ApplicantPersonID) ;
                     license.ApplicationID = application.ApplicationID;

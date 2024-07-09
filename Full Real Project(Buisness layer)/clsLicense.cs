@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Full_Real_Project_Buisness_layer_
 {
-    public class clsLicense
+    public class clsLicense 
     {
         public int LicenseID { get; set; }
         public int ApplicationID { get; set; }
@@ -110,8 +110,10 @@ namespace Full_Real_Project_Buisness_layer_
         }
 
 
-
-
+        public static bool GetActiveLicenseIDByPersonID(int PersonID, int LicenseClass)
+        {
+            return clsLicenseDataAccess.GetActiveLicenseIDByPersonID(PersonID,LicenseClass) > 0 ;
+        }
 
 
 

@@ -76,14 +76,15 @@ namespace Full_Real_Project.frm
                 clsApplication application = new clsApplication();
                 clsLicense license = clsLicense.GetLicenseByLicenseID(ctrlLicenseInfo1.LicenseID);
 
-                application.ApplicationStatus = 3;
+                application.ApplicationStatus = clsApplication.enApplicationStatus.Completed;
                 application.ApplicationDate = DateTime.Now;
                 application.LastStatusDate = DateTime.Now;
                 application.PaidFees = clsApplicationTypes.GetApplicationTypesByApplicationTypeID(Reason).ApplicationFees;
                 application.CreatedByUserID = clsGlobal.User.UserID;
                 application.ApplicantPersonID = clsApplication.GetApplicationByApplicatoinID(license.ApplicationID).ApplicantPersonID;
                 application.ApplicationTypeID = Reason;
-                if (application.AddedNewApplication())
+                if (application.Save())
+                //if (application.AddedNewApplication())
                 {
                     MessageBox.Show("Application Add " + application.ApplicationID);
                     license.ApplicationID = application.ApplicationID;

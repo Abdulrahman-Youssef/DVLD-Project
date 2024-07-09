@@ -42,10 +42,11 @@ namespace Full_Real_Project.frm
                 Application.ApplicantPersonID = 
 clsApplication.GetApplicationByApplicatoinID(clsLocalDrivingLicenseApplications.GetLocalDrivingLicenseApplicationByLDLAID(LocalDLApplicationID).ApplicationID).ApplicantPersonID;
                 Application.PaidFees = 5;
-                Application.ApplicationStatus = 3; 
+                Application.ApplicationStatus = clsApplication.enApplicationStatus.Completed; 
                 Application.LastStatusDate = ctrlAddAppointment1.AppointmentDate;
                 Application.ApplicationTypeID = 7;
-               if( Application.AddedNewApplication())
+               if( Application.Save())
+               //if( Application.AddedNewApplication())
                 {
                     MessageBox.Show("Application Added");
                     testAppointments.RetakeTestApplicationID = Application.ApplicationID;

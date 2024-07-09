@@ -15,8 +15,8 @@ namespace Full_Real_Project
     {
         public int LocalDrivingLicenseApplicationID {  get; set; }
 
-        clsLocalDrivingLicenseApplications LocalDrivingLicenseApplications_View; 
-        
+        clsLocalDrivingLicenseApplications LocalDrivingLicenseApplications_View;
+        clsLocalDrivingLicenseApplications clsLocalDrivingLicenseApplication; 
 
         private void _Fillctrl()
         {
@@ -27,6 +27,8 @@ namespace Full_Real_Project
         }
         public void LoadLocalDrivingLicenseApplicationID(int LocalDrivingLicenseApplicationID)
         {
+            this.clsLocalDrivingLicenseApplication = clsLocalDrivingLicenseApplications.GetLocalDrivingLicenseApplicationByLDLAID(LocalDrivingLicenseApplicationID); 
+
            this.LocalDrivingLicenseApplicationID = LocalDrivingLicenseApplicationID;
            this.LocalDrivingLicenseApplications_View = clsLocalDrivingLicenseApplications.GetLocalDrivingLicenseApplicationsByLDLAID_View(LocalDrivingLicenseApplicationID);
             _Fillctrl();

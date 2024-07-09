@@ -87,5 +87,41 @@ namespace Full_Real_Project_DataAccess_layer_
             return null;
         }
 
+
+        public static byte GetPassedTestCount( int LocalDrivingLicenseApplicationID)
+        {
+            byte count = 0;
+            SqlConnection conn = new SqlConnection(clsDataAccessLayerSettings.ConnectionString);
+            string query = @"SELECT PassedTestCount = Count(TestTypeID)
+                            FROM Tests INNER JOIN 
+                            TestAppointments ON Tests.AppointmentID = TestAppointments.AppointmentID 
+                            WHERE LocalDrivingLicenseApplication = @LocalDrivingLicenseApplication AND TestResult =1";
+
+            SqlCommand cmd = new SqlCommand(query , conn);
+            cmd.Parameters.AddWithValue("@LocalDrivingLicenseApplication" , LocalDrivingLicenseApplicationID);
+            try
+            {
+                conn.Open();
+
+
+                object result = cmd.ExecuteScalar();
+
+                if (result != null && byte.TryParse(result.ToString(), out byte ptCount))
+                {
+                    count = ptCount;
+                }
+            }
+            catch
+            {
+
+            }
+
+            return count; 
+        }
+
+
+
+
+
     }
 }

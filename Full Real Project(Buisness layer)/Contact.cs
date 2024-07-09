@@ -12,12 +12,72 @@ namespace Full_Real_Project_Buisness_layer_
     public class clsContact
     {
 
-
-
-
-
         public enum enMode { Update = 0, AddNew = 1 }
         public enMode Mode = enMode.AddNew;
+        public int Id { get; set; }
+        public string NationalNo { get; set; }
+        public string FirstName { get; set; }
+        public string SecondName {  get; set; }
+        public string ThirdName { get; set; }       
+        public string LastName { get; set; }
+        public string FullName
+        {
+              get { return FirstName + " " + SecondName + " " + ThirdName + " " + LastName; }
+        }
+        public string Email { get; set; }
+        public string Phone { get; set; }
+        public string Address { get; set; }
+        public int Gendor {  get; set; }
+        public DateTime DateOfBirth { get; set; }
+        public int NationalityCountryID { get; set; }
+        public string ImagePath { get; set; }
+
+        public clsCountry CountryInfo;
+
+
+
+        public clsContact()
+        {
+            Id = -1;
+            FirstName = "";
+            SecondName = "";
+            ThirdName = "";
+            LastName = "";
+            Email = "";
+            Phone = "";
+            Address = "";
+            Gendor = 0;
+            DateOfBirth = DateTime.Now;
+            NationalityCountryID = 50;
+            ImagePath = "";
+            Mode = enMode.AddNew;
+        }
+
+
+        private clsContact(int ID,string NationalNo, string FirstName,string SecondName , string ThirdName, string LastName, string Email,
+            string Phone,string Address,int Gendor, DateTime DataOfBirth, int NationalityCountryID, string ImagePath)
+        {
+            this.Id = ID;
+            this.NationalNo = NationalNo;
+            this.FirstName = FirstName;
+            this.SecondName = SecondName;
+            this.ThirdName = ThirdName;
+            this.LastName = LastName;
+            //this.FullName = FirstName + " " + SecondName + " " + ThirdName + " " + LastName; this cuz error 
+            this.Email = Email;
+            this.Phone = Phone;
+            this.Address = Address;
+            this.Gendor = Gendor;
+            this.DateOfBirth = DataOfBirth;
+            this.NationalityCountryID = NationalityCountryID;
+            this.ImagePath = ImagePath;
+            CountryInfo = clsCountry.Find(NationalityCountryID);
+            Mode = enMode.Update;
+        }
+
+
+
+
         private bool _AddedNewContact()
         {
             this.Id = clsContactsDataAccess.AddedNewContact(this.NationalNo ,this.FirstName,this.SecondName , this.ThirdName,  
@@ -32,60 +92,6 @@ namespace Full_Real_Project_Buisness_layer_
                 this.LastName, this.Email, this.Phone,this.Address,this.Gendor, this.DateOfBirth, this.NationalityCountryID, this.ImagePath);
             return effectedRows > 0;
         }
-
-
-        public int Id { get; set; }
-        public string NationalNo { get; set; }
-        public string FirstName { get; set; }
-        public string SecondName {  get; set; }
-        public string ThirdName { get; set; }       
-        public string LastName { get; set; }
-        public string FullName {  get; set; }
-        public string Email { get; set; }
-        public string Phone { get; set; }
-        public string Address { get; set; }
-        public int Gendor {  get; set; }
-        public DateTime DateOfBirth { get; set; }
-        public int NationalityCountryID { get; set; }
-        public string ImagePath { get; set; }
-        
-        public clsContact()
-        {
-            Id = -1;
-            FirstName = "";
-            SecondName = "";
-            ThirdName = "";
-            LastName = "";
-            Email = "";
-            Phone = "";
-            Address = "";
-            Gendor = 0; 
-            DateOfBirth = DateTime.Now;
-            NationalityCountryID = 50;
-            ImagePath = "";
-        }
-
-        private clsContact(int ID,string NationalNo, string FirstName,string SecondName , string ThirdName, string LastName, string Email,
-            string Phone,string Address,int Gendor, DateTime DataOfBirth, int NationalityCountryID, string ImagePath)
-        {
-            this.Id = ID;
-            this.NationalNo = NationalNo;
-            this.FirstName = FirstName;
-            this.SecondName = SecondName;
-            this.ThirdName = ThirdName;
-            this.LastName = LastName;
-            this.FullName = FirstName + " " + SecondName + " " + ThirdName + " " + LastName;
-            this.Email = Email;
-            this.Phone = Phone;
-            this.Address = Address;
-            this.Gendor = Gendor;
-            this.DateOfBirth = DataOfBirth;
-            this.NationalityCountryID = NationalityCountryID;
-            this.ImagePath = ImagePath;
-
-            Mode = enMode.Update;
-        }
-
 
         public static clsContact Find(int ID)
         {

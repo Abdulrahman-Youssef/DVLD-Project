@@ -42,14 +42,15 @@ namespace Full_Real_Project.frm
             {
                 clsApplication application = new clsApplication();
                 clsInternationalDrivingLicense internationalDrivingLicense = new clsInternationalDrivingLicense(); 
-                application.ApplicationStatus = 3;
+                application.ApplicationStatus = clsApplication.enApplicationStatus.Completed;
                 application.ApplicationDate = DateTime.Now;
                 application.LastStatusDate = DateTime.Now;
                 application.PaidFees = clsApplicationTypes.GetApplicationTypesByApplicationTypeID(6).ApplicationFees;
                 application.ApplicantPersonID = clsApplication.GetApplicationByApplicatoinID(clsLicense.GetLicenseByLicenseID(ctrlFullApplicationInfo1.LDLA).ApplicationID).ApplicantPersonID;
                 application.ApplicationTypeID = 6;
                 application.CreatedByUserID = clsGlobal.User.UserID;
-                if(application.AddedNewApplication())
+                if(application.Save())
+                //if(application.AddedNewApplication())
                 {
                     MessageBox.Show("Application Added successfully" +application.ApplicationID);
                 }

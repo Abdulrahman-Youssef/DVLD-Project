@@ -30,6 +30,7 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.userInfoAndSreach1 = new Full_Real_Project.UserInfoAndSreach();
             this.btnNext = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -44,7 +45,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
-            this.userInfoAndSreach1 = new Full_Real_Project.UserInfoAndSreach();
+            this.lblTitle = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -54,10 +55,10 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(12, 17);
+            this.tabControl1.Location = new System.Drawing.Point(12, 31);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(832, 437);
+            this.tabControl1.Size = new System.Drawing.Size(832, 409);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -67,17 +68,25 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(824, 411);
+            this.tabPage1.Size = new System.Drawing.Size(824, 383);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "PersonInfo";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // userInfoAndSreach1
+            // 
+            this.userInfoAndSreach1.Location = new System.Drawing.Point(0, 6);
+            this.userInfoAndSreach1.Name = "userInfoAndSreach1";
+            this.userInfoAndSreach1.PersonID = 0;
+            this.userInfoAndSreach1.Size = new System.Drawing.Size(819, 340);
+            this.userInfoAndSreach1.TabIndex = 1;
             // 
             // btnNext
             // 
             this.btnNext.BackColor = System.Drawing.Color.White;
             this.btnNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNext.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnNext.Location = new System.Drawing.Point(731, 372);
+            this.btnNext.Location = new System.Drawing.Point(731, 347);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(88, 33);
             this.btnNext.TabIndex = 0;
@@ -100,7 +109,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(824, 411);
+            this.tabPage2.Size = new System.Drawing.Size(824, 383);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Application Info";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -221,7 +230,7 @@
             this.btnClose.BackColor = System.Drawing.Color.White;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnClose.Location = new System.Drawing.Point(25, 469);
+            this.btnClose.Location = new System.Drawing.Point(13, 446);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(88, 33);
             this.btnClose.TabIndex = 2;
@@ -234,7 +243,7 @@
             this.btnSave.Enabled = false;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnSave.Location = new System.Drawing.Point(780, 469);
+            this.btnSave.Location = new System.Drawing.Point(754, 446);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(88, 33);
             this.btnSave.TabIndex = 3;
@@ -242,29 +251,34 @@
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // userInfoAndSreach1
+            // lblTitle
             // 
-            this.userInfoAndSreach1.Location = new System.Drawing.Point(0, 31);
-            this.userInfoAndSreach1.Name = "userInfoAndSreach1";
-            this.userInfoAndSreach1.PersonID = 0;
-            this.userInfoAndSreach1.Size = new System.Drawing.Size(819, 340);
-            this.userInfoAndSreach1.TabIndex = 1;
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.Location = new System.Drawing.Point(256, 9);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(357, 25);
+            this.lblTitle.TabIndex = 4;
+            this.lblTitle.Text = "Local Driving License Applcation";
             // 
             // frmAplication
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(880, 511);
+            this.ClientSize = new System.Drawing.Size(859, 488);
+            this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.tabControl1);
             this.Name = "frmAplication";
             this.Text = "frmAplication";
+            this.Load += new System.EventHandler(this.frmAplication_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -287,5 +301,6 @@
         private System.Windows.Forms.Label lblUserName;
         private System.Windows.Forms.Label lblApplicationDate;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label lblTitle;
     }
 }

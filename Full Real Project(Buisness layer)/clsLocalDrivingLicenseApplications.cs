@@ -8,21 +8,57 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Full_Real_Project_Buisness_layer_
 {
-    public class clsLocalDrivingLicenseApplications
+    public class clsLocalDrivingLicenseApplications : clsApplication
     {
-        private int _AddNewLocalDrivingLicenseApplications()
+        enum enMode { AddedNew = 0, Update = 1 }
+        enMode Mode = enMode.AddedNew;
+        public int LocalDrivingLicenseApplicationsID { get; set; }
+        public int LicenseClassID { get; set; }
+
+        //View 
+        public string ClassName_View { get; set; }
+        public int PassedTestCount_View { get; set; }
+        public string FullName_View { get; set; }
+        public DateTime ApplicationDate_View { get; set; }
+        public int NationalNo_View { get; set; }
+        public int Status_View { get; set; }
+        public clsLicenseClasses LicenseClasseInfo;
+
+        // this have to be the main constructor and the emtpy one , no more
+        private clsLocalDrivingLicenseApplications(int LocalDrivingLicenseApplicationID, int ApplicationID, int ApplicantPersonID,
+         DateTime ApplicationDate, int ApplicationTypeID,
+          enApplicationStatus ApplicationStatus, DateTime LastStatusDate,
+          decimal PaidFees, int CreatedByUserID, int LicenseClassID)
+
         {
-            return this.LocalDrivingLicenseApplicationsID = clsLocalDrivingLicenseApplicationsDataAccessLayer.AddedLocalDrivingLicenseApplications(this.ApplicationID, this.LicenseClassID);
+                
+            this.LocalDrivingLicenseApplicationsID = LocalDrivingLicenseApplicationID; ;
+            this.ApplicationID = ApplicationID;
+            this.ApplicantPersonID = ApplicantPersonID;
+            this.ApplicationDate = ApplicationDate;
+            this.ApplicationTypeID = (int)ApplicationTypeID;
+            this.ApplicationStatus = ApplicationStatus;
+            this.LastStatusDate = LastStatusDate;
+            this.PaidFees = PaidFees;
+            this.CreatedByUserID = CreatedByUserID;
+            this.LicenseClassID = LicenseClassID;
+            this.LicenseClasseInfo = clsLicenseClasses.GetCNAndCDAndCFByLicenseClassesID(LicenseClassID);
+            Mode = enMode.Update;
         }
+
         private clsLocalDrivingLicenseApplications(int LocalDrivingLicenseApplicationsID, int ApplicationID, int LicenseClassID)
         {
 
             this.LocalDrivingLicenseApplicationsID = LocalDrivingLicenseApplicationsID;
             this.ApplicationID = ApplicationID;
             this.LicenseClassID = LicenseClassID;
+            this.LicenseClasseInfo = clsLicenseClasses.GetCNAndCDAndCFByLicenseClassesID(LicenseClassID); 
+
+            Mode = enMode.Update;
         }
         //View
         private clsLocalDrivingLicenseApplications(int LocalDrivingLicenseApplicationsID, string FullName, string ClassName, int PassedTestCount, int status_View ,int NationalNo_View ,DateTime ApplicationDate_View )
@@ -34,26 +70,21 @@ namespace Full_Real_Project_Buisness_layer_
             this.Status_View = status_View;
             this.ApplicationDate_View = ApplicationDate_View;
             this.NationalNo_View = NationalNo_View;
+            Mode = enMode.Update;
         }
         public clsLocalDrivingLicenseApplications()
         {
             LocalDrivingLicenseApplicationsID = -1;
             this.LicenseClassID = -1;
             this.ApplicationID = -1;
+            Mode = enMode.AddedNew;
         }
-        public int LocalDrivingLicenseApplicationsID { get; set; }
-        public int ApplicationID { get; set; }
-        public int LicenseClassID { get; set; }
 
-        //View 
-        public string ClassName_View { get; set; }
-        public int PassedTestCount_View { get; set; }
-        public string FullName_View { get; set; }
-        public DateTime ApplicationDate_View { get; set; }
-        public int NationalNo_View { get; set; }
-        public int Status_View { get; set; }
-
-
+        private bool _AddNewLocalDrivingLicenseApplications()
+        {
+            this.LocalDrivingLicenseApplicationsID = clsLocalDrivingLicenseApplicationsDataAccessLayer.AddedLocalDrivingLicenseApplications(this.ApplicationID, this.LicenseClassID);
+            return this.LocalDrivingLicenseApplicationsID > 0; 
+        }
         public static DataTable GetAllLocalDrivingLicenseApplications()
         {
             return clsLocalDrivingLicenseApplicationsDataAccessLayer.GetAllLocalDrivingLicenseApplications();
@@ -63,9 +94,35 @@ namespace Full_Real_Project_Buisness_layer_
             return clsLocalDrivingLicenseApplicationsDataAccessLayer.GetLocalDrivingLicenseApplications_View();
         }
 
+        public bool save()
+        {
+         base.Mode = (clsApplication.enMode)Mode;
+            if(!base.Save())
+                return false;
+
+            switch (Mode)
+            {
+                case enMode.AddedNew:
+                    if (_AddNewLocalDrivingLicenseApplications())
+                    {
+                        Mode = enMode.Update;
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                case enMode.Update:
+
+                    return false;
+                    
+            }
+            return false;
+
+        }
         public bool AddNewLocalDrivingLicenseApplications()
         {
-            return 0 < _AddNewLocalDrivingLicenseApplications();
+            return  _AddNewLocalDrivingLicenseApplications();
         }
 
         public static DataTable LicenseClassIDsByApplicationIDs(List<int> applicationIDs)
@@ -81,6 +138,8 @@ namespace Full_Real_Project_Buisness_layer_
             {
                 return new clsLocalDrivingLicenseApplications(LocalDrivingLicenseApplicationID, ApplicationID, LicenseClassID);
             }
+
+
 
             return null;
         }
@@ -98,8 +157,16 @@ namespace Full_Real_Project_Buisness_layer_
 
         }
 
-      
 
+        public static byte GetPassedTestCount(int LocalDrivingLicenseApplication)
+        {
+            return clsTest.GetPassedTestCount(LocalDrivingLicenseApplication);
+        }
+        public  byte GetPassedTestCount()
+        {
+            return clsTest.GetPassedTestCount(this.LocalDrivingLicenseApplicationsID);
+        }
+        
 
 
 

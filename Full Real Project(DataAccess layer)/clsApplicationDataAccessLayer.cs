@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -80,9 +81,51 @@ namespace Full_Real_Project_DataAccess_layer_
 
 
         }
-    
-    
-    
+
+
+
+        public static bool UpdateApplication(int ApplicationID,int CreatedByUserID, decimal PaidFees, DateTime LastStatusDate,
+                                          int ApplicationStatus,int ApplicationTypeID,DateTime ApplicationDate,int ApplicantPersonID)
+        {
+            int EffectedRow = 0;
+            SqlConnection sqlConnection = new SqlConnection(clsDataAccessLayerSettings.ConnectionString);
+            string qeury = @"UPDATE  Applications SET 
+                                         CreatedByUserID = @CreatedByUserID
+                                          ,PaidFees = @PaidFees, 
+                                          LastStatusDate = @LastStatusDate,
+                                          ApplicationStatus =@ApplicationStatus,
+                                          ApplicationTypeID = @ApplicationTypeID,
+                                          ApplicationDate = @ApplicationDate,
+                                          ApplicantPersonID =  @ApplicantPersonID
+                                    WHERE ApplicationID = @ApplicationID";
+            SqlCommand cmd = new SqlCommand(qeury, sqlConnection);
+
+            cmd.Parameters.AddWithValue("@ApplicationID", ApplicationID);
+            cmd.Parameters.AddWithValue("@CreatedByUserID", CreatedByUserID);
+            cmd.Parameters.AddWithValue("@PaidFees", PaidFees);
+            cmd.Parameters.AddWithValue("@LastStatusDate", LastStatusDate);
+            cmd.Parameters.AddWithValue("@ApplicationStatus", ApplicationStatus);
+            cmd.Parameters.AddWithValue("@ApplicationTypeID", ApplicationTypeID);
+            cmd.Parameters.AddWithValue("@ApplicationDate", ApplicationDate);
+            cmd.Parameters.AddWithValue("@ApplicantPersonID", ApplicantPersonID);
+
+            try
+            {
+                sqlConnection.Open();
+
+                  EffectedRow = cmd.ExecuteNonQuery();
+
+            
+            }
+            catch { }
+            finally { sqlConnection.Close(); }
+
+            return EffectedRow > 0 ;
+
+
+        }
+
+
         public static DataTable GetApplicationIDsByPersonIDCopletedNew(int PersonID)
         {
             DataTable dataTable = new DataTable();
@@ -109,8 +152,8 @@ namespace Full_Real_Project_DataAccess_layer_
             return dataTable;
         }
 
-        public static bool GetApplication(int ApplicationID, ref int ApplicationTypeID,ref int ApplicantPersonID, ref int ApplicationStatus,ref int CreatedByUserID,
-                    ref decimal PaidFees, ref DateTime LastStatusDate, ref DateTime ApplicationDate)
+        public static bool GetApplication(int ApplicationID, ref int ApplicationTypeID,ref int ApplicantPersonID, ref byte ApplicationStatus
+            ,ref int CreatedByUserID, ref decimal PaidFees, ref DateTime LastStatusDate, ref DateTime ApplicationDate)
         {
             bool Found = false;
             SqlConnection sqlConnection = new SqlConnection(clsDataAccessLayerSettings.ConnectionString);
@@ -176,7 +219,46 @@ namespace Full_Real_Project_DataAccess_layer_
         }
 
 
+        public static int GetActiveApplicationIDForLicenseClass(int PersonID , int ApplicationTypeID , int LicenseClassID)
+        {
+            int Rows = -1; 
+            SqlConnection sqlConnection = new SqlConnection(clsDataAccessLayerSettings.ConnectionString);
+            string query = @"SELECT ActiveApplicationID = Applications.ApplicationID
+                            FROM 
+                            Applications INNER JOIN 
+                            LocalDrivingLicenseApplications ON Applications.ApplicationID = LocalDrivingLicenseApplications.ApplicationID
+                      WHERE Applications.ApplicantPersonID =@PersonID
+                        AND Applications.ApplicationTypeID =@ApplicationTypeID 
+                        AND LocalDrivingLicenseApplications.LicenseClassID = @LicenseClassID
+                        AND ApplicationStatus = 1";
+            
+            SqlCommand command = new SqlCommand(query, sqlConnection);
 
+            command.Parameters.AddWithValue("@PersonID" , PersonID);
+            command.Parameters.AddWithValue("@ApplicationTypeID" , ApplicationTypeID);
+            command.Parameters.AddWithValue("@LicenseClassID", LicenseClassID);
+
+            try
+            {
+                sqlConnection.Open();
+
+                object obj = command.ExecuteScalar();
+
+                if (obj != null && int.TryParse(obj.ToString(), out int resutlt))
+                {
+                    return resutlt;
+                }
+
+
+            }
+            catch
+            {
+
+            }
+            finally { sqlConnection.Close(); }
+
+            return Rows; 
+        }
 
 
 

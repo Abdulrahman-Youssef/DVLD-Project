@@ -125,6 +125,9 @@ namespace Full_Real_Project
                 rbMale.Checked=true;
             }
 
+            dateTimePicker1.MinDate = DateTime.Now.AddYears(-200);
+            dateTimePicker1.MaxDate = DateTime.Now.AddYears(-0);
+
         }
 
         private void label2_Click(object sender, EventArgs e)

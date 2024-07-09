@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -259,6 +260,41 @@ namespace Full_Real_Project_DataAccess_layer_
             return EffectedRow;
         }
 
+
+        public static int GetActiveLicenseIDByPersonID(int PersonID ,int LicenseClass)
+        {
+            int R = 0;
+            SqlConnection connection = new SqlConnection(clsDataAccessLayerSettings.ConnectionString);
+            string query = @"SELECT        Licenses.LicenseID
+                            FROM Licenses INNER JOIN
+                                                     Drivers ON Licenses.DriverID = Drivers.DriverID
+                             WHERE                             
+                             Licenses.LicenseClass = @LicenseClass 
+                              AND Drivers.PersonID = @PersonID
+                              And IsActive=1 ";
+
+            SqlCommand cmd = new SqlCommand(query, connection);
+
+            cmd.Parameters.AddWithValue("@LicenseClass", LicenseClass);
+            cmd.Parameters.AddWithValue("@PersonID", PersonID);
+
+            try
+            {
+                connection.Open();
+
+                object result = cmd.ExecuteScalar();
+
+                if (result != null && int.TryParse(result.ToString(), out int insertedID))
+                {
+                    R = insertedID;
+                    return R;
+                }
+            }
+            catch { }
+            finally { connection.Close(); }
+
+            return R;
+        }
 
 
     }

@@ -215,11 +215,11 @@
             // dateTimePicker1
             // 
             this.dateTimePicker1.Location = new System.Drawing.Point(496, 74);
-            this.dateTimePicker1.MaxDate = new System.DateTime(2006, 1, 1, 0, 0, 0, 0);
+            this.dateTimePicker1.MaxDate = new System.DateTime(2009, 11, 19, 0, 0, 0, 0);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker1.TabIndex = 18;
-            this.dateTimePicker1.Value = new System.DateTime(2006, 1, 1, 0, 0, 0, 0);
+            this.dateTimePicker1.Value = new System.DateTime(1969, 1, 23, 0, 0, 0, 0);
             // 
             // txtbPhone
             // 

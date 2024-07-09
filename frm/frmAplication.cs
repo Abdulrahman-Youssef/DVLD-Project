@@ -16,49 +16,42 @@ namespace Full_Real_Project.frm
 {
     public partial class frmAplication : Form
     {
-        clsApplication Application = new clsApplication();
+        enum enMode { AddedNew = 1, Updated = 2 }
+        enMode Mode = enMode.AddedNew;
+        //clsApplication Application = new clsApplication();
+        int localDrivingLicenseApplicationID; 
         clsLocalDrivingLicenseApplications localDrivingLicenseApplications = new clsLocalDrivingLicenseApplications();
 
-        public bool IsLicenseClassAleadyExist()
+        public frmAplication()
         {
-            bool Found = true;
-            //check first is this user has the same type of application and class or not 
-            List<int> listApplicationIDs = new List<int>();
-            List<int> listLicenseClassIDs = new List<int>();
-            
-            DataTable ApplicationIDs = clsApplication.GetApplicationIDsByPersonID(userInfoAndSreach1.PersonID);
-
-            //dgv.DataSource = d;
-
-            foreach (DataRow row in ApplicationIDs.Rows)
-            {
-                listApplicationIDs.Add(Convert.ToInt32(row["ApplicationID"].ToString()));
-            }
-            DataTable LicenseClassIDs = clsLocalDrivingLicenseApplications.LicenseClassIDsByApplicationIDs(listApplicationIDs);
-            foreach (DataRow row in LicenseClassIDs.Rows)
-            {
-                listLicenseClassIDs.Add(Convert.ToInt32(row["LicenseClassID"].ToString()));
-
-            }
-
-            foreach (int licenseclassID in listLicenseClassIDs)
-            {
-                // جبت كل الابلكيش وبعد كدا جبت كل ليسنس كلاسس اللي الشخص دا عاملها وبعدين وقارنتها باللي عاوز يعملها (كوملبيتد و نيو)بس
-                Console.WriteLine(comboBox1.SelectedIndex.ToString());
-                if (licenseclassID == comboBox1.SelectedIndex + 1)
-                {
-                  return Found = false;
-                }
-                
-            }
-            return Found;
-        
+            InitializeComponent();
+            Mode = enMode.AddedNew;
         }
+        public frmAplication(int LocalDrivingLicenseApplicationID)
+        {
+            InitializeComponent();
+            localDrivingLicenseApplicationID = LocalDrivingLicenseApplicationID;
+            Mode = enMode.Updated; 
+
+
+
+        }
+
+        private void _FillCoboBox()
+        {
+            DataTable dt = clsLicenseClasses.getClassCoulmn("ClassName");
+            foreach (DataRow row in dt.Rows)
+            {
+                comboBox1.Items.Add(row["ClassName"].ToString());
+            }
+            comboBox1.SelectedIndex = 0;
+        }
+
         private void _enabled(int OnOff)
         {
             if(OnOff == -1)
             {
-             label1.Enabled =false;
+                label1.Enabled =false;
                 label2.Enabled =false;
                 label3.Enabled =false;
                 label4.Enabled =false;
@@ -86,23 +79,26 @@ namespace Full_Real_Project.frm
             }
         } 
 
-        private void _fillfrm()
+        private void _ResetDefualtValues()
         {
-            DataTable dt =  clsLicenseClasses.getClassCoulmn("ClassName");
-             
-            lblUserName.Text = clsGlobal.User.UserName.ToString();
-            lblApplicationDate.Text = DateTime.Now.ToShortDateString();
-            lblApplicationFees.Text = "15";
-            foreach(DataRow row in dt.Rows)
+            if (Mode == enMode.AddedNew)
             {
-                comboBox1.Items.Add(row["ClassName"].ToString());
+                lblTitle.Text = "Added New Local Driving License Application";
+                localDrivingLicenseApplications = new clsLocalDrivingLicenseApplications();
+                comboBox1.SelectedIndex = 2;
+                lblUserName.Text = clsGlobal.User.UserName.ToString();
+                lblApplicationDate.Text = DateTime.Now.ToShortDateString();
+                lblApplicationFees.Text = clsApplicationTypes.GetApplicationTypesByApplicationTypeID((int)clsApplication.enApplicationType.NewDrivingLicense).ApplicationFees.ToString();
+                _FillCoboBox();
+                lblUserName.Text = clsGlobal.User.UserName;
             }
-            comboBox1.SelectedIndex = 0;
+            else
+            {
+                lblTitle.Text = "Update LocalDriving License Application";
+
+            }
+
         }   
-        public frmAplication()
-        {
-            InitializeComponent();
-        }
 
         private void btnNext_Click(object sender, EventArgs e)
         {
@@ -110,7 +106,7 @@ namespace Full_Real_Project.frm
             {
                 _enabled(0);
                 tabControl1.SelectedIndex = 1;
-                _fillfrm();
+                
             }
             else
             {
@@ -120,37 +116,41 @@ namespace Full_Real_Project.frm
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            // put that in fucntion
-          
-            //untill here and the reslut of this funcion will be bool and the answer for the condition
-            if (IsLicenseClassAleadyExist())
+            //new
+            if (clsApplication.GetActiveApplicationIDForLicenseClass(userInfoAndSreach1.PersonID, (int)clsApplication.enApplicationType.NewDrivingLicense, comboBox1.SelectedIndex + 1))
             {
-            Application.ApplicationTypeID = 1;
-            Application.ApplicantPersonID = userInfoAndSreach1.PersonID;
-            Application.CreatedByUserID   = clsGlobal.User.UserID;
-            Application.ApplicationStatus = 1; // New
-            Application.ApplicationDate   = DateTime.Now;
-            Application.LastStatusDate    = Application.ApplicationDate.AddHours(1);
-            Application.PaidFees          = decimal.Parse(lblApplicationFees.Text.ToString());
-            bool bolapp                   = Application.AddedNewApplication(); 
-            //add to local license too
-            localDrivingLicenseApplications.ApplicationID   = Application.ApplicationID;
-            localDrivingLicenseApplications.LicenseClassID  = comboBox1.SelectedIndex +1;
-            bool drivinglicense                             = localDrivingLicenseApplications.AddNewLocalDrivingLicenseApplications();
-                if (drivinglicense && bolapp)
-                {
-                    MessageBox.Show("added");
-                    lblDL.Text = Application.ApplicationID.ToString();
-                }
-                else
-                {
-                    MessageBox.Show("not added");
-                }
+                MessageBox.Show("you have already Active LocalDrivingLicense with the same License type in this person chose another Lincense type");
+                return;
+            }
+
+            if(clsLicense.GetActiveLicenseIDByPersonID(userInfoAndSreach1.PersonID , comboBox1.SelectedIndex +1))
+            {
+                MessageBox.Show("This perosn have a Lincense already from this type chose another one ");
+                return; 
+            }
+
+            localDrivingLicenseApplications.ApplicationTypeID = 1;
+            localDrivingLicenseApplications.ApplicantPersonID = userInfoAndSreach1.PersonID;
+            localDrivingLicenseApplications.CreatedByUserID = clsGlobal.User.UserID;
+            localDrivingLicenseApplications.ApplicationStatus = clsApplication.enApplicationStatus.New; // New
+            localDrivingLicenseApplications.ApplicationDate = DateTime.Now;
+            localDrivingLicenseApplications.LastStatusDate = DateTime.Now.AddDays(30);
+            localDrivingLicenseApplications.PaidFees = decimal.Parse(lblApplicationFees.Text.ToString());
+            //localDrivingLicenseApplications.ApplicationID = Application.ApplicationID;
+            localDrivingLicenseApplications.LicenseClassID = comboBox1.SelectedIndex + 1;
+
+            if (localDrivingLicenseApplications.save())
+            {
+                MessageBox.Show("LocalDriving license Application Added successfully ");
+                lblDL.Text = localDrivingLicenseApplications.ApplicationID.ToString();
+                Mode = enMode.Updated;
+                lblTitle.Text = "Update local Driving License"; 
             }
             else
             {
-                MessageBox.Show("already have an application");
+                MessageBox.Show("Local Driving License Application Not Added");
             }
+
 
         }
 
@@ -159,6 +159,37 @@ namespace Full_Real_Project.frm
             Console.WriteLine(comboBox1.SelectedIndex.ToString());
 
           
+
+        }
+
+        private void _LoadData()
+        {
+            localDrivingLicenseApplications = clsLocalDrivingLicenseApplications.GetLocalDrivingLicenseApplicationByLDLAID(this.localDrivingLicenseApplicationID);
+            if(localDrivingLicenseApplications == null)
+            {
+                MessageBox.Show("this LocalDrivingLicenseApplication Not exist");
+                return;
+            }
+
+
+            lblApplicationDate.Text = localDrivingLicenseApplications.ApplicationDate.ToShortDateString();
+            lblDL.Text = localDrivingLicenseApplications.ApplicationID.ToString();
+            lblUserName.Text = clsUsers.FindUserByUesrID(localDrivingLicenseApplications.CreatedByUserID).ToString();
+            userInfoAndSreach1.LoadWithEnabledFilter(false, localDrivingLicenseApplications.ApplicantPersonID);
+            comboBox1.SelectedIndex = comboBox1.FindString(localDrivingLicenseApplications.LicenseClasseInfo.ClassName);
+            lblApplicationFees.Text = localDrivingLicenseApplications.PaidFees.ToString();
+
+        }
+
+        private void frmAplication_Load(object sender, EventArgs e)
+        {
+            _ResetDefualtValues();
+
+            if (Mode == frmAplication.enMode.Updated)
+            _LoadData();
+
+
+
 
         }
     }
