@@ -16,6 +16,7 @@ namespace Full_Real_Project.frm
 {
     public partial class frmAplication : Form
     {
+        // comit try1 ff
         enum enMode { AddedNew = 1, Updated = 2 }
         enMode Mode = enMode.AddedNew;
         //clsApplication Application = new clsApplication();
@@ -83,13 +84,13 @@ namespace Full_Real_Project.frm
         {
             if (Mode == enMode.AddedNew)
             {
+                _FillCoboBox();
                 lblTitle.Text = "Added New Local Driving License Application";
                 localDrivingLicenseApplications = new clsLocalDrivingLicenseApplications();
                 comboBox1.SelectedIndex = 2;
                 lblUserName.Text = clsGlobal.User.UserName.ToString();
                 lblApplicationDate.Text = DateTime.Now.ToShortDateString();
                 lblApplicationFees.Text = clsApplicationTypes.GetApplicationTypesByApplicationTypeID((int)clsApplication.enApplicationType.NewDrivingLicense).ApplicationFees.ToString();
-                _FillCoboBox();
                 lblUserName.Text = clsGlobal.User.UserName;
             }
             else
@@ -115,7 +116,7 @@ namespace Full_Real_Project.frm
         }
 
         private void btnSave_Click(object sender, EventArgs e)
-        {
+        { // change 
             //new
             if (clsApplication.GetActiveApplicationIDForLicenseClass(userInfoAndSreach1.PersonID, (int)clsApplication.enApplicationType.NewDrivingLicense, comboBox1.SelectedIndex + 1))
             {
