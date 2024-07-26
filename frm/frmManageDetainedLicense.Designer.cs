@@ -82,9 +82,11 @@
             // 
             // pictureBox1
             // 
+            this.pictureBox1.Image = global::Full_Real_Project.Properties.Resources.Release_Detained_License_512;
             this.pictureBox1.Location = new System.Drawing.Point(340, 12);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(266, 120);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 

@@ -1,4 +1,5 @@
-﻿using Full_Real_Project_Buisness_layer_;
+﻿using Full_Real_Project.Properties;
+using Full_Real_Project_Buisness_layer_;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,6 +18,12 @@ namespace Full_Real_Project.ctrl
         clsApplication application;
         clsLicenseClasses licenseClasses;
         clsContact person;
+
+        public delegate void DataBackEventHandler(object sender, int PersonID);
+
+        // Declare an event using the delegate
+        public event DataBackEventHandler SelectPerson;
+
         public int LicenseID { get; set; }
         public DateTime ExpirationDate { get; set; }
         private void _fillClass(int LicenseID)
@@ -40,11 +47,13 @@ namespace Full_Real_Project.ctrl
             if (person.Gendor == 0)
             {
                 lblGendor.Text = "Male";
+                pictureBox1.Image = Resources.user_icon_male_300x300_3;
 
             }
             else
             {
                 lblGendor.Text = "Female";
+                pictureBox1.Image = Resources.female_icon_27_2;
             }
             lblIssueDate.Text = license.IssueDate1.ToShortDateString();
             lblIssueReason .Text = license.IssueReason1.ToString();
@@ -88,6 +97,7 @@ namespace Full_Real_Project.ctrl
             _fillClass(LicenseID);
 
             _Fillctrl();
+            SelectPerson.Invoke(this, LicenseID);
         }
 
 

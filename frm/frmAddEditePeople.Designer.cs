@@ -52,7 +52,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.llblAddPicture = new System.Windows.Forms.LinkLabel();
             this.llblRemovePicture = new System.Windows.Forms.LinkLabel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pbPersonImage = new System.Windows.Forms.PictureBox();
             this.txtbLastName = new System.Windows.Forms.TextBox();
             this.txtbThirdName = new System.Windows.Forms.TextBox();
             this.txtbSecondName = new System.Windows.Forms.TextBox();
@@ -60,7 +60,7 @@
             this.lblFormTitle = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPersonImage)).BeginInit();
             this.SuspendLayout();
             // 
             // lbl1
@@ -115,7 +115,7 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.llblAddPicture);
             this.panel1.Controls.Add(this.llblRemovePicture);
-            this.panel1.Controls.Add(this.pictureBox1);
+            this.panel1.Controls.Add(this.pbPersonImage);
             this.panel1.Controls.Add(this.txtbLastName);
             this.panel1.Controls.Add(this.txtbThirdName);
             this.panel1.Controls.Add(this.txtbSecondName);
@@ -198,6 +198,7 @@
             this.rbFemale.Tag = "1";
             this.rbFemale.Text = "Female";
             this.rbFemale.UseVisualStyleBackColor = true;
+            this.rbFemale.CheckedChanged += new System.EventHandler(this.rbFemale_CheckedChanged);
             // 
             // rbMale
             // 
@@ -318,14 +319,14 @@
             this.llblRemovePicture.Text = "RemovePicture";
             this.llblRemovePicture.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblRemovePicture_LinkClicked);
             // 
-            // pictureBox1
+            // pbPersonImage
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(737, 15);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(247, 181);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 7;
-            this.pictureBox1.TabStop = false;
+            this.pbPersonImage.Location = new System.Drawing.Point(737, 15);
+            this.pbPersonImage.Name = "pbPersonImage";
+            this.pbPersonImage.Size = new System.Drawing.Size(247, 181);
+            this.pbPersonImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbPersonImage.TabIndex = 7;
+            this.pbPersonImage.TabStop = false;
             // 
             // txtbLastName
             // 
@@ -383,7 +384,7 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPersonImage)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -398,7 +399,7 @@
         private System.Windows.Forms.Label lblFormTitle;
         private System.Windows.Forms.LinkLabel llblAddPicture;
         private System.Windows.Forms.LinkLabel llblRemovePicture;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pbPersonImage;
         private System.Windows.Forms.TextBox txtbLastName;
         private System.Windows.Forms.TextBox txtbThirdName;
         private System.Windows.Forms.TextBox txtbSecondName;

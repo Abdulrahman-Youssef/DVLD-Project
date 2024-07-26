@@ -31,8 +31,8 @@
             this.btnSearch = new System.Windows.Forms.Button();
             this.btnDetain = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.ctrlLicenseInfo1 = new Full_Real_Project.ctrl.ctrlLicenseInfo();
             this.ctrlDetianApplicationInfo1 = new Full_Real_Project.ctrl.ctrlDetianApplicationInfo();
+            this.ctrlLicenseInfo1 = new Full_Real_Project.ctrl.ctrlLicenseInfo();
             this.SuspendLayout();
             // 
             // btnSearch
@@ -47,9 +47,9 @@
             // 
             // btnDetain
             // 
-            this.btnDetain.Location = new System.Drawing.Point(611, 481);
+            this.btnDetain.Location = new System.Drawing.Point(651, 481);
             this.btnDetain.Name = "btnDetain";
-            this.btnDetain.Size = new System.Drawing.Size(75, 25);
+            this.btnDetain.Size = new System.Drawing.Size(95, 25);
             this.btnDetain.TabIndex = 1;
             this.btnDetain.Text = "Detain";
             this.btnDetain.UseVisualStyleBackColor = true;
@@ -62,28 +62,28 @@
             this.textBox1.Size = new System.Drawing.Size(225, 20);
             this.textBox1.TabIndex = 2;
             // 
+            // ctrlDetianApplicationInfo1
+            // 
+            this.ctrlDetianApplicationInfo1.Finefees = 0;
+            this.ctrlDetianApplicationInfo1.Location = new System.Drawing.Point(44, 352);
+            this.ctrlDetianApplicationInfo1.Name = "ctrlDetianApplicationInfo1";
+            this.ctrlDetianApplicationInfo1.Size = new System.Drawing.Size(668, 123);
+            this.ctrlDetianApplicationInfo1.TabIndex = 5;
+            // 
             // ctrlLicenseInfo1
             // 
             this.ctrlLicenseInfo1.ExpirationDate = new System.DateTime(((long)(0)));
             this.ctrlLicenseInfo1.LicenseID = 0;
-            this.ctrlLicenseInfo1.Location = new System.Drawing.Point(10, 41);
+            this.ctrlLicenseInfo1.Location = new System.Drawing.Point(5, 39);
             this.ctrlLicenseInfo1.Name = "ctrlLicenseInfo1";
-            this.ctrlLicenseInfo1.Size = new System.Drawing.Size(676, 307);
+            this.ctrlLicenseInfo1.Size = new System.Drawing.Size(747, 307);
             this.ctrlLicenseInfo1.TabIndex = 4;
-            // 
-            // ctrlDetianApplicationInfo1
-            // 
-            this.ctrlDetianApplicationInfo1.Finefees = 0;
-            this.ctrlDetianApplicationInfo1.Location = new System.Drawing.Point(5, 352);
-            this.ctrlDetianApplicationInfo1.Name = "ctrlDetianApplicationInfo1";
-            this.ctrlDetianApplicationInfo1.Size = new System.Drawing.Size(681, 123);
-            this.ctrlDetianApplicationInfo1.TabIndex = 5;
             // 
             // frmDetainLicense
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(695, 507);
+            this.ClientSize = new System.Drawing.Size(758, 507);
             this.Controls.Add(this.ctrlDetianApplicationInfo1);
             this.Controls.Add(this.ctrlLicenseInfo1);
             this.Controls.Add(this.textBox1);

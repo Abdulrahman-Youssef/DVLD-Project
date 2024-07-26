@@ -32,6 +32,14 @@ namespace Full_Real_Project.frm
 
         private void frmManageApplications_Load(object sender, EventArgs e)
         {
+            if(dgvApplicationTypes.Columns.Count > 0)
+            {
+                dgvApplicationTypes.Columns[0].Width = 160;
+                dgvApplicationTypes.Columns[1].Width = 220;
+                dgvApplicationTypes.Columns[2].Width = 220;
+            }
+
+
 
         }
 

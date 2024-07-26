@@ -45,6 +45,8 @@ namespace Full_Real_Project.frm
                 comboBox1.Items.Add(row["ClassName"].ToString());
             }
             comboBox1.SelectedIndex = 0;
+
+
         }
 
         private void _enabled(int OnOff)
@@ -85,7 +87,6 @@ namespace Full_Real_Project.frm
             {
                 lblTitle.Text = "Added New Local Driving License Application";
                 localDrivingLicenseApplications = new clsLocalDrivingLicenseApplications();
-                comboBox1.SelectedIndex = 2;
                 lblUserName.Text = clsGlobal.User.UserName.ToString();
                 lblApplicationDate.Text = DateTime.Now.ToShortDateString();
                 lblApplicationFees.Text = clsApplicationTypes.GetApplicationTypesByApplicationTypeID((int)clsApplication.enApplicationType.NewDrivingLicense).ApplicationFees.ToString();

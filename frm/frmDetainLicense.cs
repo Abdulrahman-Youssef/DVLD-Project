@@ -45,8 +45,16 @@ namespace Full_Real_Project_DataAccess_layer_
                         MessageBox.Show("license is already");
                         btnDetain.Enabled = false;
                     }
-                   
+
                 }
+                else
+                {
+                    MessageBox.Show("Lisence is Not exist");
+                }
+            }
+            else
+            {
+                MessageBox.Show("you have to enter the Lincense Numer");
             }
         }
 

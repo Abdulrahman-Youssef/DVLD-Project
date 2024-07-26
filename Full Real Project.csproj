@@ -47,6 +47,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="clsGlobal\Util\clsUtil.cs" />
+    <Compile Include="clsGlobal\Util\clsFormat.cs" />
     <Compile Include="ctrl\ctrlApplicationInfoReleaseInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -415,14 +417,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="ctrl\PersonInfoCard.resx">
       <DependentUpon>PersonInfoCard.cs</DependentUpon>
     </EmbeddedResource>
@@ -433,6 +430,11 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -446,12 +448,6 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\DefultBoyPhoto.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\DefultGirlPhoto.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\ManagePPLImage.png" />
   </ItemGroup>
   <ItemGroup>
@@ -461,7 +457,16 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Release Detained License 512.png" />
+    <None Include="Resources\user-icon-male-300x300-3.jpg" />
+    <None Include="Resources\user-group.png" />
+    <None Include="Resources\UserIcon.png" />
     <None Include="Resources\AddPerson.png" />
+    <None Include="Resources\Applications2.png" />
+    <None Include="Resources\female-icon-27-2.png" />
+    <None Include="Resources\Drivers 64.png" />
+    <None Include="Resources\cross 32.png" />
+    <None Include="Resources\closeBlack32.png" />
     <Content Include="Resources\images.png" />
   </ItemGroup>
   <ItemGroup />

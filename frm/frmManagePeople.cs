@@ -14,51 +14,85 @@ namespace Full_Real_Project
         DataTable poepleDataSource = clsContact.FiltertedTable(); 
 
 
-        private string[] filterbylist = {"None" , "PersonID" , "NationalNo" , "FirstName" , "SeocondName" , "ThirdName" ,
+        private string[] filterbylist = {"None" , "PersonID" , "NationalNo" , "FirstName" , "SecondName" , "ThirdName" ,
         "LastName" , "NationalityCountryID" , "Gendor" , "Phone" , "Email"};
 
         // this function will be fiered OnChange for the ComboBox
-        private void viladationTotxtBoxOnComboBoxChange() {
-            
-            switch(comboBox1.SelectedIndex)
-            {
-                case 0:
-                    maskedTextBox1.Visible = false;
-                    break;
-                case 2:
-                    maskedTextBox1.Visible = true;
-                    maskedTextBox1.Mask = null; 
-                    break;
-                case 1:
-                    maskedTextBox1.Visible = true;
-                    maskedTextBox1.Mask = "00000";
-                    break;
-                case 3:
-                case 4:
-                case 5:
-                case 6:
-                case 7:
-                case 8:
-                    maskedTextBox1.Visible = true;
-                    maskedTextBox1.Mask = "LLLLLLL";
-                    
-                    break ;
-                case 9:
-                    maskedTextBox1.Visible = true;
-                    maskedTextBox1.Mask = "0000000";
-                    break;
-                // not validation for email until found a good one 
-                case 10:
-                    maskedTextBox1.Visible = true;
-                    maskedTextBox1.Mask = null;
-                    break;
-            }
-            
-        }
-        public frmManagePeoPle()
+        private void viladationTotxtBoxOnComboBoxChange() 
         {
-            InitializeComponent();
-        }
+
+            string FilterColumn = "";
+            //Map Selected Filter to real Column name 
+            switch (cbFilter.Text)
+            {
+                case "Person ID":
+                    FilterColumn = "PersonID";
+                    break;
+
+                case "National No.":
+                    FilterColumn = "NationalNo";
+                    break;
+
+                case "First Name":
+                    FilterColumn = "FirstName";
+                    break;
+
+                case "Second Name":
+                    FilterColumn = "SecondName";
+                    break;
+
+                case "Third Name":
+                    FilterColumn = "ThirdName";
+                    break;
+
+                case "Last Name":
+                    FilterColumn = "LastName";
+                    break;
+
+                case "Nationality":
+                    FilterColumn = "CountryName";
+                    break;
+
+                case "Gendor":
+                    FilterColumn = "GendorCaption";
+                    break;
+
+                case "Phone":
+                    FilterColumn = "Phone";
+                    break;
+
+                case "Email":
+                    FilterColumn = "Email";
+                    break;
+
+                default:
+                    FilterColumn = "None";
+                    break;
+
+            }
+
+            //Reset the filters in case nothing selected or filter value conains nothing.
+            if (maskedTextBox1.Text.Trim() == "" || FilterColumn == "None")
+            {
+                poepleDataSource.DefaultView.RowFilter = "";
+                return;
+            }
+
+
+            if (FilterColumn == "PersonID") 
+                //in this case we deal with integer not string.
+
+                poepleDataSource.DefaultView.RowFilter = string.Format("[{0}] = {1}", FilterColumn, maskedTextBox1.Text.Trim());
+            else
+                    poepleDataSource.DefaultView.RowFilter = string.Format("[{0}] LIKE '{1}%'", FilterColumn, maskedTextBox1.Text.Trim());
+
+
+
+            }
+            public frmManagePeoPle()
+            {
+              InitializeComponent();
+            }
 
         private void Refreshdgv()
         {
@@ -70,9 +104,57 @@ namespace Full_Real_Project
         {
             //1
             dgvPeople.DataSource = poepleDataSource;
-            comboBox1.DataSource = filterbylist;
-           // he only load when he show dialog but not loading if didnt get closed 
-            //Refreshdgv(); 
+            cbFilter.DataSource = filterbylist;
+
+            if(dgvPeople.Rows.Count > 0)
+            {
+
+                dgvPeople.Columns[0].HeaderText = "Person ID";
+                dgvPeople.Columns[0].Width = 110;
+
+                dgvPeople.Columns[1].HeaderText = "National No.";
+                dgvPeople.Columns[1].Width = 120;
+
+
+                dgvPeople.Columns[2].HeaderText = "First Name";
+                dgvPeople.Columns[2].Width = 120;
+
+                dgvPeople.Columns[3].HeaderText = "Second Name";
+                dgvPeople.Columns[3].Width = 140;
+
+
+                dgvPeople.Columns[4].HeaderText = "Third Name";
+                dgvPeople.Columns[4].Width = 120;
+
+                dgvPeople.Columns[5].HeaderText = "Last Name";
+                dgvPeople.Columns[5].Width = 120;
+
+                dgvPeople.Columns[6].HeaderText = "Gendor";
+                dgvPeople.Columns[6].Width = 120;
+
+                dgvPeople.Columns[7].HeaderText = "Date Of Birth";
+                dgvPeople.Columns[7].Width = 140;
+
+                dgvPeople.Columns[8].HeaderText = "Nationality";
+                dgvPeople.Columns[8].Width = 120;
+
+
+                dgvPeople.Columns[9].HeaderText = "Phone";
+                dgvPeople.Columns[9].Width = 120;
+
+
+                dgvPeople.Columns[10].HeaderText = "Email";
+                dgvPeople.Columns[10].Width = 170;
+
+            }
+
+
+
+
+
+
+
+          
         }
 
 
@@ -83,16 +165,17 @@ namespace Full_Real_Project
 
         private void maskedTextBox1_TextChanged(object sender, EventArgs e)
         {
-            string columnName = comboBox1.Text;
-            string filtertext = maskedTextBox1.Text;          
+            string columnName = cbFilter.Text;
+            string filtertext = maskedTextBox1.Text;
+
+            
             poepleDataSource.DefaultView.RowFilter = string.Format("{1} like '%{0}%'" , filtertext , columnName );
+            
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-            frmAddEditePeople frm = new frmAddEditePeople(-1);
-            frm.ShowDialog();
-            Refreshdgv();
+           
         }
 
 
@@ -137,6 +220,21 @@ namespace Full_Real_Project
         {
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            frmAddEditePeople frm = new frmAddEditePeople(-1);
+            frm.ShowDialog();
+            Refreshdgv();
+        }
+
+        private void maskedTextBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //Console.WriteLine($"{cbFilter.Text} = PersonID " + (cbFilter.Text == "PersonID").ToString());
+            if (cbFilter.Text == "PersonID")
+                e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+
+        }
     }
 }
 
@@ -144,7 +242,7 @@ namespace Full_Real_Project
 
 
 
-//1 i was trying the way but it dosent work try to make it work 
+//1 i was trying the way but it dosent work try to make it work later
 //DataColumn dc= new DataColumn();
 //dc.ColumnName = dt.Columns["ID"].ToString();
 //dataGridView1.Columns.Add();

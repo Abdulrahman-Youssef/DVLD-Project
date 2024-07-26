@@ -48,10 +48,7 @@ namespace Full_Real_Project
 
         }
 
-        private void btnCancelApp_Click(object sender, EventArgs e)
-        {
-            Environment.Exit(0);
-        }
+       
 
         private void currentUserToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -82,6 +79,7 @@ namespace Full_Real_Project
         {
             frmManageTestType frmTests = new frmManageTestType();
             frmTests.ShowDialog();
+            
         }
 
         
@@ -145,6 +143,11 @@ namespace Full_Real_Project
         {
             frmManageDetainedLicense frmManage = new frmManageDetainedLicense();
             frmManage.ShowDialog();
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            
         }
     }
 }

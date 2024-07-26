@@ -39,6 +39,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -63,14 +64,17 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.splitContainer1.Panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.splitContainer1.Panel2.Controls.Add(this.button1);
             this.splitContainer1.Panel2.Controls.Add(this.cbRemember);
             this.splitContainer1.Panel2.Controls.Add(this.btnLogin);
             this.splitContainer1.Panel2.Controls.Add(this.txtbPassword);
             this.splitContainer1.Panel2.Controls.Add(this.txtbUserName);
             this.splitContainer1.Panel2.Controls.Add(this.label2);
             this.splitContainer1.Panel2.Controls.Add(this.label1);
-            this.splitContainer1.Size = new System.Drawing.Size(516, 181);
-            this.splitContainer1.SplitterDistance = 221;
+            this.splitContainer1.Size = new System.Drawing.Size(636, 236);
+            this.splitContainer1.SplitterDistance = 272;
             this.splitContainer1.TabIndex = 0;
             // 
             // cbRemember
@@ -78,7 +82,7 @@
             this.cbRemember.AutoSize = true;
             this.cbRemember.Checked = true;
             this.cbRemember.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbRemember.Location = new System.Drawing.Point(107, 119);
+            this.cbRemember.Location = new System.Drawing.Point(140, 138);
             this.cbRemember.Name = "cbRemember";
             this.cbRemember.Size = new System.Drawing.Size(94, 17);
             this.cbRemember.TabIndex = 11;
@@ -90,7 +94,7 @@
             this.btnLogin.BackColor = System.Drawing.Color.White;
             this.btnLogin.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLogin.Location = new System.Drawing.Point(216, 149);
+            this.btnLogin.Location = new System.Drawing.Point(285, 201);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(63, 23);
             this.btnLogin.TabIndex = 10;
@@ -100,14 +104,14 @@
             // 
             // txtbPassword
             // 
-            this.txtbPassword.Location = new System.Drawing.Point(107, 93);
+            this.txtbPassword.Location = new System.Drawing.Point(140, 112);
             this.txtbPassword.Name = "txtbPassword";
             this.txtbPassword.Size = new System.Drawing.Size(100, 20);
             this.txtbPassword.TabIndex = 9;
             // 
             // txtbUserName
             // 
-            this.txtbUserName.Location = new System.Drawing.Point(107, 42);
+            this.txtbUserName.Location = new System.Drawing.Point(140, 61);
             this.txtbUserName.Name = "txtbUserName";
             this.txtbUserName.Size = new System.Drawing.Size(100, 20);
             this.txtbUserName.TabIndex = 8;
@@ -115,9 +119,9 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.White;
+            this.label2.BackColor = System.Drawing.SystemColors.ButtonShadow;
             this.label2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label2.Location = new System.Drawing.Point(11, 96);
+            this.label2.Location = new System.Drawing.Point(44, 115);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 13);
             this.label2.TabIndex = 7;
@@ -126,9 +130,9 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.White;
+            this.label1.BackColor = System.Drawing.SystemColors.ButtonShadow;
             this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label1.Location = new System.Drawing.Point(11, 45);
+            this.label1.Location = new System.Drawing.Point(44, 64);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 6;
@@ -141,19 +145,35 @@
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(221, 181);
+            this.pictureBox1.Size = new System.Drawing.Size(272, 236);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            // 
+            // button1
+            // 
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Image = global::Full_Real_Project.Properties.Resources.closeBlack32;
+            this.button1.Location = new System.Drawing.Point(313, 3);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(44, 36);
+            this.button1.TabIndex = 1;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(516, 181);
+            this.ClientSize = new System.Drawing.Size(636, 236);
+            this.ControlBox = false;
             this.Controls.Add(this.splitContainer1);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmLogin";
+            this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmLogin";
             this.Load += new System.EventHandler(this.frmLogin_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
@@ -177,5 +197,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button button1;
     }
 }
