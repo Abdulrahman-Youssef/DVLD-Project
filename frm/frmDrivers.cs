@@ -27,6 +27,34 @@ namespace Full_Real_Project.frm
         private void frmDrivers_Load(object sender, EventArgs e)
         {
             RefresDrivers();
+
+            if(dgvDrivers.Columns.Count > 0)
+            {
+                Console.WriteLine(dgvDrivers.Columns.Count);
+
+                dgvDrivers.Columns[0].Width = 70;
+
+                dgvDrivers.Columns[1].Width = 70;
+                
+                dgvDrivers.Columns[2].Width = 70;
+
+                dgvDrivers.Columns[3].HeaderText = "Full Name";
+                dgvDrivers.Columns[3].Width = 220;
+
+                dgvDrivers.Columns[4].Width = 140;
+
+                dgvDrivers.Columns[5].Width = 100;
+                dgvDrivers.Columns[5].HeaderText = "Lisences";
+
+
+            }
+            
+
+
+
+
+
+
         }
 
         private void showDriverHistoryToolStripMenuItem_Click(object sender, EventArgs e)

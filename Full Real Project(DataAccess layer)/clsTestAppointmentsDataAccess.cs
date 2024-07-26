@@ -135,7 +135,7 @@ namespace Full_Real_Project_DataAccess_layer_
                     CreatedByUserID = (int)reader["CreatedByUserID"];
                     IsLocked = (bool)reader["IsLocked"];
 
-                    if (null != (int?)reader["RetakeTestApplicationID"])
+                    if (System.DBNull.Value == reader["RetakeTestApplicationID"])
                     {
                         RetakeTestApplicationID = -1;
                     }

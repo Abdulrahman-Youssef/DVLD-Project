@@ -64,9 +64,9 @@ namespace Full_Real_Project
         private void _LoadPersonImage()
         {
             if (_Person.Gendor == 0)
-                pbPersonImage.Image = Resources.DefultBoyPhoto;
+                pbPersonImage.Image = Resources.user_icon_male_300x300_3;
             else
-                pbPersonImage.Image = Resources.DefultGirlPhoto;
+                pbPersonImage.Image = Resources.female_icon_27_2;
 
             string ImagePath = _Person.ImagePath;
             if (ImagePath != "")

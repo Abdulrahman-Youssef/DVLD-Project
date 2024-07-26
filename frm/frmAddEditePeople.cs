@@ -64,9 +64,9 @@ namespace Full_Real_Project
                 {
                     rbMale.Checked = true;
                 }
-                if (person.ImagePath != null && person.ImagePath != "" && pictureBox1.ImageLocation == null)
+                if (person.ImagePath != null && person.ImagePath != "" && pbPersonImage.ImageLocation == null)
                 {
-                    pictureBox1.ImageLocation =  person.ImagePath;
+                    pbPersonImage.ImageLocation =  person.ImagePath;
 
                     llblRemovePicture.Visible = true;
                 }
@@ -75,6 +75,17 @@ namespace Full_Real_Project
 
                     llblRemovePicture.Visible = false;
                 }
+
+                
+
+
+
+
+
+
+
+
+
 
                 // give error and in loding not why ?????????????????????????????????????????????????????????????????????
                 //cbCountries.SelectedIndex = 0;
@@ -90,10 +101,10 @@ namespace Full_Real_Project
         // valiadaion for every text box ?
        private void _ValidateTextBoxes()
        {
-            pictureBox1.Image = pictureBox1.Image;
-            pictureBox1.ImageLocation = pictureBox1.ImageLocation
+            pbPersonImage.Image = pbPersonImage.Image;
+            pbPersonImage.ImageLocation = pbPersonImage.ImageLocation
                 ;
-            pictureBox1.Location = pictureBox1.Location;
+            pbPersonImage.Location = pbPersonImage.Location;
 
 
        }
@@ -142,25 +153,33 @@ namespace Full_Real_Project
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            person.NationalNo = txtbNationalNo.Text;
-            person.FirstName = txtbFirstName.Text;
-            person.SecondName = txtbSecondName.Text;
-            person.ThirdName = txtbThirdName.Text;
-            person.LastName = txtbLastName.Text;
-            person.Email = txtbEmail.Text;
-            person.Phone = txtbPhone.Text;
-            person.Address = txtbAdress.Text;
-            if(rbMale.Checked)
+
+            if (!_HandlePersonImage())
+                return;
+
+            person.NationalNo = txtbNationalNo.Text.Trim();
+            person.FirstName = txtbFirstName.Text.Trim();
+            person.SecondName = txtbSecondName.Text.Trim();
+            person.ThirdName = txtbThirdName.Text.Trim();
+            person.LastName = txtbLastName.Text.Trim();
+            person.Email = txtbEmail.Text.Trim();
+            person.Phone = txtbPhone.Text.Trim();
+            person.Address = txtbAdress.Text.Trim();
+            if (rbMale.Checked)
             {
-                person.Gendor = 0; 
-            }else
+                person.Gendor = 0;
+            } else
             {
                 person.Gendor = 1;
             }
             person.DateOfBirth = dateTimePicker1.Value.Date;
-            person.NationalityCountryID = cbCountries.SelectedIndex+1;
-            if (pictureBox1.ImageLocation != null && pictureBox1.ImageLocation != "")
-                person.ImagePath = pictureBox1.ImageLocation;
+            person.NationalityCountryID = cbCountries.SelectedIndex + 1;
+
+            
+            
+
+            if (pbPersonImage.ImageLocation != null && pbPersonImage.ImageLocation != "")
+                person.ImagePath = pbPersonImage.ImageLocation;
             else
                 person.ImagePath =null;
           
@@ -178,18 +197,26 @@ namespace Full_Real_Project
             openFileDialog1.FilterIndex = 1;
             openFileDialog1.RestoreDirectory = true;
             if(openFileDialog1.ShowDialog() == DialogResult.OK )
-            {
-                pictureBox1.Load(openFileDialog1.FileName);
+            { 
+                pbPersonImage.Load(openFileDialog1.FileName);
                 llblRemovePicture.Visible= true;                 
             }
         }
 
         private void llblRemovePicture_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            person.ImagePath=null;
-            pictureBox1.ImageLocation=null;
-            pictureBox1.Image = null;
+            pbPersonImage.ImageLocation=null;
             llblRemovePicture.Visible = false;
+
+            if (rbMale.Checked)
+            {
+                pbPersonImage.Image = Resources.user_icon_male_300x300_3;
+            }
+            else
+            {
+                pbPersonImage.Image = Resources.female_icon_27_2;
+            }
+
         }
 
         private void txtbPhone_KeyPress(object sender, KeyPressEventArgs e)
@@ -225,15 +252,59 @@ namespace Full_Real_Project
             {
                 if (rbMale.Checked)
                 {
-                    pictureBox1.Image = Resources.DefultBoyPhoto;
+                    pbPersonImage.Image = Resources.user_icon_male_300x300_3;
                 }
                 else
                 {
-                    pictureBox1.Image = Resources.DefultGirlPhoto;
+                    pbPersonImage.Image = Resources.female_icon_27_2;
                 }
             }
         }
 
        
+        private bool _HandlePersonImage()
+        {
+            if(person.ImagePath != pbPersonImage.ImageLocation) 
+            {
+
+                if(person.ImagePath != "")
+                {
+                    try
+                    {
+                        File.Delete(person.ImagePath);
+                    }
+                    catch 
+                    {
+                    
+                    }
+
+                }
+
+
+                if (pbPersonImage.ImageLocation != null)
+                {
+                    string filepath = pbPersonImage.ImageLocation.ToString();
+
+                    if (clsUtil.CopyImageToProjectImagesFolder(ref filepath))
+                    {
+                        pbPersonImage.ImageLocation = filepath;
+                        return true;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error Copying Image File", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return false;
+                    }
+
+                }
+            }
+
+            return true; 
+        }
+
+        private void rbFemale_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
