@@ -1,5 +1,8 @@
 This project is a simple proof that I have the basics and fundamentals of programming
 
+you can start the projcet from Full Real Project from start the projcet in will open the app and you can take a journy in the app 
+
+
 1-LoginScreen
 
 ![1-LoginScreen](https://github.com/user-attachments/assets/d6cf7948-6553-49f4-bc59-e663f1fac046)
